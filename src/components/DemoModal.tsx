@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { 
   X, 
-  Check, 
-  Sparkles, 
-  Calendar, 
   Building2, 
   Mail, 
   User, 
-  Bot, 
   ArrowRight,
-  ShieldCheck,
   CheckCircle2
 } from 'lucide-react';
 
@@ -38,14 +33,11 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl rounded-3xl bg-[#090D1C] border border-violet-500/30 p-6 sm:p-8 shadow-2xl shadow-purple-950/50 overflow-hidden">
-        {/* Glow decoration */}
-        <div className="absolute top-0 right-0 w-60 h-60 bg-violet-600/15 rounded-full blur-3xl pointer-events-none" />
-
+      <div className="relative w-full max-w-xl rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white hover:bg-white/[0.08] transition-colors"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -54,50 +46,45 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
         {!submitted ? (
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 text-[10px] font-mono uppercase font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
                 ENTERPRISE DEMO
               </span>
             </div>
-
-            <h3 className="text-2xl font-bold text-white tracking-tight mb-2">
-              See the Sentraa Bouncer in Action
+            <h3 className="text-2xl font-bold text-[#F8FAFC] tracking-tight mb-2">
+              Book a Sentra AI Platform Walkthrough
             </h3>
-            <p className="text-xs text-slate-300 leading-relaxed mb-6">
-              Schedule a 30-minute tailored technical demo with our AI security architects. We'll simulate your agent architecture and demonstrate real-time interception.
+            <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
+              See how Sentra AI intercepts agent tool calls, redacts PII in real-time, and automates compliance audits for your tech stack.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                    Your Name *
-                  </label>
+                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Full Name</label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                    <User className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
                     <input
                       type="text"
                       required
                       placeholder="Jane Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                    Work Email *
-                  </label>
+                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Work Email</label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                    <Mail className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
                     <input
                       type="email"
                       required
                       placeholder="jane@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                     />
                   </div>
                 </div>
@@ -105,106 +92,91 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                    Company Name *
-                  </label>
+                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Company Name</label>
                   <div className="relative">
-                    <Building2 className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                    <Building2 className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
                     <input
                       type="text"
                       required
                       placeholder="Acme Corp"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                    Estimated Agents in Org
-                  </label>
+                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Estimated AI Agents</label>
                   <select
                     value={formData.agentCount}
                     onChange={(e) => setFormData({ ...formData, agentCount: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white focus:outline-none focus:border-violet-500 transition-colors"
+                    className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
                   >
-                    <option value="1-10">1 - 10 agents</option>
-                    <option value="10-50">10 - 50 agents</option>
-                    <option value="50-250">50 - 250 agents</option>
-                    <option value="250+">250+ enterprise agents</option>
+                    <option value="1-10">1 – 10 AI Agents</option>
+                    <option value="10-50">10 – 50 AI Agents</option>
+                    <option value="50-200">50 – 200 AI Agents</option>
+                    <option value="200+">200+ Enterprise Fleet</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                  Primary Agent Tech Stack
-                </label>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Primary Agent Stack / Framework</label>
                 <select
                   value={formData.primaryFramework}
                   onChange={(e) => setFormData({ ...formData, primaryFramework: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white focus:outline-none focus:border-violet-500 transition-colors"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
                 >
-                  <option value="LangChain / CrewAI">LangChain / LangGraph / CrewAI</option>
-                  <option value="AWS Bedrock / Azure AI">AWS Bedrock AgentCore / Azure AI Foundry</option>
-                  <option value="Claude Code / Cursor">Claude Code / Cursor / Copilot Developer Tools</option>
-                  <option value="Salesforce / ServiceNow">Salesforce Agentforce / ServiceNow AI</option>
-                  <option value="Custom Internal LLMs">Custom Python / Node.js Agent Swarm</option>
+                  <option value="LangChain / CrewAI">LangChain / CrewAI</option>
+                  <option value="AWS Bedrock / Azure AI">AWS Bedrock / Azure AI</option>
+                  <option value="OpenAI Swarm / Anthropic MCP">OpenAI Swarm / Anthropic MCP</option>
+                  <option value="Custom Proprietary In-House">Custom Proprietary In-House</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                  Specific Concerns / Goals (Optional)
-                </label>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Specific Security or Compliance Goals (Optional)</label>
                 <textarea
                   rows={2}
-                  placeholder="e.g. Prompt injection via RAG PDFs, preventing unauthorized Stripe tool executions..."
+                  placeholder="e.g. GDPR & DPDP compliance, preventing prompt injection, DLP for databases..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors resize-none"
+                  className="w-full px-3 py-2 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-xs shadow-xl shadow-violet-600/30 hover:shadow-violet-600/50 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 border border-violet-400/30"
-                >
-                  <span>Request Priority Demo Booking</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="text-center text-[11px] text-slate-500 font-mono">
-                NDA guaranteed • We will respond within 4 business hours.
-              </div>
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-xl transition-all flex items-center justify-center gap-2"
+              >
+                <span>Confirm Demo Request</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </form>
           </div>
         ) : (
           <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
+            <div className="w-16 h-16 rounded-2xl bg-[#34D399]/20 border border-[#34D399]/30 text-[#34D399] flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-white">Demo Requested!</h3>
-            <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
-              Thank you, {formData.name}. Our AI security engineering team has received your request for <strong>{formData.company}</strong> and will follow up with scheduling links shortly.
+            <h4 className="text-2xl font-bold text-[#F8FAFC]">Demo Request Received</h4>
+            <p className="text-xs text-[#A7B0C0] max-w-sm mx-auto leading-relaxed">
+              Thanks, <strong>{formData.name}</strong>! We've scheduled a customized 30-minute walkthrough for <strong>{formData.company}</strong>. A calendar invite has been dispatched to <strong>{formData.email}</strong>.
             </p>
-            <div className="p-4 rounded-2xl bg-black/50 border border-white/[0.08] text-xs text-slate-400 max-w-sm mx-auto font-mono text-left">
-              <div>• Tech Stack: {formData.primaryFramework}</div>
-              <div>• Estimated Fleet: {formData.agentCount}</div>
-              <div>• Status: Priority Routing Active</div>
+            <div className="p-4 rounded-xl bg-[#111827] border border-[#263044] text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
+              <div className="text-[#34D399] font-bold">✓ Dedicated Solutions Engineer Assigned</div>
+              <div className="text-[#A7B0C0]">✓ Stack: {formData.primaryFramework}</div>
+              <div className="text-[#A7B0C0]">✓ Fleet size: {formData.agentCount}</div>
             </div>
             <button
               onClick={() => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="px-6 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white text-xs font-semibold transition-colors"
+              className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold transition-colors"
             >
-              Close Window
+              Done
             </button>
           </div>
         )}

@@ -1,161 +1,159 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Check, 
   X, 
-  Minus, 
-  ShieldAlert, 
-  Layers, 
-  HelpCircle, 
-  Sparkles, 
-  Database, 
-  UserCheck, 
-  Activity, 
-  Globe 
+  ChevronDown, 
+  Layers
 } from 'lucide-react';
 
 export const ContextVsIntent: React.FC = () => {
+  const [expanded, setExpanded] = useState<boolean>(false);
+
   const COMPARISONS = [
     {
-      category: 'Legacy DSPM',
-      claim: '"It\'s a data problem"',
-      limitation: 'Scans stationary databases for PII. Blind to autonomous agent runtime decisions, tool chaining, or model prompt injection.',
-      sentraaAnswer: 'Sentraa evaluates both the data schema and the dynamic agent intent that requested it in real time.'
+      category: 'Data Security (DSPM)',
+      claim: 'Focuses on static data at rest',
+      limitation: 'Scans databases for stored PII, but blind to runtime prompt injections or autonomous tool calls.',
+      sentraAdvantage: 'Sentra AI checks both what data is requested and whether the agent is authorized to take that action.'
     },
     {
-      category: 'Legacy IAM / CIEM',
-      claim: '"It\'s an identity problem"',
-      limitation: 'Built for human RBAC/SSO. AI agents assume broad service roles and hallucinate steps outside human permission baselines.',
-      sentraaAnswer: 'Sentraa gives every agent a cryptographically isolated runtime boundary, evaluating velocity and action parameters.'
+      category: 'Identity Management (IAM)',
+      claim: 'Focuses on human roles & SSO',
+      limitation: 'Built for human users. Agents often inherit broad service-account credentials and can hallucinate.',
+      sentraAdvantage: 'Sentra AI isolates agent tool execution with deterministic spend limits and parameter rules.'
     },
     {
-      category: 'Legacy EDR / XDR',
-      claim: '"It\'s an endpoint problem"',
-      limitation: 'Inspects operating system processes and network sockets. Autonomous LLM API tool calls look like valid HTTPS traffic.',
-      sentraaAnswer: 'Sentraa inspects the semantic reasoning chain, payload JSON, and tool arguments at sub-15ms inline speed.'
+      category: 'Endpoint Security (EDR)',
+      claim: 'Focuses on OS processes',
+      limitation: 'Monitors processes and network sockets. LLM API calls look like normal HTTPS traffic.',
+      sentraAdvantage: 'Sentra AI inspects the semantic reasoning chain, payload JSON, and tool arguments in sub-15ms.'
     },
     {
       category: 'Passive AI Gateways',
-      claim: '"It\'s a proxy problem"',
-      limitation: 'Only inspects user text prompts and token costs. Completely blind to multi-agent MCP tool calls and internal database queries.',
-      sentraaAnswer: 'Sentraa acts as a true execution bouncer across input, output, memory state, and downstream tool execution.'
+      claim: 'Focuses on prompt caching & costs',
+      limitation: 'Inspects user text prompts only. Completely blind to multi-agent MCP tool calls or DB mutations.',
+      sentraAdvantage: 'Sentra AI acts as an execution bouncer on downstream tool calls and mutations.'
     }
   ];
 
   const MATRIX = [
-    { capability: 'Pre-Execution In-Line Action Interception', dspm: false, iam: false, edr: false, gateway: 'Partial', sentraa: true },
-    { capability: 'Autonomous Tool Chaining & Escalation Defense', dspm: false, iam: false, edr: false, gateway: false, sentraa: true },
-    { capability: 'Indirect Prompt Injection (RAG / PDF / Email)', dspm: false, iam: false, edr: false, gateway: 'Partial', sentraa: true },
-    { capability: 'Dynamic In-Memory PII & Secret Redaction', dspm: 'Stationary', iam: false, edr: false, gateway: 'Basic', sentraa: true },
-    { capability: 'Model Context Protocol (MCP) Security Enforcement', dspm: false, iam: false, edr: false, gateway: false, sentraa: true },
-    { capability: 'Cryptographic Audit Chain (SHA-256 Validated)', dspm: false, iam: 'Logs only', edr: 'Logs only', gateway: false, sentraa: true },
-    { capability: 'Fail-Closed Safety Engine (<15ms Latency)', dspm: false, iam: false, edr: false, gateway: false, sentraa: true },
-    { capability: 'Multi-Framework Compliance Auto-Mapping (GDPR/HIPAA/DPDP)', dspm: 'Partial', iam: false, edr: false, gateway: false, sentraa: true },
+    { capability: 'Pre-execution inline action interception', dspm: false, iam: false, edr: false, gateway: 'Partial', sentra: true },
+    { capability: 'Defense against indirect prompt injection (PDF / Email / Web)', dspm: false, iam: false, edr: false, gateway: 'Partial', sentra: true },
+    { capability: 'In-memory dynamic PII and secret redaction', dspm: 'Static only', iam: false, edr: false, gateway: 'Basic', sentra: true },
+    { capability: 'Autonomous tool-chaining and spend-cap enforcement', dspm: false, iam: false, edr: false, gateway: false, sentra: true },
+    { capability: 'Model Context Protocol (MCP) agent security', dspm: false, iam: false, edr: false, gateway: false, sentra: true },
+    { capability: 'Cryptographically signed audit logs (SHA-256)', dspm: false, iam: 'Logs only', edr: 'Logs only', gateway: false, sentra: true },
+    { capability: 'Low-latency inline evaluation (<15ms)', dspm: false, iam: false, edr: false, gateway: false, sentra: true },
+    { capability: 'Automated evidence mapping (GDPR, DPDP, HIPAA, NIST)', dspm: 'Partial', iam: false, edr: false, gateway: false, sentra: true },
   ];
 
   return (
-    <section id="architecture" className="py-24 relative bg-[#06080F] border-b border-white/[0.06] overflow-hidden scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="comparison" className="py-20 lg:py-24 bg-[#080B14] border-b border-[#263044]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" /> Context vs Intent
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Architecture Insight</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Context Answers <span className="text-violet-400">What</span>.{' '}
-            Intent Answers <span className="text-indigo-400">Why</span>.
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-4">
+            Context answers what. Intent answers why.
           </h2>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
-            A DSPM vendor calls this a data problem. An IAM vendor calls it an identity problem. 
-            An EDR vendor calls it an endpoint problem. All of them are partially right, but none of them are enough to address the full picture.
-            <strong className="text-white block mt-2">
-              The traditional stack was built for human actors. An autonomous agent's decision doesn't stay inside one category.
-            </strong>
+
+          <p className="text-base text-[#A7B0C0] leading-relaxed">
+            Traditional security tools were built for human users and static systems. Autonomous AI agents don't fit into one category: they read data, assume identities, and execute code in seconds.
           </p>
         </div>
 
-        {/* 4 Category Breakdown Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        {/* 4 Category Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {COMPARISONS.map((item, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-white/[0.02] border border-white/[0.06] hover:border-violet-500/30 hover:bg-white/[0.04] transition-all flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-[#111827] border border-[#263044] flex flex-col justify-between"
             >
               <div>
-                <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1">
+                <span className="text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider block mb-1">
                   {item.category}
-                </div>
-                <div className="text-sm font-bold text-rose-300 mb-3 italic">
+                </span>
+                <div className="text-sm font-semibold text-[#F8FAFC] mb-2">
                   {item.claim}
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                <p className="text-xs text-[#A7B0C0] leading-relaxed mb-4">
                   {item.limitation}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-white/[0.06]">
-                <div className="text-[10px] font-mono text-violet-400 uppercase tracking-wider font-bold mb-1">
-                  Sentraa's Answer:
+              <div className="pt-3 border-t border-[#263044]">
+                <div className="text-[10px] font-mono text-[#8B5CF6] uppercase font-bold mb-1">
+                  Sentra AI Advantage:
                 </div>
-                <p className="text-xs text-slate-200 leading-relaxed">
-                  {item.sentraaAnswer}
+                <p className="text-xs text-[#F8FAFC] leading-relaxed">
+                  {item.sentraAdvantage}
                 </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Comparison Matrix Table */}
-        <div className="rounded-3xl border border-violet-500/20 bg-[#090D1A]/90 backdrop-blur-xl p-6 lg:p-8 shadow-2xl overflow-hidden">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-white/[0.08] gap-2">
-            <div>
-              <h3 className="text-xl font-bold text-white tracking-tight">
-                Architectural Capability Matrix
-              </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Comparing enterprise defenses against agentic autonomy risks
+        {/* Expandable Technical Matrix Button */}
+        <div className="text-center pt-2">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#111827] hover:bg-[#141D30] border border-[#263044] hover:border-[#8B5CF6]/50 text-xs font-semibold text-[#F8FAFC] transition-all"
+            aria-expanded={expanded}
+          >
+            <span>{expanded ? 'Hide Capability Comparison Matrix' : 'Compare platform capabilities in detail'}</span>
+            <ChevronDown className={`w-4 h-4 text-[#8B5CF6] transition-transform ${expanded ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
+
+        {/* Expandable Table */}
+        {expanded && (
+          <div className="mt-8 rounded-2xl bg-[#111827] border border-[#263044] p-4 sm:p-6 shadow-xl overflow-x-auto">
+            <div className="mb-4">
+              <h4 className="text-base font-bold text-[#F8FAFC]">
+                Detailed Technical Comparison
+              </h4>
+              <p className="text-xs text-[#A7B0C0]">
+                Comparing traditional cybersecurity approaches against Sentra AI's pre-execution inline architecture.
               </p>
             </div>
-            <span className="text-[11px] font-mono text-violet-400 bg-violet-950/60 px-3 py-1 rounded-full border border-violet-500/30">
-              FAIL-CLOSED AGENT DEFENSE
-            </span>
-          </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <table className="w-full text-left text-xs border-collapse min-w-[640px]">
               <thead>
-                <tr className="border-b border-white/[0.08] text-slate-400 font-mono uppercase text-[11px]">
-                  <th className="py-3 px-4 font-semibold">Security Dimension</th>
+                <tr className="border-b border-[#263044] text-[#A7B0C0] font-mono">
+                  <th className="py-3 px-3 text-[#F8FAFC]">Platform Capability</th>
                   <th className="py-3 px-3 text-center">DSPM</th>
-                  <th className="py-3 px-3 text-center">IAM / CIEM</th>
+                  <th className="py-3 px-3 text-center">IAM</th>
                   <th className="py-3 px-3 text-center">EDR</th>
-                  <th className="py-3 px-3 text-center">AI Proxy</th>
-                  <th className="py-3 px-4 text-center bg-violet-600/20 text-violet-300 rounded-t-xl font-bold">
-                    Sentraa AI
-                  </th>
+                  <th className="py-3 px-3 text-center">AI Gateway</th>
+                  <th className="py-3 px-3 text-center bg-[#8B5CF6]/10 text-[#C4B5FD] font-bold rounded-t-lg">Sentra AI</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.04]">
+              <tbody className="divide-y divide-[#263044]/60">
                 {MATRIX.map((row, idx) => (
                   <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-slate-200">
+                    <td className="py-3.5 px-3 text-[#F8FAFC] font-medium">
                       {row.capability}
                     </td>
-                    <td className="py-3.5 px-3 text-center text-slate-400 font-mono">
-                      {row.dspm === false ? <X className="w-4 h-4 text-rose-500/70 mx-auto" /> : row.dspm}
+                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
+                      {row.dspm === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.dspm === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.dspm}
                     </td>
-                    <td className="py-3.5 px-3 text-center text-slate-400 font-mono">
-                      {row.iam === false ? <X className="w-4 h-4 text-rose-500/70 mx-auto" /> : row.iam}
+                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
+                      {row.iam === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.iam === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.iam}
                     </td>
-                    <td className="py-3.5 px-3 text-center text-slate-400 font-mono">
-                      {row.edr === false ? <X className="w-4 h-4 text-rose-500/70 mx-auto" /> : row.edr}
+                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
+                      {row.edr === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.edr === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.edr}
                     </td>
-                    <td className="py-3.5 px-3 text-center text-slate-400 font-mono">
-                      {row.gateway === false ? <X className="w-4 h-4 text-rose-500/70 mx-auto" /> : row.gateway}
+                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
+                      {row.gateway === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.gateway === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.gateway}
                     </td>
-                    <td className="py-3.5 px-4 text-center bg-violet-600/10 text-emerald-400 font-bold font-mono">
+                    <td className="py-3.5 px-3 text-center bg-[#8B5CF6]/10 font-bold text-[#34D399]">
                       <div className="flex items-center justify-center gap-1">
-                        <Check className="w-4 h-4 text-emerald-400" />
-                        <span>Enforced</span>
+                        <Check className="w-4 h-4 text-[#34D399]" />
+                        <span className="text-[11px]">Supported</span>
                       </div>
                     </td>
                   </tr>
@@ -163,7 +161,7 @@ export const ContextVsIntent: React.FC = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

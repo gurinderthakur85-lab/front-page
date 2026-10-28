@@ -2,108 +2,94 @@ import React from 'react';
 import { 
   Search, 
   Sliders, 
-  Zap, 
-  Target, 
-  FileCheck2, 
-  TrendingUp, 
-  ArrowRight,
-  ShieldAlert,
-  Sparkles
+  Activity, 
+  CheckCircle2, 
+  Layers
 } from 'lucide-react';
 
 export const WorkProcess: React.FC = () => {
   const STEPS = [
     {
-      num: 'Step 1',
-      title: 'Discover & Assess Your AI Environment',
-      tagline: 'Full Visibility Into Every Agent, Model, and Workflow — Sanctioned or Shadow',
-      description: 'Automatically scan cloud connectors, databases, MCP keys, LLM API keys, and runtime traffic to establish an exhaustive inventory of all active agents.',
-      icon: <Search className="w-5 h-5 text-indigo-400" />
+      stepNumber: 'Step 1',
+      action: 'Discover AI Activity',
+      plainHeading: 'Find the AI agents in your environment',
+      description: 'Automatically scan cloud connectors, databases, API keys, and runtime traffic to establish a complete inventory of sanctioned and shadow AI tools.',
+      benefits: ['Identifies unknown shadow agents', 'Maps data connectors & APIs', 'No disruption to current workflows'],
+      icon: <Search className="w-6 h-6 text-[#8B5CF6]" />
     },
     {
-      num: 'Step 2',
-      title: 'Configure Policies & Governance Rules',
-      tagline: 'Set the Rules Your AI Agents Must Operate Within — Enforced, Not Just Documented',
-      description: 'Define deterministic rules, PII DLP thresholds, budget controls, and spending limits that agents cannot bypass, regardless of model hallucinations.',
-      icon: <Sliders className="w-5 h-5 text-violet-400" />
+      stepNumber: 'Step 2',
+      action: 'Apply Policies',
+      plainHeading: 'Apply rules to AI actions before execution',
+      description: 'Enforce deterministic guardrails, sensitive PII redaction, spend caps, and authorization bounds. Every action is intercepted in under 15ms.',
+      benefits: ['Pre-execution interception', 'Dynamic PII & secret masking', 'Customizable threshold policies'],
+      icon: <Sliders className="w-6 h-6 text-[#8B5CF6]" />
     },
     {
-      num: 'Step 3',
-      title: 'Intercept & Govern AI Actions in Real Time',
-      tagline: 'Every AI Action Is Scanned, Checked, and Governed Before It Executes',
-      description: 'Inline gate checks tool calls, code execution, and database mutations in sub-15ms. Safe actions pass; dangerous ones are blocked or auto-redacted.',
-      icon: <Zap className="w-5 h-5 text-amber-400" />
-    },
-    {
-      num: 'Step 4',
-      title: 'Map Risk & Contain the Blast Radius',
-      tagline: 'Understand How Far a Single Compromised Agent Could Reach',
-      description: 'Graph-based relationship analysis maps connected resources, dependencies, and credentials to contain and isolate vulnerabilities instantly.',
-      icon: <Target className="w-5 h-5 text-rose-400" />
-    },
-    {
-      num: 'Step 5',
-      title: 'Prove Compliance With Continuously Updated Evidence',
-      tagline: 'Audit-Ready Evidence, Generated Continuously — Not Assembled at the Last Minute',
-      description: 'Every decision is logged, SHA-256 hashed, and mapped automatically to GDPR, DPDP, HIPAA, PCI-DSS, and NIST AI RMF frameworks.',
-      icon: <FileCheck2 className="w-5 h-5 text-emerald-400" />
-    },
-    {
-      num: 'Step 6',
-      title: 'Continuously Monitor, Improve & Scale Governance',
-      tagline: 'Governance That Continuously Adapts as Your AI Environment Evolves',
-      description: '24/7 telemetry tracks drift, anomaly patterns, and performance metrics as your enterprise adopts more agents and complex multi-agent swarms.',
-      icon: <TrendingUp className="w-5 h-5 text-purple-400" />
+      stepNumber: 'Step 3',
+      action: 'Monitor & Respond',
+      plainHeading: 'Monitor AI activity continuously',
+      description: 'Continuously track agent drift, catch anomalies, and automatically generate tamper-evident audit logs mapped to GDPR, DPDP, HIPAA, and NIST AI RMF.',
+      benefits: ['Always-on anomaly detection', 'Automated compliance evidence', 'Single-click audit reporting'],
+      icon: <Activity className="w-6 h-6 text-[#8B5CF6]" />
     }
   ];
 
   return (
-    <section id="process" className="py-24 relative bg-[#070912] border-b border-white/[0.06] overflow-hidden scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="how-it-works" className="py-20 lg:py-28 bg-[#080B14] border-b border-[#263044] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" /> Work Process
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+            <Layers className="w-3.5 h-3.5" />
+            <span>How the Platform Works</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            How we Secure your AI automation empire
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-4">
+            Three simple steps to manage AI risk
           </h2>
-          <p className="text-base text-slate-300 leading-relaxed font-normal">
-            Every step is designed to minimize disruption while maximizing results, ensuring you see measurable improvements within 30 days.
+
+          <p className="text-base text-[#A7B0C0] leading-relaxed max-w-2xl mx-auto">
+            Sentra AI sits between your AI agents and your systems to enforce accountability and safety at every turn.
           </p>
         </div>
 
-        {/* 6 Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 3 Steps Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
           {STEPS.map((step, idx) => (
             <div
               key={idx}
-              className="p-7 rounded-3xl bg-white/[0.02] border border-white/[0.06] hover:border-violet-500/40 hover:bg-[#0C1022] transition-all flex flex-col justify-between group"
+              className="p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full bg-violet-950/60 border border-violet-500/30 text-violet-300 font-mono text-xs font-bold uppercase">
-                    {step.num}
+                <div className="flex items-center justify-between mb-5">
+                  <span className="px-3 py-1 rounded-full bg-[#0D1220] border border-[#263044] text-[#C4B5FD] font-mono text-xs font-bold">
+                    {step.stepNumber}
                   </span>
-                  <div className="p-2.5 rounded-2xl bg-white/[0.04] border border-white/[0.08] group-hover:scale-110 transition-transform">
+                  <div className="p-2.5 rounded-xl bg-[#080B14] border border-[#263044]">
                     {step.icon}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 leading-snug">
-                  {step.title}
-                </h3>
-                <div className="text-xs font-semibold text-violet-300 mb-3 leading-relaxed">
-                  {step.tagline}
+                <div className="text-xs font-mono uppercase tracking-wider text-[#8B5CF6] font-semibold mb-1">
+                  {step.action}
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <h3 className="text-xl font-bold text-[#F8FAFC] mb-3 leading-snug">
+                  {step.plainHeading}
+                </h3>
+                <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
                   {step.description}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center justify-between text-xs text-slate-500 font-mono">
-                <span>Phase 0{idx + 1}</span>
-                <span className="text-emerald-400">&bull; Verified</span>
+              {/* Bullet points */}
+              <div className="pt-4 border-t border-[#263044] space-y-2">
+                {step.benefits.map((b, bIdx) => (
+                  <div key={bIdx} className="flex items-center gap-2 text-xs text-[#F8FAFC]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
+                    <span>{b}</span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

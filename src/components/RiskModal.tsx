@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { 
   X, 
-  ShieldAlert, 
   ShieldCheck, 
   ArrowRight, 
   Check, 
   Sparkles, 
-  Database, 
-  Terminal, 
-  Layers, 
-  ExternalLink,
-  RefreshCw,
   AlertTriangle
 } from 'lucide-react';
 
@@ -41,9 +35,8 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
     });
   };
 
-  // Compute calculated risk score
   const calculateScore = () => {
-    let score = 35; // base risk
+    let score = 35;
     score += selections.agentTypes.length * 12;
     score += selections.dataSources.length * 10;
     if (selections.autonomyLevel === 'Unsupervised Code & Container Execution') score += 20;
@@ -56,14 +49,11 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl rounded-3xl bg-[#090D1C] border border-violet-500/30 p-6 sm:p-8 shadow-2xl shadow-purple-950/50 overflow-hidden">
-        {/* Glow */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-violet-600/15 rounded-full blur-3xl pointer-events-none" />
-
+      <div className="relative w-full max-w-2xl rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white transition-colors"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -72,23 +62,23 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         {/* Modal Header */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 text-[10px] font-mono uppercase font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
               SECURITY ASSESSMENT HUB
             </span>
-            <span className="text-xs text-slate-400 font-mono">Step {step} of 4</span>
+            <span className="text-xs text-[#A7B0C0] font-mono">Step {step} of 4</span>
           </div>
-          <h3 className="text-2xl font-bold text-white tracking-tight">
-            AI Agent Risk & Posture Calculator
+          <h3 className="text-2xl font-bold text-[#F8FAFC] tracking-tight">
+            AI Agent Risk &amp; Posture Calculator
           </h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#A7B0C0] leading-relaxed">
             Answer 3 quick questions about your agent architecture to generate an instant threat posture assessment.
           </p>
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full h-1 bg-white/[0.06] rounded-full mb-6 overflow-hidden">
+        <div className="w-full h-1 bg-[#111827] rounded-full mb-6 overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 transition-all duration-300"
+            className="h-full bg-[#8B5CF6] transition-all duration-300"
             style={{ width: `${(step / 4) * 100}%` }}
           />
         </div>
@@ -96,13 +86,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         {/* Step 1: Agent Types */}
         {step === 1 && (
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white">
+            <h4 className="text-sm font-semibold text-[#F8FAFC]">
               1. What AI Agent ecosystems are active in your organization?
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {[
                 { id: 'Agentic SaaS', desc: 'Salesforce Agentforce, Microsoft 365 Copilot, ServiceNow' },
-                { id: 'Coding & IDE Agents', desc: 'Claude Code, Cursor, GitHub Copilot, Roo-Code' },
+                { id: 'Coding & IDE Agents', desc: 'Claude Code, Cursor, GitHub Copilot' },
                 { id: 'Cloud / Homegrown Swarms', desc: 'LangChain, CrewAI, AutoGen, Bedrock AgentCore' },
                 { id: 'Model Context Protocol (MCP)', desc: 'Local and remote MCP servers connected to LLMs' }
               ].map((opt) => {
@@ -111,17 +101,17 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
                   <button
                     key={opt.id}
                     onClick={() => toggleItem('agentTypes', opt.id)}
-                    className={`p-3.5 rounded-2xl border text-left transition-all ${
+                    className={`p-3.5 rounded-xl border text-left transition-all ${
                       selected
-                        ? 'bg-violet-950/60 border-violet-400 text-white shadow-lg shadow-violet-950/30'
-                        : 'bg-white/[0.02] border-white/[0.08] text-slate-300 hover:bg-white/[0.05]'
+                        ? 'bg-[#111827] border-[#8B5CF6] text-white ring-1 ring-[#8B5CF6]/50'
+                        : 'bg-[#111827]/60 border-[#263044] text-[#A7B0C0] hover:bg-[#111827]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-bold text-white">{opt.id}</span>
-                      {selected && <Check className="w-4 h-4 text-violet-400" />}
+                      <span className="text-xs font-bold text-[#F8FAFC]">{opt.id}</span>
+                      {selected && <Check className="w-4 h-4 text-[#8B5CF6]" />}
                     </div>
-                    <p className="text-[11px] text-slate-400 leading-tight">{opt.desc}</p>
+                    <p className="text-[11px] text-[#A7B0C0] leading-tight">{opt.desc}</p>
                   </button>
                 );
               })}
@@ -129,7 +119,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex justify-end pt-4">
               <button
                 onClick={() => setStep(2)}
-                className="px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
+                className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -141,7 +131,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         {/* Step 2: Data Sources */}
         {step === 2 && (
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white">
+            <h4 className="text-sm font-semibold text-[#F8FAFC]">
               2. What resources or tools can your agents touch?
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -156,17 +146,17 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
                   <button
                     key={opt.id}
                     onClick={() => toggleItem('dataSources', opt.id)}
-                    className={`p-3.5 rounded-2xl border text-left transition-all ${
+                    className={`p-3.5 rounded-xl border text-left transition-all ${
                       selected
-                        ? 'bg-violet-950/60 border-violet-400 text-white shadow-lg shadow-violet-950/30'
-                        : 'bg-white/[0.02] border-white/[0.08] text-slate-300 hover:bg-white/[0.05]'
+                        ? 'bg-[#111827] border-[#8B5CF6] text-white ring-1 ring-[#8B5CF6]/50'
+                        : 'bg-[#111827]/60 border-[#263044] text-[#A7B0C0] hover:bg-[#111827]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-bold text-white">{opt.id}</span>
-                      {selected && <Check className="w-4 h-4 text-violet-400" />}
+                      <span className="text-xs font-bold text-[#F8FAFC]">{opt.id}</span>
+                      {selected && <Check className="w-4 h-4 text-[#8B5CF6]" />}
                     </div>
-                    <p className="text-[11px] text-slate-400 leading-tight">{opt.desc}</p>
+                    <p className="text-[11px] text-[#A7B0C0] leading-tight">{opt.desc}</p>
                   </button>
                 );
               })}
@@ -174,13 +164,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex justify-between pt-4">
               <button
                 onClick={() => setStep(1)}
-                className="px-4 py-2.5 rounded-xl bg-white/[0.04] text-slate-400 hover:text-white text-xs font-semibold"
+                className="px-4 py-2.5 rounded-xl bg-[#111827] text-[#A7B0C0] hover:text-white text-xs font-semibold"
               >
                 Back
               </button>
               <button
                 onClick={() => setStep(3)}
-                className="px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
+                className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -192,7 +182,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         {/* Step 3: Autonomy Level */}
         {step === 3 && (
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white">
+            <h4 className="text-sm font-semibold text-[#F8FAFC]">
               3. What level of autonomy do your agents have?
             </h4>
             <div className="space-y-2">
@@ -206,17 +196,17 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
                   <button
                     key={lvl.id}
                     onClick={() => setSelections({ ...selections, autonomyLevel: lvl.id })}
-                    className={`w-full p-3.5 rounded-2xl border text-left transition-all ${
+                    className={`w-full p-3.5 rounded-xl border text-left transition-all ${
                       selected
-                        ? 'bg-violet-950/60 border-violet-400 text-white shadow-lg shadow-violet-950/30'
-                        : 'bg-white/[0.02] border-white/[0.08] text-slate-300 hover:bg-white/[0.05]'
+                        ? 'bg-[#111827] border-[#8B5CF6] text-white ring-1 ring-[#8B5CF6]/50'
+                        : 'bg-[#111827]/60 border-[#263044] text-[#A7B0C0] hover:bg-[#111827]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-bold text-white">{lvl.id}</span>
-                      {selected && <Check className="w-4 h-4 text-violet-400" />}
+                      <span className="text-xs font-bold text-[#F8FAFC]">{lvl.id}</span>
+                      {selected && <Check className="w-4 h-4 text-[#8B5CF6]" />}
                     </div>
-                    <p className="text-[11px] text-slate-400 leading-tight">{lvl.desc}</p>
+                    <p className="text-[11px] text-[#A7B0C0] leading-tight">{lvl.desc}</p>
                   </button>
                 );
               })}
@@ -224,13 +214,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex justify-between pt-4">
               <button
                 onClick={() => setStep(2)}
-                className="px-4 py-2.5 rounded-xl bg-white/[0.04] text-slate-400 hover:text-white text-xs font-semibold"
+                className="px-4 py-2.5 rounded-xl bg-[#111827] text-[#A7B0C0] hover:text-white text-xs font-semibold"
               >
                 Back
               </button>
               <button
                 onClick={() => setStep(4)}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-violet-600/30"
+                className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-bold flex items-center gap-1.5 shadow-lg"
               >
                 <span>Calculate Posture Score</span>
                 <Sparkles className="w-3.5 h-3.5" />
@@ -239,93 +229,55 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
           </div>
         )}
 
-        {/* Step 4: Results & Recommended Policies */}
+        {/* Step 4: Results */}
         {step === 4 && (
-          <div className="space-y-6 animate-in fade-in duration-300">
-            {/* Score Display Card */}
-            <div className="p-5 rounded-2xl bg-black/60 border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="space-y-6 animate-in fade-in duration-200">
+            <div className="p-5 rounded-xl bg-[#111827] border border-[#263044] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
+                <span className="text-[11px] font-mono uppercase text-[#A7B0C0] tracking-wider">
                   Computed Enterprise Posture Score
                 </span>
-                <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-300 font-mono">
-                    {calculatedRisk} / 100
+                <h4 className="text-3xl font-extrabold text-[#F8FAFC] tracking-tight mt-1">
+                  {calculatedRisk}/100{' '}
+                  <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded border ml-2 ${
+                    calculatedRisk > 60 
+                      ? 'bg-[#F87171]/20 text-[#F87171] border-[#F87171]/40' 
+                      : 'bg-[#FBBF24]/20 text-[#FBBF24] border-[#FBBF24]/40'
+                  }`}>
+                    {calculatedRisk > 60 ? 'HIGH EXPOSURE' : 'MODERATE EXPOSURE'}
                   </span>
-                  <span className="text-xs font-bold text-rose-400 uppercase font-mono">
-                    {calculatedRisk > 60 ? 'HIGH RISK DETECTED' : 'MODERATE RISK'}
-                  </span>
-                </div>
-                <p className="text-xs text-slate-400 mt-1">
-                  Autonomous agents have access to state-modifying endpoints without inline deterministic pre-execution checks.
-                </p>
+                </h4>
               </div>
-
-              <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 shrink-0 text-center">
-                <AlertTriangle className="w-8 h-8 mx-auto text-rose-400 mb-1" />
-                <div className="text-[10px] font-mono font-bold uppercase">Immediate Action</div>
-                <div className="text-[11px] text-white font-semibold">Enable Bouncer Gate</div>
+              <div className="text-right">
+                <span className="text-xs text-[#A7B0C0] block">Recommended Action:</span>
+                <span className="text-xs font-bold text-[#34D399] font-mono">Deploy In-Line Pre-Execution Gate</span>
               </div>
             </div>
 
-            {/* Recommended Sentraa Guardrails */}
-            <div>
-              <div className="text-xs font-mono uppercase text-slate-400 tracking-wider mb-2 font-bold">
-                Recommended Sentraa Pre-Execution Policies:
+            <div className="space-y-2 text-xs text-[#A7B0C0]">
+              <div className="p-3 rounded-lg bg-[#080B14] border border-[#263044] flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-[#F87171] shrink-0" />
+                <span>Detected risk of prompt injection exfiltration via connected database connectors.</span>
               </div>
-              <div className="space-y-2 text-xs">
-                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between">
-                  <div>
-                    <span className="font-mono text-violet-300 font-bold">POL-INJECTION-09:</span>
-                    <span className="text-slate-300 ml-2">Dual-Stage RAG & Document Prompt Injection Filter</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10">Active</span>
-                </div>
-                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between">
-                  <div>
-                    <span className="font-mono text-violet-300 font-bold">POL-DLP-03:</span>
-                    <span className="text-slate-300 ml-2">Dynamic In-Memory PII & Credentials Masker (DPDP/GDPR)</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10">Active</span>
-                </div>
-                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between">
-                  <div>
-                    <span className="font-mono text-violet-300 font-bold">POL-BOUND-01:</span>
-                    <span className="text-slate-300 ml-2">Autonomous Velocity Limit & High-Value Transaction Gate</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10">Active</span>
-                </div>
+              <div className="p-3 rounded-lg bg-[#080B14] border border-[#263044] flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#34D399] shrink-0" />
+                <span>Sentra AI can enforce dynamic PII masking and spend limits with 0ms interruption to agents.</span>
               </div>
             </div>
 
-            {/* Actions */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
-                onClick={() => {
-                  onClose();
-                  onOpenDemo();
-                }}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-violet-600/30"
+                onClick={onOpenDemo}
+                className="w-full py-3 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2"
               >
-                <span>Remediate Risk with Sentraa Architect</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>Book a Demo to Remediate</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
-
-              <a
-                href="https://sentraatech.info"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 border border-white/[0.08]"
-              >
-                <span>Test Policies in Live Sandbox</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-              </a>
-
               <button
                 onClick={() => setStep(1)}
-                className="text-xs text-slate-500 hover:text-slate-400 font-mono py-2 sm:ml-auto"
+                className="w-full sm:w-auto px-4 py-3 rounded-xl bg-[#111827] text-[#A7B0C0] hover:text-white border border-[#263044] text-xs font-semibold transition-colors"
               >
-                Reset Assessment
+                Recalculate
               </button>
             </div>
           </div>

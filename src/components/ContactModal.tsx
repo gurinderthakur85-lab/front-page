@@ -19,10 +19,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-3xl bg-[#0A0D1C] border border-violet-500/30 p-6 sm:p-8 shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden">
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-slate-400 hover:text-white transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white transition-colors"
+          aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
@@ -30,26 +31,26 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         {!submitted ? (
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 text-[10px] font-mono uppercase font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
                 DIRECT CONTACT
               </span>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Contact Sentraa AI</h3>
-            <p className="text-xs text-slate-300 leading-relaxed mb-6">
-              Reach our team directly for platform inquiries, enterprise deployments, or custom governance advisory.
+            <h3 className="text-2xl font-bold text-[#F8FAFC] mb-2">Contact Sentra AI</h3>
+            <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
+              Reach our team directly for platform questions, enterprise deployments, or security architecture reviews.
             </p>
 
-            {/* Direct contact numbers from sentraatech.com */}
-            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2 mb-6 font-mono text-xs">
-              <div className="flex items-center gap-2 text-slate-200">
-                <Mail className="w-4 h-4 text-violet-400" />
-                <a href="mailto:support@sentraatech.com" className="hover:text-violet-300 underline">
+            {/* Direct contact info */}
+            <div className="p-4 rounded-xl bg-[#111827] border border-[#263044] space-y-2 mb-6 font-mono text-xs">
+              <div className="flex items-center gap-2 text-[#F8FAFC]">
+                <Mail className="w-4 h-4 text-[#8B5CF6]" />
+                <a href="mailto:support@sentraatech.com" className="hover:text-[#C4B5FD] transition-colors underline">
                   support@sentraatech.com
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-slate-200">
-                <Phone className="w-4 h-4 text-emerald-400" />
-                <a href="tel:+916309624519" className="hover:text-emerald-300 underline">
+              <div className="flex items-center gap-2 text-[#F8FAFC]">
+                <Phone className="w-4 h-4 text-[#34D399]" />
+                <a href="tel:+916309624519" className="hover:text-[#34D399] transition-colors underline">
                   +91 6309624519
                 </a>
               </div>
@@ -57,65 +58,65 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">Your Name</label>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Your Name</label>
                 <input
                   type="text"
                   required
                   placeholder="Jane Doe"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">Work Email</label>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Work Email</label>
                 <input
                   type="email"
                   required
                   placeholder="jane@company.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">Message / Requirement</label>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Message or Project Scope</label>
                 <textarea
                   rows={3}
                   required
-                  placeholder="How can we help your team govern AI agents?"
+                  placeholder="Tell us about the AI agents you're deploying and your governance requirements..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-black/50 border border-white/[0.1] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-violet-600/30"
+                className="w-full py-3 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2"
               >
-                <span>Send Message</span>
+                <span>Send Inquiries</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </form>
           </div>
         ) : (
           <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
-              <CheckCircle2 className="w-8 h-8" />
+            <div className="w-14 h-14 rounded-2xl bg-[#34D399]/20 border border-[#34D399]/30 text-[#34D399] flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-7 h-7" />
             </div>
-            <h3 className="text-2xl font-bold text-white">Message Dispatched!</h3>
-            <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
-              Thank you, {form.name}. Our governance team will respond to <strong>{form.email}</strong> shortly.
+            <h4 className="text-xl font-bold text-[#F8FAFC]">Message Sent</h4>
+            <p className="text-xs text-[#A7B0C0] max-w-sm mx-auto leading-relaxed">
+              Thank you, <strong>{form.name}</strong>. A Sentra AI solutions engineer will respond to <strong>{form.email}</strong> within 1 business day.
             </p>
             <button
               onClick={() => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="px-6 py-2.5 rounded-xl bg-white/[0.06] text-white text-xs font-semibold"
+              className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold transition-colors"
             >
               Close
             </button>

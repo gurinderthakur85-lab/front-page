@@ -1,102 +1,181 @@
 import React from 'react';
 import { 
-  Eye, 
-  ShieldAlert, 
-  Clock, 
-  Coins, 
-  BarChart3, 
+  Lock, 
+  Scale, 
+  Cpu, 
+  CheckCircle2, 
   TrendingUp, 
-  CheckCircle2,
-  Sparkles
+  Users
 } from 'lucide-react';
 
 export const BenefitsSection: React.FC = () => {
-  const BENEFITS = [
+  const BENEFICIARIES = [
     {
-      title: 'Complete AI Visibility',
-      description: 'Get a real-time, centralized view of every AI tool, agent, and model your organization is using, including identifying shadow AI that your team did not know existed.',
-      icon: <Eye className="w-6 h-6 text-indigo-400" />,
-      tag: 'Discovery & Inventory'
+      role: 'For Security & SecOps Teams',
+      heading: 'Prevent data exfiltration and rogue agent actions',
+      description: 'Intercept tool calls before execution. Enforce zero-trust boundaries on agents with the same rigor you apply to human staff.',
+      outcomes: [
+        'Real-time prompt injection blocking',
+        'Automatic PII & API key redaction',
+        'Blast-radius containment for compromised agents'
+      ],
+      icon: <Lock className="w-5 h-5 text-[#8B5CF6]" />
     },
     {
-      title: 'Proactive Protection Against Risk',
-      description: 'Sentraa AI can identify and block the execution of high-risk AI actions before they happen by monitoring for policy violations, data exposure, and unauthorized actions in real-time.',
-      icon: <ShieldAlert className="w-6 h-6 text-rose-400" />,
-      tag: 'Pre-Execution Gate'
+      role: 'For Compliance & Risk Officers',
+      heading: 'Continuous audit-ready evidence, not manual checklists',
+      description: 'Replace stressful annual audits with live, SHA-256 hashed evidence mapped continuously against global AI and privacy frameworks.',
+      outcomes: [
+        'Automated GDPR, DPDP & HIPAA mapping',
+        'NIST AI RMF 1.0 continuous alignment',
+        'One-click verifiable compliance exports'
+      ],
+      icon: <Scale className="w-5 h-5 text-[#34D399]" />
     },
     {
-      title: 'Continuous Monitoring 24/7',
-      description: 'Our governance engine continuously monitors each AI system so that no high-risk action can occur, even during non-business hours.',
-      icon: <Clock className="w-6 h-6 text-amber-400" />,
-      tag: 'Always-On Defense'
+      role: 'For Business & Executive Leaders',
+      heading: 'Deploy AI agents with confidence and accountability',
+      description: 'Safeguard your corporate reputation and financial bottom line. Keep autonomous workflows operating strictly within defined budgets and legal limits.',
+      outcomes: [
+        'Hard spend caps on financial transactions',
+        'Zero surprise cloud or API overages',
+        'Full executive visibility across all AI projects'
+      ],
+      icon: <TrendingUp className="w-5 h-5 text-[#FBBF24]" />
     },
     {
-      title: 'Reduced Costs of Compliance',
-      description: 'Automating evidence collection and audit reporting across multiple frameworks provides the ability to save time and money while remaining compliant with regulations.',
-      icon: <Coins className="w-6 h-6 text-emerald-400" />,
-      tag: 'Automated Evidence'
-    },
-    {
-      title: 'Using Data to Understand Risk',
-      description: 'Use timely risk ratings, historical trend analysis, and anomaly detection to enhance your ability to view and refine AI governance policy.',
-      icon: <BarChart3 className="w-6 h-6 text-violet-400" />,
-      tag: 'Risk Intelligence'
-    },
-    {
-      title: 'Grows with your AI footprint',
-      description: 'The average growth of Sentraa AI will continue to rise. The platform scales effortlessly as your organization deploys additional agents, frameworks, and cross-departmental teams.',
-      icon: <TrendingUp className="w-6 h-6 text-purple-400" />,
-      tag: 'Enterprise Scalability'
+      role: 'For AI Engineers & Developers',
+      heading: 'Ship multi-agent swarms faster without fear',
+      description: 'Focus on model performance and business logic. Let Sentra AI handle safety boundaries, memory isolation, and regulatory guardrails in sub-15ms.',
+      outcomes: [
+        'SDK drops in with simple 2-line initialization',
+        'Compatible with LangChain, Bedrock, CrewAI, and MCP',
+        'Sub-15ms fail-closed execution performance'
+      ],
+      icon: <Cpu className="w-5 h-5 text-[#8B5CF6]" />
     }
   ];
 
+  const INTEGRATIONS = [
+    { src: '/Lqs3WnRB22OoezY17CRzN3VOdk.png', name: 'OpenAI' },
+    { src: '/OgOQobKmM2GKlP9KbSVZFJ5AveE.png', name: 'Anthropic Claude' },
+    { src: '/b5dX62MaefGlJTmrtX1Oxbvqo.png', name: 'Slack' },
+    { src: '/70MAwqVZRjuLNQfixOzXbsR4Y.png', name: 'Google Cloud' },
+    { src: '/o79BI1ynIxBeRg4bHE2b5d7B7Q0.png', name: 'LangChain' },
+    { src: '/2rhveLndDrPjbvTDQu8QwLZkIyc.png', name: 'AWS Bedrock' },
+  ];
+
+  const COMPLIANCE_FRAMEWORKS = [
+    { name: 'GDPR Article 22', status: 'Continuous Control Active', badge: 'Certified' },
+    { name: 'India DPDP 2023', status: 'Automated PII DLP Redaction', badge: 'Compliant' },
+    { name: 'HIPAA Safe Harbor', status: 'Cryptographic Audit Trail', badge: 'Audit Ready' },
+    { name: 'PCI-DSS v4.0', status: 'Token & Secret Redaction', badge: 'Isolated' },
+    { name: 'NIST AI RMF 1.0', status: 'Govern & Measure Controls', badge: 'Mapped' },
+  ];
+
   return (
-    <section id="benefits" className="py-24 relative bg-[#06080F] border-b border-white/[0.06] overflow-hidden scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
+    <section id="use-cases" className="py-20 lg:py-28 bg-[#0D1220] border-b border-[#263044] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" /> Benefits
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+            <Users className="w-3.5 h-3.5" />
+            <span>Who Benefits &amp; Ecosystem</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Solutions for AI Governance That Help You Protect Your Business at Scale
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-4">
+            Built for security, compliance, and AI innovators
           </h2>
-          <p className="text-base text-slate-300 leading-relaxed font-normal">
-            We monitor, track and govern all AI systems across your entire organization to ensure you are compliant, safe and in control.
+
+          <p className="text-base text-[#A7B0C0] leading-relaxed max-w-2xl mx-auto">
+            Sentra AI bridges the gap between fast-moving AI engineering teams and risk-conscious enterprise leadership.
           </p>
         </div>
 
-        {/* 6 Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {BENEFITS.map((b, idx) => (
+        {/* 4 Audience Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {BENEFICIARIES.map((item, idx) => (
             <div
               key={idx}
-              className="p-8 rounded-3xl bg-white/[0.02] border border-white/[0.06] hover:border-violet-500/40 hover:bg-[#0C1022] transition-all flex flex-col justify-between group"
+              className="p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-violet-400 font-bold">
-                    {b.tag}
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#8B5CF6] font-semibold">
+                    {item.role}
                   </span>
-                  <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/[0.08] group-hover:scale-110 transition-transform">
-                    {b.icon}
+                  <div className="p-2.5 rounded-xl bg-[#080B14] border border-[#263044]">
+                    {item.icon}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
-                  {b.title}
+                <h3 className="text-xl font-bold text-[#F8FAFC] mb-2 leading-snug">
+                  {item.heading}
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {b.description}
+
+                <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
+                  {item.description}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/[0.04] flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Enterprise Proven</span>
+              <div className="pt-4 border-t border-[#263044] space-y-2">
+                {item.outcomes.map((out, oIdx) => (
+                  <div key={oIdx} className="flex items-center gap-2 text-xs text-[#F8FAFC]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
+                    <span>{out}</span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Supported AI Ecosystem & Platforms */}
+        <div className="rounded-2xl bg-[#111827] border border-[#263044] p-6 lg:p-8">
+          <div className="text-center mb-6">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#A7B0C0]">
+              Protecting and governing agents across your current technology stack
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+            {INTEGRATIONS.map((icon, idx) => (
+              <div 
+                key={idx} 
+                className="flex items-center justify-center gap-2.5 px-3 py-3 rounded-xl bg-[#080B14] border border-[#263044] hover:border-[#8B5CF6]/40 transition-colors"
+              >
+                <img 
+                  src={icon.src} 
+                  alt={icon.name} 
+                  className="w-5 h-5 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <span className="text-xs font-medium text-[#F8FAFC]">{icon.name}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Compliance & Regulatory Verifiable Evidence */}
+          <div className="pt-6 border-t border-[#263044]">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#A7B0C0] mb-4 text-center">
+              Verifiable Regulatory Compliance Evidence
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {COMPLIANCE_FRAMEWORKS.map((fw, fIdx) => (
+                <div key={fIdx} className="p-3 rounded-xl bg-[#080B14] border border-[#263044] flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-bold text-[#F8FAFC]">{fw.name}</div>
+                    <div className="text-[10px] text-[#A7B0C0]">{fw.status}</div>
+                  </div>
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[#34D399]/10 text-[#34D399] border border-[#34D399]/20">
+                    {fw.badge}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

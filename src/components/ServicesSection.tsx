@@ -1,164 +1,173 @@
 import React, { useState } from 'react';
 import { 
   Eye, 
-  Zap, 
+  Sliders, 
   ShieldCheck, 
-  Layers, 
-  Sparkles, 
   CheckCircle2, 
   ArrowRight,
-  Database,
-  Lock,
-  Search,
-  Scale,
-  Briefcase
+  Layers
 } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
-  const SERVICES = [
+  const CAPABILITIES = [
     {
-      num: '01',
-      title: 'Complete AI Visibility',
-      category: 'AI Registry & Discovery',
-      tagline: 'Get a real-time, centralized view of every AI tool, agent, and model your organization is using, including identifying shadow AI that your team did not know existed.',
-      description: 'Sentraa automatically scans your environment — cloud storage connectors, databases, MCP agent keys, LLM API keys, Slack integrations, and live runtime traffic to build a single, deduplicated inventory of every AI system operating in your organization, sanctioned or shadow.',
-      pills: ['Shadow AI', 'MCP & LLM Key Scanning', 'Connector Mapping'],
-      icon: <Eye className="w-5 h-5 text-indigo-400" />,
-      screenshot: 'agents.png',
-      screenshotTitle: 'AI Registry & Discovery Dashboard'
+      id: 'discovery',
+      number: '01',
+      badge: 'Discovery & Inventory',
+      title: 'AI Discovery',
+      headline: 'Find and catalog every AI agent in your organization',
+      summary: 'Get a centralized, real-time inventory of every AI model, framework, and tool your teams use — including shadow AI operating without approval.',
+      points: [
+        'Automatic discovery across cloud connectors, APIs, and runtime logs',
+        'Detects hidden LangChain bots, Slack integrations, and MCP agents',
+        'Maps agent dependencies and permission blast-radius'
+      ],
+      icon: <Eye className="w-5 h-5 text-[#8B5CF6]" />,
+      image: '/screenshots/dashboard/agents.png',
+      imageAlt: 'AI Discovery & Agent Inventory Dashboard'
     },
     {
-      num: '02',
-      title: 'Real-Time Governance Engine',
-      category: 'Pre-Execution Interception',
-      tagline: 'Our SDK sits in front of every AI agent action, not behind it. We\'re the bouncer, not the auditor.',
-      description: 'A four stage pipeline — Scan, Detect, Flag, Block — lets you run in always-on flagging mode or move to full enforcement per organization, with a complete audit trail either way. Every action is intercepted before it reaches external databases or APIs.',
-      pills: ['Pre-Execution Interception', '3-Tier Decision Engine', 'Configurable Enforcement'],
-      icon: <Zap className="w-5 h-5 text-violet-400" />,
-      screenshot: 'policies-guardrails.png',
-      screenshotTitle: 'Real-Time Policy & Bouncer Controls'
+      id: 'enforcement',
+      number: '02',
+      badge: 'Pre-Execution Controls',
+      title: 'Policy Enforcement',
+      headline: 'Apply rules to AI actions before they execute',
+      summary: 'Sentra AI operates as an inline bouncer. Actions are evaluated against security policies in sub-15ms: safe actions pass, dangerous ones are blocked.',
+      points: [
+        'Pre-execution gate checks every tool call and database mutation',
+        'Automatic PII & credential redaction before data reaches the model',
+        'Custom spending limits and human-in-the-loop escalation'
+      ],
+      icon: <Sliders className="w-5 h-5 text-[#8B5CF6]" />,
+      image: '/screenshots/dashboard/policies-guardrails.png',
+      imageAlt: 'Policy Controls and Guardrail Configuration'
     },
     {
-      num: '03',
-      title: 'Compliance Automation',
-      category: 'Compliance & Risk Center',
-      tagline: 'Compliance scores computed from real control status, not a static checklist, plus auto-generated evidence for audits.',
-      description: 'Sentraa maps live AI activity and agent posture against GDPR, DPDP, HIPAA, PCI-DSS, and NIST AI RMF from one unified dashboard. Evidence is continuously generated and cryptographically signed, ready for external auditors at any moment.',
-      pills: ['GDPR', 'DPDP', 'NIST AI RMF', 'PCI-DSS', 'HIPAA'],
-      icon: <Scale className="w-5 h-5 text-emerald-400" />,
-      screenshot: 'compliance.png',
-      screenshotTitle: 'Automated Multi-Framework Compliance Hub'
-    },
-    {
-      num: '04',
-      title: 'Custom AI Governance Service',
-      category: 'Custom Architecture & Advisory',
-      tagline: 'Tailored governance architectures matched to your exact regulatory footprint.',
-      description: 'Whether you\'re rolling out your first AI agents or governing AI across dozens of departments, we help you design an end-to-end governance architecture matched to your regulatory requirements, with deep focus for BFSI and HealthTech organizations navigating overlapping compliance frameworks.',
-      pills: ['Custom AI Architecture', 'Consulting & Advisory', 'BFSI & HealthTech Focus'],
-      icon: <Briefcase className="w-5 h-5 text-amber-400" />,
-      screenshot: 'ai-advisor.png',
-      screenshotTitle: 'Enterprise Advisory & Impact Assessments'
+      id: 'monitoring',
+      number: '03',
+      badge: 'Compliance & Telemetry',
+      title: 'Continuous Monitoring',
+      headline: 'Monitor AI activity continuously and automate compliance',
+      summary: 'Maintain 24/7 oversight over agent behavior, detect anomalies as models drift, and turn execution logs into audit-ready evidence automatically.',
+      points: [
+        '24/7 telemetry tracks execution anomalies and prompt injections',
+        'Direct compliance mapping to GDPR, DPDP, HIPAA, and NIST AI RMF',
+        'Cryptographically signed, tamper-proof audit trails for external reviews'
+      ],
+      icon: <ShieldCheck className="w-5 h-5 text-[#8B5CF6]" />,
+      image: '/screenshots/dashboard/compliance.png',
+      imageAlt: 'Automated Multi-Framework Compliance Hub'
     }
   ];
 
+  const current = CAPABILITIES[activeTab];
+
   return (
-    <section id="services" className="py-24 relative bg-[#070912] border-b border-white/[0.06] overflow-hidden scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="capabilities" className="py-20 lg:py-28 bg-[#0D1220] border-b border-[#263044] relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-            <Layers className="w-3.5 h-3.5" /> Services
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Core Capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-            Solutions for AI Governance That Help You Protect Your Business at Scale
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-4">
+            Three core capabilities. One unified platform.
           </h2>
-          <p className="text-base text-slate-300 leading-relaxed font-normal">
-            We discover, govern, and continuously validate every AI agent across your organization so you stay compliant, safe, and in control, before any action executes.
+
+          <p className="text-base text-[#A7B0C0] leading-relaxed max-w-2xl mx-auto">
+            Everything your security, compliance, and engineering teams need to discover, control, and monitor AI agents safely.
           </p>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {SERVICES.map((srv, idx) => (
-            <div
-              key={idx}
-              onClick={() => setActiveTab(idx)}
-              className={`p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
-                activeTab === idx
-                  ? 'bg-[#0E1328] border-violet-400/70 shadow-2xl shadow-violet-950/60 scale-[1.01]'
-                  : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/10'
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-2xl font-black text-violet-400/80">
-                    {srv.num}.
-                  </span>
-                  <div className="p-2.5 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
-                    {srv.icon}
+        {/* 3 Capability Selector Tabs */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {CAPABILITIES.map((cap, idx) => {
+            const isSelected = activeTab === idx;
+            return (
+              <button
+                key={cap.id}
+                onClick={() => setActiveTab(idx)}
+                className={`text-left p-5 rounded-2xl transition-all duration-200 border flex items-start gap-4 ${
+                  isSelected
+                    ? 'bg-[#111827] border-[#8B5CF6] shadow-lg shadow-black/40 ring-1 ring-[#8B5CF6]/50'
+                    : 'bg-[#111827]/60 border-[#263044] hover:bg-[#111827] hover:border-[#8B5CF6]/40'
+                }`}
+              >
+                <div className={`p-2.5 rounded-xl border shrink-0 ${isSelected ? 'bg-[#8B5CF6]/20 border-[#8B5CF6]/40 text-[#C4B5FD]' : 'bg-[#080B14] border-[#263044] text-[#A7B0C0]'}`}>
+                  {cap.icon}
+                </div>
+                <div>
+                  <div className="text-[11px] font-mono uppercase text-[#A7B0C0] mb-0.5">
+                    {cap.badge}
+                  </div>
+                  <div className="text-base font-bold text-[#F8FAFC]">
+                    {cap.title}
+                  </div>
+                  <div className="text-xs text-[#A7B0C0] mt-1 line-clamp-2">
+                    {cap.headline}
                   </div>
                 </div>
-
-                <div className="text-xs font-mono uppercase text-slate-400 mb-1">
-                  {srv.category}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
-                  {srv.title}
-                </h3>
-                <p className="text-sm font-semibold text-violet-200/90 leading-relaxed mb-4">
-                  {srv.tagline}
-                </p>
-                <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                  {srv.description}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-white/[0.06] flex flex-wrap gap-2">
-                {srv.pills.map((pill, pIdx) => (
-                  <span 
-                    key={pIdx}
-                    className="px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-violet-950/40 text-violet-300 border border-violet-500/30"
-                  >
-                    {pill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Tabbed Screenshot Preview for Selected Service */}
-        <div className="rounded-3xl border border-violet-500/25 bg-[#0A0D1E]/95 backdrop-blur-2xl p-6 lg:p-8 shadow-2xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-white/[0.08]">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs font-bold text-violet-400">
-                ACTIVE VIEW: {SERVICES[activeTab].num} // {SERVICES[activeTab].title}
-              </span>
-              <span className="text-[11px] text-slate-400 hidden sm:inline">&bull; {SERVICES[activeTab].screenshotTitle}</span>
+        {/* Active Capability Showcase Box */}
+        <div className="rounded-2xl bg-[#111827] border border-[#263044] p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left Text Column */}
+          <div className="lg:col-span-5 space-y-5">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#8B5CF6] font-bold">
+              {current.badge}
+            </span>
+
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight leading-snug">
+              {current.headline}
+            </h3>
+
+            <p className="text-sm text-[#A7B0C0] leading-relaxed">
+              {current.summary}
+            </p>
+
+            <div className="space-y-3 pt-2">
+              {current.points.map((pt, pIdx) => (
+                <div key={pIdx} className="flex items-start gap-2.5 text-xs text-[#F8FAFC]">
+                  <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
+                  <span>{pt}</span>
+                </div>
+              ))}
             </div>
-            <a 
-              href="https://sentraatech.info" 
-              target="_blank" 
-              rel="noreferrer"
-              className="text-xs font-semibold text-violet-300 hover:text-white flex items-center gap-1.5 transition-colors"
-            >
-              <span>Explore full module in live sandbox</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+
+            <div className="pt-4">
+              <a
+                href="#simulator"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#C4B5FD] hover:text-white transition-colors"
+              >
+                <span>Try interactive simulator below</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
 
-          <div className="relative rounded-2xl border border-white/[0.08] overflow-hidden bg-black/60 shadow-xl">
-            <img 
-              src={`/screenshots/dashboard/${SERVICES[activeTab].screenshot}`}
-              alt={SERVICES[activeTab].screenshotTitle}
-              className="w-full h-auto object-cover max-h-[520px]"
-              onError={(e) => {
-                e.currentTarget.src = '/screenshots/dashboard/overview.png';
-              }}
-            />
+          {/* Right Preview Graphic */}
+          <div className="lg:col-span-7">
+            <div className="rounded-xl border border-[#263044] overflow-hidden bg-[#080B14] shadow-xl">
+              <div className="flex items-center justify-between px-4 py-2 border-b border-[#263044] bg-[#0D1220] text-xs text-[#A7B0C0]">
+                <span className="font-mono text-[11px] text-[#F8FAFC]">{current.imageAlt}</span>
+                <span className="text-[#34D399] text-[10px] font-mono">LIVE TELEMETRY</span>
+              </div>
+              <img 
+                src={current.image} 
+                alt={current.imageAlt} 
+                className="w-full h-auto object-cover max-h-[380px]"
+                onError={(e) => {
+                  e.currentTarget.src = '/MNXP4JCUUPRXCO60rXS6qL9n8Gs.png';
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

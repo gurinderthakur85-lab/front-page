@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronDown, 
   Sparkles, 
   Eye, 
-  Lock, 
+  ShieldCheck, 
   Zap, 
-  Scale, 
   Menu, 
   X, 
   ArrowRight, 
   ExternalLink,
-  Phone,
-  Mail,
-  Shield,
-  Layers,
-  CheckCircle2
+  Sliders
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -24,8 +19,9 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,64 +31,63 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <>
-      {/* Top Announcement Bar */}
-      {bannerVisible && (
-        <div className="relative z-50 bg-gradient-to-r from-violet-950 via-indigo-950 to-purple-950 border-b border-violet-500/20 px-4 py-2 text-xs text-violet-200">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex-1 flex items-center justify-center gap-2 text-center flex-wrap">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-violet-500/20 border border-violet-400/30 text-violet-300 font-semibold text-[11px] tracking-wide uppercase">
-                <Sparkles className="w-3 h-3 text-violet-400" /> New
-              </span>
-              <span>
-                <strong>Sentraa AI:</strong> AI Governance, Security &amp; Compliance Platform — Check each agent action before it executes.
-              </span>
-              <button 
-                onClick={onOpenDemo}
-                className="hidden sm:inline-flex items-center gap-1 font-semibold text-white underline decoration-violet-400 underline-offset-4 hover:text-violet-200 transition-colors ml-1"
-              >
-                Book a Demo <ArrowRight className="w-3 h-3" />
-              </button>
-            </div>
+    <header className="sticky top-0 z-50 w-full">
+      {/* Top Notification Bar - Minimal & Action-oriented */}
+      <div className="bg-[#0D1220] border-b border-[#263044] px-4 py-2 text-xs text-[#A7B0C0]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex-1 flex items-center justify-center gap-2 text-center flex-wrap">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 text-[#C4B5FD] font-semibold text-[11px]">
+              <Sparkles className="w-3 h-3 text-[#8B5CF6]" /> Sentra AI
+            </span>
+            <span className="text-[#F8FAFC]">
+              Check each AI agent action before it executes.
+            </span>
             <button 
-              onClick={() => setBannerVisible(false)}
-              className="text-violet-400 hover:text-white p-1 rounded-md transition-colors"
-              aria-label="Dismiss banner"
+              onClick={onOpenDemo}
+              className="inline-flex items-center gap-1 font-semibold text-[#C4B5FD] hover:text-white transition-colors ml-1 underline decoration-[#8B5CF6]/40 underline-offset-4"
             >
-              <X className="w-3.5 h-3.5" />
+              Book a Demo <ArrowRight className="w-3 h-3" />
             </button>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Main Navigation Bar */}
       <nav 
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        className={`w-full transition-all duration-200 ${
           scrolled 
-            ? 'bg-[#06080F]/90 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl shadow-purple-950/20' 
-            : 'bg-transparent border-b border-white/[0.04]'
+            ? 'bg-[#080B14]/95 backdrop-blur-md border-b border-[#263044] shadow-lg shadow-black/40' 
+            : 'bg-[#080B14]/80 backdrop-blur-sm border-b border-[#263044]/60'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between" ref={dropdownRef}>
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
-            <a href="#" className="flex items-center gap-3 group">
+            <a href="#" className="flex items-center gap-2.5 group">
               <img 
                 src="/sentraa-logo.png" 
-                alt="Sentraa AI Logo" 
-                className="w-9 h-10 object-contain drop-shadow-[0_0_12px_rgba(139,92,246,0.5)] group-hover:scale-105 transition-transform"
+                alt="Sentra AI Logo" 
+                className="w-8 h-9 object-contain group-hover:scale-105 transition-transform"
                 onError={(e) => {
                   e.currentTarget.src = '/sentra-ai-logo.svg';
                 }}
               />
               <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-xl tracking-tight text-white group-hover:text-violet-300 transition-colors">
-                    Sentraa<span className="text-violet-400"> AI</span>
-                  </span>
-                </div>
-                <span className="text-[10px] text-slate-400 font-mono tracking-wider uppercase -mt-0.5 hidden sm:block">
+                <span className="font-extrabold text-xl tracking-tight text-[#F8FAFC]">
+                  Sentra<span className="text-[#8B5CF6]"> AI</span>
+                </span>
+                <span className="text-[10px] text-[#A7B0C0] font-mono tracking-wider uppercase -mt-1 hidden sm:block">
                   AI Governance &amp; Security
                 </span>
               </div>
@@ -101,55 +96,197 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-1">
-            <a href="#services" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
-              Services
+            {/* Platform Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setActiveDropdown(activeDropdown === 'platform' ? null : 'platform')}
+                className="px-3.5 py-2 text-sm font-medium text-[#F8FAFC] hover:text-[#C4B5FD] transition-colors rounded-lg flex items-center gap-1.5 hover:bg-white/[0.04]"
+              >
+                <span>Platform</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${activeDropdown === 'platform' ? 'rotate-180 text-[#8B5CF6]' : 'text-[#A7B0C0]'}`} />
+              </button>
+
+              {activeDropdown === 'platform' && (
+                <div className="absolute top-full left-0 mt-2 w-72 rounded-2xl bg-[#111827] border border-[#263044] shadow-2xl p-2.5 space-y-1">
+                  <a 
+                    href="#capabilities" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#172033] transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/20 group-hover:border-[#8B5CF6]/50">
+                      <Eye className="w-4 h-4 text-[#8B5CF6]" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold text-[#F8FAFC] group-hover:text-[#C4B5FD]">AI Discovery</div>
+                      <div className="text-[11px] text-[#A7B0C0]">Find sanctioned & shadow AI agents</div>
+                    </div>
+                  </a>
+
+                  <a 
+                    href="#capabilities" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#172033] transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/20 group-hover:border-[#8B5CF6]/50">
+                      <Sliders className="w-4 h-4 text-[#8B5CF6]" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold text-[#F8FAFC] group-hover:text-[#C4B5FD]">Policy Enforcement</div>
+                      <div className="text-[11px] text-[#A7B0C0]">Pre-execution controls & guardrails</div>
+                    </div>
+                  </a>
+
+                  <a 
+                    href="#capabilities" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#172033] transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/20 group-hover:border-[#8B5CF6]/50">
+                      <ShieldCheck className="w-4 h-4 text-[#8B5CF6]" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold text-[#F8FAFC] group-hover:text-[#C4B5FD]">Continuous Monitoring</div>
+                      <div className="text-[11px] text-[#A7B0C0]">Automated compliance & audit logs</div>
+                    </div>
+                  </a>
+
+                  <a 
+                    href="#simulator" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#172033] transition-colors group border-t border-[#263044]/50"
+                  >
+                    <div className="p-2 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
+                      <Zap className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold text-[#F8FAFC] flex items-center gap-1.5">
+                        Live Bouncer Simulator
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-mono">Interactive</span>
+                      </div>
+                      <div className="text-[11px] text-[#A7B0C0]">Test real-time action interception</div>
+                    </div>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* How It Works */}
+            <a 
+              href="#how-it-works" 
+              className="px-3.5 py-2 text-sm font-medium text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors rounded-lg hover:bg-white/[0.04]"
+            >
+              How It Works
             </a>
-            <a href="#benefits" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
-              Benefits
-            </a>
-            <a href="#process" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
-              Work Process
-            </a>
-            <a href="#transformation" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
-              Why Sentraa AI
-            </a>
-            <a href="#simulator" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
-              Live Bouncer
-            </a>
-            <a href="#faqs" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
-              FAQs
-            </a>
-            <a href="#contact" className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]">
+
+            {/* Solutions Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setActiveDropdown(activeDropdown === 'solutions' ? null : 'solutions')}
+                className="px-3.5 py-2 text-sm font-medium text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors rounded-lg flex items-center gap-1.5 hover:bg-white/[0.04]"
+              >
+                <span>Solutions</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${activeDropdown === 'solutions' ? 'rotate-180 text-[#8B5CF6]' : 'text-[#A7B0C0]'}`} />
+              </button>
+
+              {activeDropdown === 'solutions' && (
+                <div className="absolute top-full left-0 mt-2 w-64 rounded-2xl bg-[#111827] border border-[#263044] shadow-2xl p-2.5 space-y-1">
+                  <a 
+                    href="#use-cases" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors"
+                  >
+                    <div className="text-xs font-semibold text-[#F8FAFC]">For Security Teams</div>
+                    <div className="text-[11px] text-[#A7B0C0]">Stop data exfiltration and prompt injection</div>
+                  </a>
+                  <a 
+                    href="#use-cases" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors"
+                  >
+                    <div className="text-xs font-semibold text-[#F8FAFC]">For Compliance &amp; Risk</div>
+                    <div className="text-[11px] text-[#A7B0C0]">Continuous GDPR, DPDP, HIPAA evidence</div>
+                  </a>
+                  <a 
+                    href="#use-cases" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors"
+                  >
+                    <div className="text-xs font-semibold text-[#F8FAFC]">For AI Engineers</div>
+                    <div className="text-[11px] text-[#A7B0C0]">Ship multi-agent swarms with guardrails</div>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Resources Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setActiveDropdown(activeDropdown === 'resources' ? null : 'resources')}
+                className="px-3.5 py-2 text-sm font-medium text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors rounded-lg flex items-center gap-1.5 hover:bg-white/[0.04]"
+              >
+                <span>Resources</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${activeDropdown === 'resources' ? 'rotate-180 text-[#8B5CF6]' : 'text-[#A7B0C0]'}`} />
+              </button>
+
+              {activeDropdown === 'resources' && (
+                <div className="absolute top-full left-0 mt-2 w-64 rounded-2xl bg-[#111827] border border-[#263044] shadow-2xl p-2.5 space-y-1">
+                  <a 
+                    href="#comparison" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors"
+                  >
+                    <div className="text-xs font-semibold text-[#F8FAFC]">Compare Capabilities</div>
+                    <div className="text-[11px] text-[#A7B0C0]">DSPM vs IAM vs Sentra AI matrix</div>
+                  </a>
+                  <a 
+                    href="#faqs" 
+                    onClick={() => setActiveDropdown(null)}
+                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors"
+                  >
+                    <div className="text-xs font-semibold text-[#F8FAFC]">Frequently Asked Questions</div>
+                    <div className="text-[11px] text-[#A7B0C0]">Deployment, latency, and policies</div>
+                  </a>
+                  <a 
+                    href="https://sentraatech.info" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors flex items-center justify-between"
+                  >
+                    <div>
+                      <div className="text-xs font-semibold text-[#F8FAFC]">Live Interactive Sandbox</div>
+                      <div className="text-[11px] text-[#A7B0C0]">Run live scenarios in browser</div>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#A7B0C0]" />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Company / Contact */}
+            <button 
+              onClick={onOpenContact} 
+              className="px-3.5 py-2 text-sm font-medium text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors rounded-lg hover:bg-white/[0.04]"
+            >
               Contact
-            </a>
+            </button>
           </div>
 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
             <a
-              href="https://sentraatech.info"
-              target="_blank"
-              rel="noreferrer"
-              className="px-3.5 py-2 text-xs font-semibold text-slate-300 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] rounded-xl transition-all hover:text-white flex items-center gap-1.5"
+              href="#capabilities"
+              className="px-4 py-2 text-xs font-semibold text-[#F8FAFC] bg-[#111827] hover:bg-[#172033] border border-[#263044] rounded-xl transition-all"
             >
-              <span>Live Sandbox</span>
-              <ExternalLink className="w-3 h-3 text-slate-400" />
+              Explore Platform
             </a>
 
-            <button
-              onClick={onOpenContact}
-              className="px-3.5 py-2 text-xs font-semibold text-violet-300 bg-violet-950/40 hover:bg-violet-900/60 border border-violet-500/30 rounded-xl transition-all hover:border-violet-400/50"
-            >
-              Contact Us
-            </button>
-
+            {/* Primary CTA - Distinctly highlighted */}
             <button
               onClick={onOpenDemo}
-              className="relative group overflow-hidden px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 rounded-xl transition-all duration-300 shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:scale-[1.02] border border-violet-400/30"
+              className="px-4 py-2 text-xs font-semibold text-white bg-[#8B5CF6] hover:bg-[#7C3AED] rounded-xl transition-all shadow-md shadow-[#8B5CF6]/25 hover:shadow-lg hover:shadow-[#8B5CF6]/35 flex items-center gap-1.5"
             >
-              <span className="relative flex items-center gap-1.5">
-                Book Demo <ArrowRight className="w-3.5 h-3.5" />
-              </span>
+              <span>Book a Demo</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -157,13 +294,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={onOpenDemo}
-              className="px-2.5 py-1.5 text-[11px] font-semibold text-white bg-violet-600 rounded-lg sm:hidden"
+              className="px-3 py-1.5 text-xs font-semibold text-white bg-[#8B5CF6] rounded-lg sm:hidden"
             >
               Book Demo
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white rounded-lg bg-slate-900/80 border border-slate-800"
+              className="p-2 text-[#A7B0C0] hover:text-white rounded-lg bg-[#111827] border border-[#263044]"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -173,75 +310,73 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
 
         {/* Mobile Slide-down Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-b border-violet-500/20 bg-[#0A0D18]/95 backdrop-blur-2xl px-4 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
-            <div className="space-y-2">
+          <div className="lg:hidden border-b border-[#263044] bg-[#0D1220] px-4 py-6 space-y-4">
+            <div className="space-y-1">
+              <div className="px-3 py-1 text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider">
+                Platform
+              </div>
               <a 
-                href="#services" 
+                href="#capabilities" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
               >
-                Services
-              </a>
-              <a 
-                href="#benefits" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
-              >
-                Benefits
-              </a>
-              <a 
-                href="#process" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
-              >
-                Work Process
-              </a>
-              <a 
-                href="#transformation" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
-              >
-                Why Sentraa AI
+                Core Capabilities (Discovery, Policies, Monitoring)
               </a>
               <a 
                 href="#simulator" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
               >
-                Live Bouncer
+                Live Bouncer Simulator
+              </a>
+
+              <div className="px-3 pt-3 pb-1 text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider">
+                Overview
+              </div>
+              <a 
+                href="#problem" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+              >
+                The AI Risk Paradox
+              </a>
+              <a 
+                href="#how-it-works" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+              >
+                How It Works (3 Steps)
+              </a>
+              <a 
+                href="#use-cases" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+              >
+                Who Benefits &amp; Use Cases
+              </a>
+              <a 
+                href="#comparison" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+              >
+                Compare Capabilities
               </a>
               <a 
                 href="#faqs" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
+                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
               >
                 FAQs
               </a>
-              <a 
-                href="#contact" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-violet-950/40 font-medium"
-              >
-                Contact
-              </a>
             </div>
 
-            <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-2.5">
-              <a
-                href="https://sentraatech.info"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-2.5 text-xs font-semibold text-center text-slate-200 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-center gap-1.5"
-              >
-                <span>Launch Live Sandbox</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-              </a>
+            <div className="pt-4 border-t border-[#263044] flex flex-col gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-2.5 text-xs font-semibold text-center text-violet-300 bg-violet-950/50 border border-violet-500/30 rounded-xl"
+                className="w-full py-2.5 text-xs font-semibold text-center text-[#F8FAFC] bg-[#111827] border border-[#263044] rounded-xl"
               >
                 Contact Us
               </button>
@@ -250,14 +385,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
                   setMobileMenuOpen(false);
                   onOpenDemo();
                 }}
-                className="w-full py-2.5 text-xs font-bold text-center text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl shadow-lg shadow-violet-600/30"
+                className="w-full py-2.5 text-xs font-bold text-center text-white bg-[#8B5CF6] hover:bg-[#7C3AED] rounded-xl shadow-md"
               >
-                Book Demo
+                Book a Demo
               </button>
             </div>
           </div>
         )}
       </nav>
-    </>
+    </header>
   );
 };
