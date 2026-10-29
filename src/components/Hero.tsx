@@ -19,8 +19,9 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
   return (
     <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden bg-[#080B14]">
-      {/* Subtle background gradient - toned down as requested */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-[#8B5CF6]/10 blur-3xl pointer-events-none rounded-full" />
+      {/* Dynamic ambient background glow orbs */}
+      <div className="absolute top-10 left-1/4 w-[600px] h-[340px] bg-[#8B5CF6]/15 blur-3xl pointer-events-none rounded-full animate-pulse-glow" />
+      <div className="absolute top-40 right-1/4 w-[450px] h-[300px] bg-[#38BDF8]/10 blur-3xl pointer-events-none rounded-full animate-float-slow-reverse" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Eyebrow Badge */}
@@ -67,7 +68,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-[#A7B0C0]">
             <div className="flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5 text-[#8B5CF6]" />
-              <span>Sub-15ms Pre-Execution Interception</span>
+              <span>Real-Time Pre-Execution Interception</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Lock className="w-3.5 h-3.5 text-[#34D399]" />
@@ -81,19 +82,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
         </div>
 
         {/* Product Visual with 3 Clear Annotations */}
-        <div className="mt-14 max-w-5xl mx-auto">
+        <div className="mt-14 max-w-5xl mx-auto animate-float-slow">
           {/* Main Dashboard Preview Container */}
-          <div className="relative rounded-2xl border border-[#263044] bg-[#111827] p-2 sm:p-4 shadow-xl">
+          <div className="relative rounded-2xl border border-[#263044] bg-[#111827] p-2 sm:p-4 shadow-2xl hover:border-[#8B5CF6]/40 transition-colors duration-500">
             {/* Top Window Bar */}
             <div className="flex items-center justify-between px-3 py-2 border-b border-[#263044] mb-3 text-xs text-[#A7B0C0]">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#F87171]" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#FBBF24]" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
-                <span className="ml-2 font-mono text-xs text-[#F8FAFC]">Sentra AI &bull; Agent Decision Evaluation</span>
+                <span className="ml-2 font-mono text-xs text-[#F8FAFC]">Sentraa AI &bull; Agent Decision Evaluation</span>
               </div>
-              <div className="flex items-center gap-2 font-mono text-[11px] text-[#34D399] bg-[#34D399]/10 px-2 py-0.5 rounded border border-[#34D399]/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse" />
+              <div className="flex items-center gap-2 font-mono text-[11px] text-[#34D399] bg-[#34D399]/10 px-2.5 py-1 rounded-full border border-[#34D399]/30">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34D399] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#34D399]" />
+                </span>
                 <span>PRE-EXECUTION ACTIVE</span>
               </div>
             </div>
@@ -102,16 +106,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
             <div className="relative rounded-xl overflow-hidden border border-[#263044]/80 bg-[#080B14]">
               <img 
                 src="/MNXP4JCUUPRXCO60rXS6qL9n8Gs.png" 
-                alt="Sentra AI Product Dashboard Preview" 
+                alt="Sentraa AI Product Dashboard Preview" 
                 className="w-full h-auto object-cover rounded-xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080B14]/70 via-transparent to-transparent pointer-events-none" />
+              {/* Subtle animated scanline */}
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[#8B5CF6]/50 to-transparent pointer-events-none animate-scanline" />
             </div>
 
             {/* 3 Simple Annotations Explaining What It Does */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-4 pt-4 border-t border-[#263044]">
               {/* Annotation 1 */}
-              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3">
+              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3 card-hover-lift cursor-default">
                 <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] shrink-0 border border-[#8B5CF6]/20">
                   <Eye className="w-4 h-4 text-[#8B5CF6]" />
                 </div>
@@ -124,7 +130,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
               </div>
 
               {/* Annotation 2 */}
-              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3">
+              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3 card-hover-lift cursor-default">
                 <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] shrink-0 border border-[#8B5CF6]/20">
                   <Sliders className="w-4 h-4 text-[#8B5CF6]" />
                 </div>
@@ -137,7 +143,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
               </div>
 
               {/* Annotation 3 */}
-              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3">
+              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3 card-hover-lift cursor-default">
                 <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] shrink-0 border border-[#8B5CF6]/20">
                   <Activity className="w-4 h-4 text-[#8B5CF6]" />
                 </div>
@@ -151,9 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
             </div>
           </div>
 
-          <p className="text-center text-xs text-[#A7B0C0]/80 mt-3 font-mono">
-            Illustrative homepage concept &bull; Sub-15ms pre-execution evaluation for autonomous agents
-          </p>
+
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, Zap, Lock, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 interface CTAProps {
   onOpenDemo: () => void;
@@ -13,7 +13,7 @@ export const CallToAction: React.FC<CTAProps> = ({ onOpenDemo, onOpenRiskAssessm
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-6">
           <Sparkles className="w-3.5 h-3.5 text-[#8B5CF6]" />
-          <span>Get Started with Sentra AI</span>
+          <span>Get Started with Sentraa AI</span>
         </div>
 
         {/* Headline */}
@@ -28,7 +28,7 @@ export const CallToAction: React.FC<CTAProps> = ({ onOpenDemo, onOpenRiskAssessm
         </p>
 
         {/* Action Buttons: Primary demo CTA + Secondary explore/risk CTA */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={onOpenDemo}
             className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-sm shadow-xl shadow-[#8B5CF6]/30 hover:shadow-2xl transition-all flex items-center justify-center gap-2"
@@ -43,22 +43,6 @@ export const CallToAction: React.FC<CTAProps> = ({ onOpenDemo, onOpenRiskAssessm
           >
             <span>Assess Your AI Risk</span>
           </button>
-        </div>
-
-        {/* 3 Simple Reassurances */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#A7B0C0]">
-          <div className="flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-[#8B5CF6]" />
-            <span>Connects in &lt;10 Minutes</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Lock className="w-4 h-4 text-[#34D399]" />
-            <span>Sub-15ms Latency Guarantee</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#8B5CF6]" />
-            <span>SOC 2 Type II &amp; ISO 27001 Aligned</span>
-          </div>
         </div>
       </div>
     </section>

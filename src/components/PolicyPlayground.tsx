@@ -113,7 +113,7 @@ export const PolicyPlayground: React.FC = () => {
             Test the Bouncer in Real Time
           </h2>
           <p className="text-base text-slate-300 leading-relaxed">
-            Configure live pre-execution guardrails, enter or pick an autonomous agent prompt, and witness how Sentraa evaluates, redacts, or blocks actions in sub-15ms.
+            Configure live pre-execution guardrails, enter or pick an autonomous agent prompt, and witness how Sentraa evaluates, redacts, or blocks actions in real time.
           </p>
         </div>
 

@@ -13,8 +13,7 @@ import {
   FileText, 
   Scale, 
   Check,
-  Terminal,
-  ExternalLink
+  Terminal
 } from 'lucide-react';
 
 export const PlatformPillars: React.FC = () => {
@@ -43,7 +42,7 @@ export const PlatformPillars: React.FC = () => {
       badge: '02 // RUNTIME BOUNCER',
       title: 'Enforce',
       tagline: 'Decide what agents can do, steer them, and stop harmful actions before they land.',
-      description: 'The real-time pre-execution gate. Every agent tool call, SQL execution, or external webhook is evaluated in sub-15ms against deterministic policies, regex DLP patterns, and semantic risk engines before execution.',
+      description: 'The real-time pre-execution gate. Every agent tool call, SQL execution, or external webhook is evaluated in real time against deterministic policies, regex DLP patterns, and semantic risk engines before execution.',
       features: [
         'Multi-Tier Interception: Allowlist → Policy Engine → Pattern DLP → Semantic Risk',
         'Dynamic Real-Time PII & Secret Redaction with zero data retention',
@@ -199,18 +198,6 @@ export const PlatformPillars: React.FC = () => {
                   ))}
                 </div>
               </div>
-
-              <div className="pt-2">
-                <a
-                  href="https://sentraatech.info"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold transition-all shadow-lg shadow-violet-600/30"
-                >
-                  <span>Explore Live Module in Sandbox</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
             </div>
 
             {/* Right Side: Interactive High-Res Dashboard Screenshot Mockup */}
@@ -223,7 +210,7 @@ export const PlatformPillars: React.FC = () => {
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                     <span className="ml-2 text-[11px] font-mono text-slate-400 truncate">
-                      https://sentraatech.info/app/{selectedScreenshot.replace('.png', '')}
+                      app.sentraa.ai/{selectedScreenshot.replace('.png', '')}
                     </span>
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
@@ -232,17 +219,16 @@ export const PlatformPillars: React.FC = () => {
                 </div>
 
                 {/* Screenshot Frame */}
-                <div className="relative overflow-hidden rounded-b-xl max-h-[460px]">
+                <div className="relative overflow-hidden rounded-b-xl border border-white/[0.04]">
                   <img
                     src={`/screenshots/dashboard/${selectedScreenshot}`}
                     alt="Sentraa AI Dashboard Interface"
-                    className="w-full h-auto object-cover object-top transition-transform duration-500 group-hover:scale-[1.01]"
+                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.01]"
                     onError={(e) => {
                       // Fallback if image isn't loaded yet
                       e.currentTarget.src = '/screenshots/dashboard/overview.png';
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>

@@ -261,7 +261,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
               </div>
               <div className="p-3 rounded-lg bg-[#080B14] border border-[#263044] flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#34D399] shrink-0" />
-                <span>Sentra AI can enforce dynamic PII masking and spend limits with 0ms interruption to agents.</span>
+                <span>Sentraa AI can enforce dynamic PII masking and spend limits with 0ms interruption to agents.</span>
               </div>
             </div>
 

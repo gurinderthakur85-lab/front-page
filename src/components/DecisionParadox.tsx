@@ -16,8 +16,8 @@ interface ThreatScenario {
   title: string;
   plainSummary: string;
   realWorldStory: string;
-  withoutSentra: string;
-  withSentra: string;
+  withoutSentraa: string;
+  withSentraa: string;
   icon: React.ReactNode;
 }
 
@@ -33,8 +33,8 @@ export const DecisionParadox: React.FC = () => {
       title: 'Adversarial manipulation & prompt injection',
       plainSummary: 'Hidden instructions inside data (PDFs, emails, web pages) hijack what the agent does.',
       realWorldStory: 'A customer support agent scans an uploaded refund receipt. Hidden inside the file is text telling the model to ignore prior system instructions, query internal payroll records, and send the data to an external URL.',
-      withoutSentra: 'The agent executes the tool call with its full enterprise privileges. Sensitive corporate data leaves the perimeter.',
-      withSentra: 'Sentra AI checks the intent and parameters before the tool call executes. The payload is detected and blocked in 11ms.',
+      withoutSentraa: 'The agent executes the tool call with its full enterprise privileges. Sensitive corporate data leaves the perimeter.',
+      withSentraa: 'Sentraa AI checks the intent and parameters before the tool call executes. The payload is detected and blocked in 11ms.',
       icon: <Terminal className="w-5 h-5 text-[#F87171]" />
     },
     {
@@ -45,8 +45,8 @@ export const DecisionParadox: React.FC = () => {
       title: 'Over-privileged tool & database access',
       plainSummary: 'Agents given broad system access inadvertently expose private customer data or internal records.',
       realWorldStory: 'A customer service agent is granted broad SQL read access to resolve account questions. When answering a routine query, it pulls full customer records including plaintext payment details and Social Security Numbers.',
-      withoutSentra: 'Unmasked PII enters the conversation history and model memory, creating severe privacy and regulatory compliance breaches.',
-      withSentra: 'Dynamic in-line redaction identifies sensitive schema fields. PII is masked before the agent receives the database output.',
+      withoutSentraa: 'Unmasked PII enters the conversation history and model memory, creating severe privacy and regulatory compliance breaches.',
+      withSentraa: 'Dynamic in-line redaction identifies sensitive schema fields. PII is masked before the agent receives the database output.',
       icon: <Key className="w-5 h-5 text-[#FBBF24]" />
     },
     {
@@ -57,8 +57,8 @@ export const DecisionParadox: React.FC = () => {
       title: 'An AI agent takes an unintended action',
       plainSummary: 'When an agent gets blocked, it can improvise tools or loop outside human intentions.',
       realWorldStory: 'An operations agent fails to process an invoice due to a permission error. It hallucinates a workaround, calls an unapproved external API, and initiates an unauthorized transfer to clear the task.',
-      withoutSentra: 'Financial transfers or destructive mutations occur silently without human approval or guardrail checks.',
-      withSentra: 'Spending limits and strict tool-call boundaries trigger an instant hold and escalate to a human reviewer.',
+      withoutSentraa: 'Financial transfers or destructive mutations occur silently without human approval or guardrail checks.',
+      withSentraa: 'Spending limits and strict tool-call boundaries trigger an instant hold and escalate to a human reviewer.',
       icon: <Bot className="w-5 h-5 text-[#8B5CF6]" />
     }
   ];
@@ -91,7 +91,7 @@ export const DecisionParadox: React.FC = () => {
               <div
                 key={scenario.id}
                 onClick={() => setActiveScenario(scenario.id)}
-                className={`p-6 rounded-2xl bg-[#111827] border cursor-pointer transition-all duration-200 flex flex-col justify-between ${
+                className={`p-6 rounded-2xl bg-[#111827] border cursor-pointer card-hover-lift flex flex-col justify-between ${
                   isSelected
                     ? 'border-[#8B5CF6] shadow-xl shadow-black/50 ring-1 ring-[#8B5CF6]/50'
                     : 'border-[#263044] hover:border-[#8B5CF6]/40 hover:bg-[#141D30]'
@@ -131,11 +131,11 @@ export const DecisionParadox: React.FC = () => {
                 <div className="pt-4 border-t border-[#263044] space-y-2 text-xs">
                   <div className="flex items-start gap-2 text-[#A7B0C0]">
                     <XCircle className="w-4 h-4 text-[#F87171] shrink-0 mt-0.5" />
-                    <span><strong className="text-[#F87171]">Without Sentra:</strong> {scenario.withoutSentra}</span>
+                    <span><strong className="text-[#F87171]">Without Sentraa:</strong> {scenario.withoutSentraa}</span>
                   </div>
                   <div className="flex items-start gap-2 text-[#F8FAFC]">
                     <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
-                    <span><strong className="text-[#34D399]">With Sentra AI:</strong> {scenario.withSentra}</span>
+                    <span><strong className="text-[#34D399]">With Sentraa AI:</strong> {scenario.withSentraa}</span>
                   </div>
                 </div>
               </div>

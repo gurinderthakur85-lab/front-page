@@ -7,13 +7,15 @@ import {
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
+import type { LegalDocType } from './LegalModal';
 
 interface DemoModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenLegal?: (doc: LegalDocType) => void;
 }
 
-export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
+export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLegal }) => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -33,11 +35,10 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden">
-        {/* Close button */}
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white hover:bg-white/[0.08] transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -45,54 +46,52 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
         {!submitted ? (
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="mb-6">
               <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
-                ENTERPRISE DEMO
+                EXPERIENCE PRE-EXECUTION GOVERNANCE
               </span>
+              <h3 className="text-2xl font-bold text-[#F8FAFC] mt-2">
+                Book a Live Architecture Demo
+              </h3>
+              <p className="text-xs text-[#A7B0C0] mt-1 leading-relaxed">
+                See how Sentraa AI sits in-line between your agents and tools to enforce zero-drift guardrails.
+              </p>
             </div>
-            <h3 className="text-2xl font-bold text-[#F8FAFC] tracking-tight mb-2">
-              Book a Sentra AI Platform Walkthrough
-            </h3>
-            <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
-              See how Sentra AI intercepts agent tool calls, redacts PII in real-time, and automates compliance audits for your tech stack.
-            </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Full Name</label>
-                  <div className="relative">
-                    <User className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
-                    <input
-                      type="text"
-                      required
-                      placeholder="Jane Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Work Email</label>
-                  <div className="relative">
-                    <Mail className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
-                    <input
-                      type="email"
-                      required
-                      placeholder="jane@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
-                    />
-                  </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Full Name</label>
+                <div className="relative">
+                  <User className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Jordan Varma"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Work Email</label>
+                <div className="relative">
+                  <Mail className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
+                  <input
+                    type="email"
+                    required
+                    placeholder="jordan@enterprise.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Company Name</label>
+                  <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Company</label>
                   <div className="relative">
                     <Building2 className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
                     <input
@@ -148,11 +147,30 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-xl transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Confirm Demo Request</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+
+              <p className="text-[10px] text-center text-[#A7B0C0] pt-1">
+                By submitting, you agree to our{' '}
+                <button
+                  type="button"
+                  onClick={() => onOpenLegal && onOpenLegal('terms')}
+                  className="text-[#C4B5FD] hover:underline cursor-pointer font-medium"
+                >
+                  Terms and Conditions
+                </button>{' '}
+                and{' '}
+                <button
+                  type="button"
+                  onClick={() => onOpenLegal && onOpenLegal('privacy')}
+                  className="text-[#C4B5FD] hover:underline cursor-pointer font-medium"
+                >
+                  Privacy Policy
+                </button>.
+              </p>
             </form>
           </div>
         ) : (
@@ -162,7 +180,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
             </div>
             <h4 className="text-2xl font-bold text-[#F8FAFC]">Demo Request Received</h4>
             <p className="text-xs text-[#A7B0C0] max-w-sm mx-auto leading-relaxed">
-              Thanks, <strong>{formData.name}</strong>! We've scheduled a customized 30-minute walkthrough for <strong>{formData.company}</strong>. A calendar invite has been dispatched to <strong>{formData.email}</strong>.
+              Thanks, <strong>{formData.name}</strong>! We&apos;ve scheduled a customized 30-minute walkthrough for <strong>{formData.company}</strong>. A calendar invite has been dispatched to <strong>{formData.email}</strong>.
             </p>
             <div className="p-4 rounded-xl bg-[#111827] border border-[#263044] text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
               <div className="text-[#34D399] font-bold">✓ Dedicated Solutions Engineer Assigned</div>
@@ -174,7 +192,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold transition-colors"
+              className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold transition-colors cursor-pointer"
             >
               Done
             </button>

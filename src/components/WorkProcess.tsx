@@ -50,7 +50,7 @@ export const WorkProcess: React.FC = () => {
           </h2>
 
           <p className="text-base text-[#A7B0C0] leading-relaxed max-w-2xl mx-auto">
-            Sentra AI sits between your AI agents and your systems to enforce accountability and safety at every turn.
+            Sentraa AI sits between your AI agents and your systems to enforce accountability and safety at every turn.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export const WorkProcess: React.FC = () => {
           {STEPS.map((step, idx) => (
             <div
               key={idx}
-              className="p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 transition-all flex flex-col justify-between"
+              className="p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 card-hover-lift flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-5">

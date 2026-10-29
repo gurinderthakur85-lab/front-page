@@ -1,23 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronDown, 
-  Sparkles, 
   Eye, 
   ShieldCheck, 
   Zap, 
   Menu, 
   X, 
   ArrowRight, 
-  ExternalLink,
   Sliders
 } from 'lucide-react';
 
 interface NavbarProps {
   onOpenDemo: () => void;
   onOpenContact: () => void;
+  currentPage?: 'home' | 'about';
+  onNavigate?: (page: 'home' | 'about') => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => {
+export const Navbar: React.FC<NavbarProps> = ({ 
+  onOpenDemo, 
+  onOpenContact,
+  currentPage = 'home',
+  onNavigate 
+}) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -43,26 +48,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      {/* Top Notification Bar - Minimal & Action-oriented */}
-      <div className="bg-[#0D1220] border-b border-[#263044] px-4 py-2 text-xs text-[#A7B0C0]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex-1 flex items-center justify-center gap-2 text-center flex-wrap">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 text-[#C4B5FD] font-semibold text-[11px]">
-              <Sparkles className="w-3 h-3 text-[#8B5CF6]" /> Sentra AI
-            </span>
-            <span className="text-[#F8FAFC]">
-              Check each AI agent action before it executes.
-            </span>
-            <button 
-              onClick={onOpenDemo}
-              className="inline-flex items-center gap-1 font-semibold text-[#C4B5FD] hover:text-white transition-colors ml-1 underline decoration-[#8B5CF6]/40 underline-offset-4"
-            >
-              Book a Demo <ArrowRight className="w-3 h-3" />
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <nav 
         className={`w-full transition-all duration-200 ${
@@ -71,23 +56,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
             : 'bg-[#080B14]/80 backdrop-blur-sm border-b border-[#263044]/60'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between" ref={dropdownRef}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" ref={dropdownRef}>
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
-            <a href="#" className="flex items-center gap-2.5 group">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('home');
+                else window.location.hash = '';
+              }}
+              className="flex items-center gap-3.5 group cursor-pointer"
+            >
               <img 
                 src="/sentraa-logo.png" 
-                alt="Sentra AI Logo" 
-                className="w-8 h-9 object-contain group-hover:scale-105 transition-transform"
+                alt="Sentraa AI Logo" 
+                className="w-12 h-14 sm:w-14 sm:h-16 object-contain group-hover:scale-105 transition-transform"
                 onError={(e) => {
-                  e.currentTarget.src = '/sentra-ai-logo.svg';
+                  e.currentTarget.src = '/sentraa-ai-logo.svg';
                 }}
               />
               <div className="flex flex-col">
-                <span className="font-extrabold text-xl tracking-tight text-[#F8FAFC]">
-                  Sentra<span className="text-[#8B5CF6]"> AI</span>
+                <span className="font-extrabold text-2xl sm:text-3xl tracking-tight text-[#F8FAFC]">
+                  Sentraa<span className="text-[#8B5CF6]"> AI</span>
                 </span>
-                <span className="text-[10px] text-[#A7B0C0] font-mono tracking-wider uppercase -mt-1 hidden sm:block">
+                <span className="text-[10px] sm:text-[11px] text-[#A7B0C0] font-mono tracking-wider uppercase -mt-0.5 hidden sm:block">
                   AI Governance &amp; Security
                 </span>
               </div>
@@ -236,7 +229,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
                     className="block p-2 rounded-xl hover:bg-[#172033] transition-colors"
                   >
                     <div className="text-xs font-semibold text-[#F8FAFC]">Compare Capabilities</div>
-                    <div className="text-[11px] text-[#A7B0C0]">DSPM vs IAM vs Sentra AI matrix</div>
+                    <div className="text-[11px] text-[#A7B0C0]">DSPM vs IAM vs Sentraa AI matrix</div>
                   </a>
                   <a 
                     href="#faqs" 
@@ -246,26 +239,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
                     <div className="text-xs font-semibold text-[#F8FAFC]">Frequently Asked Questions</div>
                     <div className="text-[11px] text-[#A7B0C0]">Deployment, latency, and policies</div>
                   </a>
-                  <a 
-                    href="https://sentraatech.info" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="block p-2 rounded-xl hover:bg-[#172033] transition-colors flex items-center justify-between"
-                  >
-                    <div>
-                      <div className="text-xs font-semibold text-[#F8FAFC]">Live Interactive Sandbox</div>
-                      <div className="text-[11px] text-[#A7B0C0]">Run live scenarios in browser</div>
-                    </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#A7B0C0]" />
-                  </a>
                 </div>
               )}
             </div>
 
+            {/* About Us Page Link */}
+            <button 
+              onClick={() => {
+                if (onNavigate) onNavigate('about');
+                else window.location.hash = 'about';
+              }}
+              className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/[0.04] cursor-pointer ${
+                currentPage === 'about'
+                  ? 'text-white bg-white/[0.08] font-semibold text-[#C4B5FD]'
+                  : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
+              }`}
+            >
+              About Us
+            </button>
+
             {/* Company / Contact */}
             <button 
               onClick={onOpenContact} 
-              className="px-3.5 py-2 text-sm font-medium text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors rounded-lg hover:bg-white/[0.04]"
+              className="px-3.5 py-2 text-sm font-medium text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors rounded-lg hover:bg-white/[0.04] cursor-pointer"
             >
               Contact
             </button>
@@ -368,6 +364,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenContact }) => 
               >
                 FAQs
               </a>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onNavigate) onNavigate('about');
+                  else window.location.hash = 'about';
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg text-sm text-[#C4B5FD] font-semibold hover:bg-[#111827]"
+              >
+                About Us
+              </button>
             </div>
 
             <div className="pt-4 border-t border-[#263044] flex flex-col gap-2">

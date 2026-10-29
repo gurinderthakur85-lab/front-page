@@ -7,44 +7,44 @@ import {
 } from 'lucide-react';
 
 export const ContextVsIntent: React.FC = () => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(true);
 
   const COMPARISONS = [
     {
       category: 'Data Security (DSPM)',
       claim: 'Focuses on static data at rest',
       limitation: 'Scans databases for stored PII, but blind to runtime prompt injections or autonomous tool calls.',
-      sentraAdvantage: 'Sentra AI checks both what data is requested and whether the agent is authorized to take that action.'
+      sentraaAdvantage: 'Sentraa AI checks both what data is requested and whether the agent is authorized to take that action.'
     },
     {
       category: 'Identity Management (IAM)',
       claim: 'Focuses on human roles & SSO',
       limitation: 'Built for human users. Agents often inherit broad service-account credentials and can hallucinate.',
-      sentraAdvantage: 'Sentra AI isolates agent tool execution with deterministic spend limits and parameter rules.'
+      sentraaAdvantage: 'Sentraa AI isolates agent tool execution with deterministic spend limits and parameter rules.'
     },
     {
       category: 'Endpoint Security (EDR)',
       claim: 'Focuses on OS processes',
       limitation: 'Monitors processes and network sockets. LLM API calls look like normal HTTPS traffic.',
-      sentraAdvantage: 'Sentra AI inspects the semantic reasoning chain, payload JSON, and tool arguments in sub-15ms.'
+      sentraaAdvantage: 'Sentraa AI inspects the semantic reasoning chain, payload JSON, and tool arguments in real time.'
     },
     {
       category: 'Passive AI Gateways',
       claim: 'Focuses on prompt caching & costs',
       limitation: 'Inspects user text prompts only. Completely blind to multi-agent MCP tool calls or DB mutations.',
-      sentraAdvantage: 'Sentra AI acts as an execution bouncer on downstream tool calls and mutations.'
+      sentraaAdvantage: 'Sentraa AI acts as an execution bouncer on downstream tool calls and mutations.'
     }
   ];
 
   const MATRIX = [
-    { capability: 'Pre-execution inline action interception', dspm: false, iam: false, edr: false, gateway: 'Partial', sentra: true },
-    { capability: 'Defense against indirect prompt injection (PDF / Email / Web)', dspm: false, iam: false, edr: false, gateway: 'Partial', sentra: true },
-    { capability: 'In-memory dynamic PII and secret redaction', dspm: 'Static only', iam: false, edr: false, gateway: 'Basic', sentra: true },
-    { capability: 'Autonomous tool-chaining and spend-cap enforcement', dspm: false, iam: false, edr: false, gateway: false, sentra: true },
-    { capability: 'Model Context Protocol (MCP) agent security', dspm: false, iam: false, edr: false, gateway: false, sentra: true },
-    { capability: 'Cryptographically signed audit logs (SHA-256)', dspm: false, iam: 'Logs only', edr: 'Logs only', gateway: false, sentra: true },
-    { capability: 'Low-latency inline evaluation (<15ms)', dspm: false, iam: false, edr: false, gateway: false, sentra: true },
-    { capability: 'Automated evidence mapping (GDPR, DPDP, HIPAA, NIST)', dspm: 'Partial', iam: false, edr: false, gateway: false, sentra: true },
+    { capability: 'Pre-execution inline action interception', dspm: false, iam: false, edr: false, gateway: 'Partial', sentraa: true },
+    { capability: 'Defense against indirect prompt injection (PDF / Email / Web)', dspm: false, iam: false, edr: false, gateway: 'Partial', sentraa: true },
+    { capability: 'In-memory dynamic PII and secret redaction', dspm: 'Static only', iam: false, edr: false, gateway: 'Basic', sentraa: true },
+    { capability: 'Autonomous tool-chaining and spend-cap enforcement', dspm: false, iam: false, edr: false, gateway: false, sentraa: true },
+    { capability: 'Model Context Protocol (MCP) agent security', dspm: false, iam: false, edr: false, gateway: false, sentraa: true },
+    { capability: 'Cryptographically signed audit logs (SHA-256)', dspm: false, iam: 'Logs only', edr: 'Logs only', gateway: false, sentraa: true },
+    { capability: 'Real-time pre-execution inline evaluation', dspm: false, iam: false, edr: false, gateway: false, sentraa: true },
+    { capability: 'Automated evidence mapping (GDPR, DPDP, HIPAA, NIST)', dspm: 'Partial', iam: false, edr: false, gateway: false, sentraa: true },
   ];
 
   return (
@@ -77,7 +77,7 @@ export const ContextVsIntent: React.FC = () => {
                 <span className="text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider block mb-1">
                   {item.category}
                 </span>
-                <div className="text-sm font-semibold text-[#F8FAFC] mb-2">
+                <div className="text-base font-bold text-[#F8FAFC] mb-2">
                   {item.claim}
                 </div>
                 <p className="text-xs text-[#A7B0C0] leading-relaxed mb-4">
@@ -87,10 +87,10 @@ export const ContextVsIntent: React.FC = () => {
 
               <div className="pt-3 border-t border-[#263044]">
                 <div className="text-[10px] font-mono text-[#8B5CF6] uppercase font-bold mb-1">
-                  Sentra AI Advantage:
+                  Sentraa AI Advantage:
                 </div>
-                <p className="text-xs text-[#F8FAFC] leading-relaxed">
-                  {item.sentraAdvantage}
+                <p className="text-xs text-[#F8FAFC] leading-relaxed font-medium">
+                  {item.sentraaAdvantage}
                 </p>
               </div>
             </div>
@@ -101,63 +101,125 @@ export const ContextVsIntent: React.FC = () => {
         <div className="text-center pt-2">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#111827] hover:bg-[#141D30] border border-[#263044] hover:border-[#8B5CF6]/50 text-xs font-semibold text-[#F8FAFC] transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#111827] hover:bg-[#141D30] border border-[#263044] hover:border-[#8B5CF6]/60 text-sm font-bold text-[#F8FAFC] transition-all cursor-pointer shadow-lg"
             aria-expanded={expanded}
           >
-            <span>{expanded ? 'Hide Capability Comparison Matrix' : 'Compare platform capabilities in detail'}</span>
-            <ChevronDown className={`w-4 h-4 text-[#8B5CF6] transition-transform ${expanded ? 'rotate-180' : ''}`} />
+            <span>{expanded ? 'Hide Technical Comparison Matrix' : 'Compare platform capabilities in detail'}</span>
+            <ChevronDown className={`w-4 h-4 text-[#8B5CF6] transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
           </button>
         </div>
 
         {/* Expandable Table */}
         {expanded && (
-          <div className="mt-8 rounded-2xl bg-[#111827] border border-[#263044] p-4 sm:p-6 shadow-xl overflow-x-auto">
-            <div className="mb-4">
-              <h4 className="text-base font-bold text-[#F8FAFC]">
+          <div className="mt-8 rounded-2xl bg-[#111827] border border-[#263044] p-5 sm:p-7 lg:p-8 shadow-2xl overflow-x-auto">
+            <div className="mb-6">
+              <h4 className="text-xl sm:text-2xl font-extrabold text-[#F8FAFC] tracking-tight">
                 Detailed Technical Comparison
               </h4>
-              <p className="text-xs text-[#A7B0C0]">
-                Comparing traditional cybersecurity approaches against Sentra AI's pre-execution inline architecture.
+              <p className="text-sm sm:text-base font-semibold text-[#A7B0C0] mt-1.5">
+                Comparing traditional cybersecurity approaches against Sentraa AI's pre-execution inline architecture.
               </p>
             </div>
 
-            <table className="w-full text-left text-xs border-collapse min-w-[640px]">
+            <table className="w-full text-left border-collapse min-w-[720px]">
               <thead>
-                <tr className="border-b border-[#263044] text-[#A7B0C0] font-mono">
-                  <th className="py-3 px-3 text-[#F8FAFC]">Platform Capability</th>
-                  <th className="py-3 px-3 text-center">DSPM</th>
-                  <th className="py-3 px-3 text-center">IAM</th>
-                  <th className="py-3 px-3 text-center">EDR</th>
-                  <th className="py-3 px-3 text-center">AI Gateway</th>
-                  <th className="py-3 px-3 text-center bg-[#8B5CF6]/10 text-[#C4B5FD] font-bold rounded-t-lg">Sentra AI</th>
+                <tr className="border-b-2 border-[#263044]">
+                  <th className="py-4 px-4 text-sm sm:text-base font-extrabold text-[#F8FAFC] uppercase tracking-wider font-mono">
+                    Platform Capability
+                  </th>
+                  <th className="py-4 px-3 text-center text-sm sm:text-base font-extrabold text-[#CBD5E1] uppercase tracking-wider font-mono">
+                    DSPM
+                  </th>
+                  <th className="py-4 px-3 text-center text-sm sm:text-base font-extrabold text-[#CBD5E1] uppercase tracking-wider font-mono">
+                    IAM
+                  </th>
+                  <th className="py-4 px-3 text-center text-sm sm:text-base font-extrabold text-[#CBD5E1] uppercase tracking-wider font-mono">
+                    EDR
+                  </th>
+                  <th className="py-4 px-3 text-center text-sm sm:text-base font-extrabold text-[#CBD5E1] uppercase tracking-wider font-mono">
+                    AI Gateway
+                  </th>
+                  <th className="py-4 px-5 text-center bg-[#8B5CF6]/20 text-[#C4B5FD] text-base sm:text-lg font-extrabold uppercase tracking-wider font-mono rounded-t-xl border-t-2 border-x-2 border-[#8B5CF6]/50 shadow-inner">
+                    Sentraa AI
+                  </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#263044]/60">
-                {MATRIX.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3.5 px-3 text-[#F8FAFC] font-medium">
-                      {row.capability}
-                    </td>
-                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
-                      {row.dspm === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.dspm === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.dspm}
-                    </td>
-                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
-                      {row.iam === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.iam === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.iam}
-                    </td>
-                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
-                      {row.edr === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.edr === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.edr}
-                    </td>
-                    <td className="py-3.5 px-3 text-center text-[#A7B0C0]">
-                      {row.gateway === true ? <Check className="w-4 h-4 text-[#34D399] mx-auto" /> : row.gateway === false ? <X className="w-4 h-4 text-[#263044] mx-auto" /> : row.gateway}
-                    </td>
-                    <td className="py-3.5 px-3 text-center bg-[#8B5CF6]/10 font-bold text-[#34D399]">
-                      <div className="flex items-center justify-center gap-1">
-                        <Check className="w-4 h-4 text-[#34D399]" />
-                        <span className="text-[11px]">Supported</span>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+              <tbody className="divide-y divide-[#263044]/80">
+                {MATRIX.map((row, idx) => {
+                  const isLastRow = idx === MATRIX.length - 1;
+                  return (
+                    <tr key={idx} className="hover:bg-white/[0.03] transition-colors">
+                      {/* Platform Capability Name */}
+                      <td className="py-4 px-4 text-sm sm:text-base font-bold text-[#F8FAFC] leading-snug">
+                        {row.capability}
+                      </td>
+
+                      {/* DSPM */}
+                      <td className="py-4 px-3 text-center">
+                        {row.dspm === true ? (
+                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                        ) : row.dspm === false ? (
+                          <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
+                        ) : (
+                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                            {row.dspm}
+                          </span>
+                        )}
+                      </td>
+
+                      {/* IAM */}
+                      <td className="py-4 px-3 text-center">
+                        {row.iam === true ? (
+                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                        ) : row.iam === false ? (
+                          <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
+                        ) : (
+                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                            {row.iam}
+                          </span>
+                        )}
+                      </td>
+
+                      {/* EDR */}
+                      <td className="py-4 px-3 text-center">
+                        {row.edr === true ? (
+                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                        ) : row.edr === false ? (
+                          <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
+                        ) : (
+                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                            {row.edr}
+                          </span>
+                        )}
+                      </td>
+
+                      {/* AI Gateway */}
+                      <td className="py-4 px-3 text-center">
+                        {row.gateway === true ? (
+                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                        ) : row.gateway === false ? (
+                          <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
+                        ) : (
+                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                            {row.gateway}
+                          </span>
+                        )}
+                      </td>
+
+                      {/* Sentraa AI Highlighted Column */}
+                      <td className={`py-4 px-5 text-center bg-[#8B5CF6]/15 border-x-2 border-[#8B5CF6]/40 ${
+                        isLastRow ? 'rounded-b-xl border-b-2 border-[#8B5CF6]/50' : ''
+                      }`}>
+                        <div className="flex items-center justify-center gap-1.5">
+                          <Check className="w-5 h-5 text-[#34D399] stroke-[3]" />
+                          <span className="text-sm sm:text-base font-extrabold text-[#34D399] tracking-wide">
+                            Supported
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

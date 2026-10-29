@@ -6,28 +6,28 @@ export const FaqSection: React.FC = () => {
 
   const FAQS = [
     {
-      q: 'What does Sentra AI do?',
-      a: 'Sentra AI sits in front of every AI agent in your organization and checks each action against your security policies in real time, before it runs. If the action is safe, it executes. If it is risky or violates policy, it is blocked or redacted, and an audit-ready compliance record is logged automatically.'
+      q: 'What does Sentraa AI do?',
+      a: 'Sentraa AI sits in front of every AI agent in your organization and checks each action against your security policies in real time, before it runs. If the action is safe, it executes. If it is risky or violates policy, it is blocked or redacted, and an audit-ready compliance record is logged automatically.'
     },
     {
-      q: 'How does Sentra AI discover shadow AI agents?',
-      a: 'Sentra AI scans your cloud connectors, databases, API keys, MCP agent connections, and live runtime traffic. It creates a centralized inventory of all AI agents operating across your company, whether officially approved by IT or created independently by individual teams.'
+      q: 'How does Sentraa AI discover shadow AI agents?',
+      a: 'Sentraa AI scans your cloud connectors, databases, API keys, MCP agent connections, and live runtime traffic. It creates a centralized inventory of all AI agents operating across your company, whether officially approved by IT or created independently by individual teams.'
     },
     {
-      q: 'Will Sentra AI slow down our AI agents or workflows?',
-      a: 'No. Sentra AI evaluates actions in sub-15ms using an in-line, fail-closed decision pipeline. It performs pattern matching, PII scanning, and parameter validation without introducing noticeable latency to agent response times.'
+      q: 'Will Sentraa AI slow down our AI agents or workflows?',
+      a: 'No. Sentraa AI evaluates actions in real time using an in-line, fail-closed decision pipeline. It performs pattern matching, PII scanning, and parameter validation without introducing noticeable overhead to agent response times.'
     },
     {
       q: 'How does pre-execution policy enforcement work?',
-      a: 'Instead of auditing what happened after an incident occurs, Sentra AI intercepts tool calls, SQL mutations, and API requests before they execute. Policies can automatically block unauthorized actions, redact sensitive PII (like SSNs or credit card numbers), or require human approval for large transactions.'
+      a: 'Instead of auditing what happened after an incident occurs, Sentraa AI intercepts tool calls, SQL mutations, and API requests before they execute. Policies can automatically block unauthorized actions, redact sensitive PII (like SSNs or credit card numbers), or require human approval for large transactions.'
     },
     {
       q: 'Which compliance frameworks are supported out of the box?',
-      a: 'Sentra AI continuously maps live agent activity to GDPR, India DPDP, HIPAA, PCI-DSS v4.0, and the NIST AI Risk Management Framework (AI RMF 1.0). Evidence is cryptographically hashed with SHA-256 for instant audit export.'
+      a: 'Sentraa AI continuously maps live agent activity to GDPR, India DPDP, HIPAA, PCI-DSS v4.0, and the NIST AI Risk Management Framework (AI RMF 1.0). Evidence is cryptographically hashed with SHA-256 for instant audit export.'
     },
     {
-      q: 'How do we deploy Sentra AI across our systems?',
-      a: 'Sentra AI can be deployed via a lightweight SDK, an in-line proxy, or as a containerized sidecar in your private cloud (AWS, GCP, Azure, or Kubernetes). Most teams connect their first agent in under 10 minutes.'
+      q: 'How do we deploy Sentraa AI across our systems?',
+      a: 'Sentraa AI can be deployed via a lightweight SDK, an in-line proxy, or as a containerized sidecar in your private cloud (AWS, GCP, Azure, or Kubernetes). Most teams connect their first agent in under 10 minutes.'
     }
   ];
 

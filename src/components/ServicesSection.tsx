@@ -34,7 +34,7 @@ export const ServicesSection: React.FC = () => {
       badge: 'Pre-Execution Controls',
       title: 'Policy Enforcement',
       headline: 'Apply rules to AI actions before they execute',
-      summary: 'Sentra AI operates as an inline bouncer. Actions are evaluated against security policies in sub-15ms: safe actions pass, dangerous ones are blocked.',
+      summary: 'Sentraa AI operates as an inline bouncer. Actions are evaluated against security policies in real time: safe actions pass, dangerous ones are blocked.',
       points: [
         'Pre-execution gate checks every tool call and database mutation',
         'Automatic PII & credential redaction before data reaches the model',
@@ -154,19 +154,21 @@ export const ServicesSection: React.FC = () => {
 
           {/* Right Preview Graphic */}
           <div className="lg:col-span-7">
-            <div className="rounded-xl border border-[#263044] overflow-hidden bg-[#080B14] shadow-xl">
-              <div className="flex items-center justify-between px-4 py-2 border-b border-[#263044] bg-[#0D1220] text-xs text-[#A7B0C0]">
+            <div className="rounded-2xl border border-[#263044] bg-[#0D1220] p-1.5 sm:p-2 shadow-2xl">
+              <div className="flex items-center justify-between px-3.5 py-2 border-b border-[#263044] bg-[#080B14] rounded-t-xl text-xs text-[#A7B0C0] mb-1.5">
                 <span className="font-mono text-[11px] text-[#F8FAFC]">{current.imageAlt}</span>
-                <span className="text-[#34D399] text-[10px] font-mono">LIVE TELEMETRY</span>
+                <span className="text-[#34D399] text-[10px] font-mono font-semibold">LIVE TELEMETRY</span>
               </div>
-              <img 
-                src={current.image} 
-                alt={current.imageAlt} 
-                className="w-full h-auto object-cover max-h-[380px]"
-                onError={(e) => {
-                  e.currentTarget.src = '/MNXP4JCUUPRXCO60rXS6qL9n8Gs.png';
-                }}
-              />
+              <div className="rounded-xl overflow-hidden border border-[#263044]/60 bg-[#080B14]">
+                <img 
+                  src={current.image} 
+                  alt={current.imageAlt} 
+                  className="w-full h-auto block"
+                  onError={(e) => {
+                    e.currentTarget.src = '/MNXP4JCUUPRXCO60rXS6qL9n8Gs.png';
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

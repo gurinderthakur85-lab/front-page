@@ -13,7 +13,6 @@ import {
   Lock, 
   Activity, 
   Eye, 
-  ExternalLink,
   Bot,
   Zap,
   Check,
@@ -287,7 +286,7 @@ return { allowed: true };`}
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                  <span className="ml-2 text-slate-200">https://sentraatech.info/app/overview</span>
+                  <span className="ml-2 text-slate-200 font-mono text-xs">app.sentraa.ai/overview</span>
                 </div>
                 <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 text-[10px]">
                   LIVE PRODUCTION TELEMETRY
@@ -296,7 +295,7 @@ return { allowed: true };`}
               <img 
                 src="/screenshots/dashboard/overview.png" 
                 alt="Sentraa AI Centralized Governance Dashboard" 
-                className="w-full h-auto object-cover max-h-[580px]"
+                className="w-full h-auto block"
                 onError={(e) => {
                   e.currentTarget.src = '/screenshots/dashboard/policies-guardrails.png';
                 }}
@@ -375,18 +374,9 @@ return { allowed: true };`}
             </div>
           )}
 
-          {/* Bottom link */}
-          <div className="mt-6 pt-4 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
+          {/* Bottom note */}
+          <div className="mt-6 pt-4 border-t border-white/[0.06] text-xs text-slate-400">
             <span>Fail-closed security guarantees zero unsanctioned tool calls land on production infrastructure.</span>
-            <a 
-              href="https://sentraatech.info" 
-              target="_blank" 
-              rel="noreferrer"
-              className="text-violet-300 hover:text-white font-semibold flex items-center gap-1.5 transition-colors"
-            >
-              <span>Launch Live Interactive Sandbox</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
           </div>
         </div>
       </div>

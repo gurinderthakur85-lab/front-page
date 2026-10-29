@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, ExternalLink, Check } from 'lucide-react';
+import { Mail, Phone, Check } from 'lucide-react';
+import type { LegalDocType } from './LegalModal';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+  onOpenLegal?: (doc: LegalDocType) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState('');
 
@@ -16,27 +22,43 @@ export const Footer: React.FC = () => {
     }
   };
 
+  const handleLegalClick = (doc: LegalDocType) => {
+    if (onOpenLegal) {
+      onOpenLegal(doc);
+    } else {
+      window.location.hash = doc;
+    }
+  };
+
   return (
     <footer id="contact" className="bg-[#080B14] text-[#A7B0C0] text-xs border-t border-[#263044] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
           {/* Brand & Mission Column */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2.5">
+          <div className="lg:col-span-6 space-y-4">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('home');
+                else window.location.hash = '';
+              }}
+              className="flex items-center gap-3.5 group cursor-pointer"
+            >
               <img 
                 src="/sentraa-logo.png" 
-                alt="Sentra AI Logo" 
-                className="w-7 h-8 object-contain"
+                alt="Sentraa AI Logo" 
+                className="w-12 h-14 sm:w-14 sm:h-16 object-contain group-hover:scale-105 transition-transform"
                 onError={(e) => {
-                  e.currentTarget.src = '/sentra-ai-logo.svg';
+                  e.currentTarget.src = '/sentraa-ai-logo.svg';
                 }}
               />
-              <span className="font-extrabold text-xl tracking-tight text-[#F8FAFC]">
-                Sentra<span className="text-[#8B5CF6]"> AI</span>
+              <span className="font-extrabold text-2xl sm:text-3xl tracking-tight text-[#F8FAFC]">
+                Sentraa<span className="text-[#8B5CF6]"> AI</span>
               </span>
-            </div>
+            </a>
             <p className="text-xs text-[#A7B0C0] leading-relaxed max-w-sm">
-              Sentra AI is the pre-execution governance and security platform that discovers AI agents, enforces real-time guardrails, and automates compliance evidence.
+              Sentraa AI is the pre-execution governance and security platform that discovers AI agents, enforces real-time guardrails, and automates compliance evidence.
             </p>
 
             {/* Direct Contact info */}
@@ -96,7 +118,6 @@ export const Footer: React.FC = () => {
               <li><a href="#capabilities" className="hover:text-[#F8FAFC] transition-colors">Policy Enforcement</a></li>
               <li><a href="#capabilities" className="hover:text-[#F8FAFC] transition-colors">Continuous Monitoring</a></li>
               <li><a href="#simulator" className="hover:text-[#F8FAFC] transition-colors">Live Bouncer Simulator</a></li>
-              <li><a href="https://sentraatech.info" target="_blank" rel="noreferrer" className="hover:text-[#F8FAFC] transition-colors flex items-center gap-1">Live Sandbox <ExternalLink className="w-3 h-3 text-[#A7B0C0]" /></a></li>
             </ul>
           </div>
 
@@ -114,30 +135,43 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Resources */}
+          {/* Column 3: Resources & Legal */}
           <div className="lg:col-span-2">
             <h4 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider font-mono mb-3">
-              Resources
+              Resources &amp; Legal
             </h4>
             <ul className="space-y-2">
+              <li>
+                <button 
+                  onClick={() => {
+                    if (onNavigate) onNavigate('about');
+                    else window.location.hash = 'about';
+                  }} 
+                  className="hover:text-[#F8FAFC] transition-colors text-left cursor-pointer"
+                >
+                  About Sentraa AI
+                </button>
+              </li>
               <li><a href="#how-it-works" className="hover:text-[#F8FAFC] transition-colors">How It Works</a></li>
               <li><a href="#comparison" className="hover:text-[#F8FAFC] transition-colors">Compare Capabilities</a></li>
               <li><a href="#faqs" className="hover:text-[#F8FAFC] transition-colors">FAQ Knowledge Base</a></li>
               <li><a href="#problem" className="hover:text-[#F8FAFC] transition-colors">AI Risk Threat Matrix</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Compliance Frameworks */}
-          <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider font-mono mb-3">
-              Compliance OS
-            </h4>
-            <ul className="space-y-2 font-mono text-[11px]">
-              <li>&bull; GDPR Article 22</li>
-              <li>&bull; India DPDP 2023</li>
-              <li>&bull; HIPAA Safe Harbor</li>
-              <li>&bull; PCI-DSS v4.0</li>
-              <li>&bull; NIST AI RMF 1.0</li>
+              <li className="pt-2 border-t border-[#263044]/60">
+                <button 
+                  onClick={() => handleLegalClick('privacy')}
+                  className="hover:text-[#C4B5FD] transition-colors text-left cursor-pointer font-medium flex items-center gap-1.5"
+                >
+                  <span>Privacy Policy</span>
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleLegalClick('terms')}
+                  className="hover:text-[#C4B5FD] transition-colors text-left cursor-pointer font-medium flex items-center gap-1.5"
+                >
+                  <span>Terms and Conditions</span>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -145,13 +179,25 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#263044] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A7B0C0]">
           <div>
-            &copy; 2026 Sentra AI. All rights reserved.
+            &copy; 2026 Sentraa AI Tech Pvt. Ltd. All rights reserved.
           </div>
 
-          <div className="flex items-center gap-6">
-            <a href="https://sentraatech.info" target="_blank" rel="noreferrer" className="hover:text-[#F8FAFC] transition-colors">Privacy Policy</a>
-            <a href="https://sentraatech.info" target="_blank" rel="noreferrer" className="hover:text-[#F8FAFC] transition-colors">Terms of Service</a>
-            <a href="mailto:support@sentraatech.com" className="hover:text-[#F8FAFC] transition-colors">support@sentraatech.com</a>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <button 
+              onClick={() => handleLegalClick('privacy')}
+              className="text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors cursor-pointer font-medium"
+            >
+              Privacy Policy
+            </button>
+            <button 
+              onClick={() => handleLegalClick('terms')}
+              className="text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors cursor-pointer font-medium"
+            >
+              Terms and Conditions
+            </button>
+            <a href="mailto:support@sentraatech.com" className="hover:text-[#F8FAFC] transition-colors">
+              support@sentraatech.com
+            </a>
           </div>
         </div>
       </div>
