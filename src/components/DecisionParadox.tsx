@@ -83,15 +83,27 @@ export const DecisionParadox: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Risk Scenario Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {SCENARIOS.map((scenario) => {
+        {/* 3 Risk Scenario Cards Grid - 1 col on phones, 2 on tablets, 3 on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SCENARIOS.map((scenario, index) => {
             const isSelected = activeScenario === scenario.id;
+            const isLastOnTablet = index === 2;
             return (
               <div
                 key={scenario.id}
+                role="button"
+                tabIndex={0}
+                aria-pressed={isSelected}
                 onClick={() => setActiveScenario(scenario.id)}
-                className={`p-6 rounded-2xl bg-[#111827] border cursor-pointer card-hover-lift flex flex-col justify-between ${
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveScenario(scenario.id);
+                  }
+                }}
+                className={`p-6 rounded-2xl bg-[#111827] border cursor-pointer card-hover-lift flex flex-col justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] ${
+                  isLastOnTablet ? 'md:col-span-2 lg:col-span-1' : ''
+                } ${
                   isSelected
                     ? 'border-[#8B5CF6] shadow-xl shadow-black/50 ring-1 ring-[#8B5CF6]/50'
                     : 'border-[#263044] hover:border-[#8B5CF6]/40 hover:bg-[#141D30]'
@@ -114,12 +126,12 @@ export const DecisionParadox: React.FC = () => {
                   </h3>
 
                   {/* Plain English Summary */}
-                  <p className="text-xs text-[#A7B0C0] mb-4 leading-relaxed">
+                  <p className="text-sm text-[#A7B0C0] mb-4 leading-relaxed">
                     {scenario.plainSummary}
                   </p>
 
                   {/* Real-world example box */}
-                  <div className="p-3.5 rounded-xl bg-[#080B14] border border-[#263044] mb-4 text-xs text-[#F8FAFC] leading-relaxed">
+                  <div className="p-3.5 rounded-xl bg-[#080B14] border border-[#263044] mb-4 text-xs sm:text-sm text-[#F8FAFC] leading-relaxed">
                     <span className="text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider block mb-1">
                       Real-world scenario:
                     </span>
@@ -128,7 +140,7 @@ export const DecisionParadox: React.FC = () => {
                 </div>
 
                 {/* Outcome Comparison */}
-                <div className="pt-4 border-t border-[#263044] space-y-2 text-xs">
+                <div className="pt-4 border-t border-[#263044] space-y-2 text-xs sm:text-sm">
                   <div className="flex items-start gap-2 text-[#A7B0C0]">
                     <XCircle className="w-4 h-4 text-[#F87171] shrink-0 mt-0.5" />
                     <span><strong className="text-[#F87171]">Without Sentraa:</strong> {scenario.withoutSentraa}</span>

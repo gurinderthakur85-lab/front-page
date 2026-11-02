@@ -34,11 +34,11 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -46,14 +46,14 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
 
         {!submitted ? (
           <div>
-            <div className="mb-6">
+            <div className="mb-6 pr-8 sm:pr-0">
               <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
                 EXPERIENCE PRE-EXECUTION GOVERNANCE
               </span>
-              <h3 className="text-2xl font-bold text-[#F8FAFC] mt-2">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] mt-2">
                 Book a Live Architecture Demo
               </h3>
-              <p className="text-xs text-[#A7B0C0] mt-1 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#A7B0C0] mt-1 leading-relaxed">
                 See how Sentraa AI sits in-line between your agents and tools to enforce zero-drift guardrails.
               </p>
             </div>
@@ -62,14 +62,15 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
               <div>
                 <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Full Name</label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
+                  <User className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3.5 pointer-events-none" />
                   <input
                     type="text"
                     required
+                    autoComplete="name"
                     placeholder="e.g. Jordan Varma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                    className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                   />
                 </div>
               </div>
@@ -77,30 +78,32 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
               <div>
                 <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Work Email</label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
+                  <Mail className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3.5 pointer-events-none" />
                   <input
                     type="email"
                     required
+                    autoComplete="email"
                     placeholder="jordan@enterprise.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                    className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-[#F8FAFC] mb-1">Company</label>
                   <div className="relative">
-                    <Building2 className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3" />
+                    <Building2 className="w-4 h-4 text-[#A7B0C0] absolute left-3 top-3.5 pointer-events-none" />
                     <input
                       type="text"
                       required
+                      autoComplete="organization"
                       placeholder="Acme Corp"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                      className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                     />
                   </div>
                 </div>
@@ -110,7 +113,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                   <select
                     value={formData.agentCount}
                     onChange={(e) => setFormData({ ...formData, agentCount: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
+                    className="w-full px-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
                   >
                     <option value="1-10">1 – 10 AI Agents</option>
                     <option value="10-50">10 – 50 AI Agents</option>
@@ -125,7 +128,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                 <select
                   value={formData.primaryFramework}
                   onChange={(e) => setFormData({ ...formData, primaryFramework: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
                 >
                   <option value="LangChain / CrewAI">LangChain / CrewAI</option>
                   <option value="AWS Bedrock / Azure AI">AWS Bedrock / Azure AI</option>
@@ -141,13 +144,13 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                   placeholder="e.g. GDPR & DPDP compliance, preventing prompt injection, DLP for databases..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full min-h-[48px] py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
               >
                 <span>Confirm Demo Request</span>
                 <ArrowRight className="w-4 h-4" />

@@ -47,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="sticky top-0 z-50 w-full pt-[env(safe-area-inset-top,0px)] px-[env(safe-area-inset-left,0px)]">
       {/* Main Navigation Bar */}
       <nav 
         className={`w-full transition-all duration-200 ${
@@ -66,11 +66,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 if (onNavigate) onNavigate('home');
                 else window.location.hash = '';
               }}
-              className="flex items-center gap-3.5 group cursor-pointer"
+              className="flex items-center gap-3.5 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] rounded-xl"
             >
               <img 
                 src="/sentraa-logo.png" 
                 alt="Sentraa AI Logo" 
+                width={56}
+                height={64}
                 className="w-12 h-14 sm:w-14 sm:h-16 object-contain group-hover:scale-105 transition-transform"
                 onError={(e) => {
                   e.currentTarget.src = '/sentraa-ai-logo.svg';
@@ -286,81 +288,82 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Mobile Menu Hamburger */}
+          {/* Mobile Menu Hamburger & Quick CTA */}
           <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={onOpenDemo}
-              className="px-3 py-1.5 text-xs font-semibold text-white bg-[#8B5CF6] rounded-lg sm:hidden"
+              className="min-h-[44px] px-3.5 py-2 text-xs font-bold text-white bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-95 rounded-xl sm:hidden flex items-center justify-center transition-all shadow-md shadow-[#8B5CF6]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
             >
               Book Demo
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#A7B0C0] hover:text-white rounded-lg bg-[#111827] border border-[#263044]"
-              aria-label="Toggle navigation menu"
+              className="min-w-[44px] min-h-[44px] p-2.5 text-[#A7B0C0] hover:text-white rounded-xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 active:scale-95 flex items-center justify-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Slide-down Menu */}
+        {/* Mobile Slide-down Drawer with dynamic safe-height scrolling */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-b border-[#263044] bg-[#0D1220] px-4 py-6 space-y-4">
+          <div className="lg:hidden border-b border-[#263044] bg-[#0D1220] px-4 py-5 space-y-4 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)]">
             <div className="space-y-1">
-              <div className="px-3 py-1 text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider">
+              <div className="px-3.5 py-1 text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider">
                 Platform
               </div>
               <a 
                 href="#capabilities" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 Core Capabilities (Discovery, Policies, Monitoring)
               </a>
               <a 
                 href="#simulator" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 Live Bouncer Simulator
               </a>
 
-              <div className="px-3 pt-3 pb-1 text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider">
+              <div className="px-3.5 pt-3 pb-1 text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider">
                 Overview
               </div>
               <a 
                 href="#problem" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 The AI Risk Paradox
               </a>
               <a 
                 href="#how-it-works" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 How It Works (3 Steps)
               </a>
               <a 
                 href="#use-cases" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 Who Benefits &amp; Use Cases
               </a>
               <a 
                 href="#comparison" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 Compare Capabilities
               </a>
               <a 
                 href="#faqs" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm text-[#F8FAFC] hover:bg-[#111827]"
+                className="flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#F8FAFC] hover:bg-[#111827] active:bg-[#172033] transition-colors"
               >
                 FAQs
               </a>
@@ -370,19 +373,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                   if (onNavigate) onNavigate('about');
                   else window.location.hash = 'about';
                 }}
-                className="w-full text-left px-3 py-2 rounded-lg text-sm text-[#C4B5FD] font-semibold hover:bg-[#111827]"
+                className="w-full text-left flex items-center min-h-[44px] px-3.5 py-2.5 rounded-xl text-sm text-[#C4B5FD] font-semibold hover:bg-[#111827] active:bg-[#172033] transition-colors cursor-pointer"
               >
                 About Us
               </button>
             </div>
 
-            <div className="pt-4 border-t border-[#263044] flex flex-col gap-2">
+            <div className="pt-4 border-t border-[#263044] flex flex-col gap-2.5">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-2.5 text-xs font-semibold text-center text-[#F8FAFC] bg-[#111827] border border-[#263044] rounded-xl"
+                className="w-full min-h-[44px] py-3 text-xs font-semibold text-center text-[#F8FAFC] bg-[#111827] hover:bg-[#172033] border border-[#263044] rounded-xl active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center"
               >
                 Contact Us
               </button>
@@ -391,7 +394,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   onOpenDemo();
                 }}
-                className="w-full py-2.5 text-xs font-bold text-center text-white bg-[#8B5CF6] hover:bg-[#7C3AED] rounded-xl shadow-md"
+                className="w-full min-h-[44px] py-3 text-xs font-bold text-center text-white bg-[#8B5CF6] hover:bg-[#7C3AED] rounded-xl shadow-md shadow-[#8B5CF6]/20 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center"
               >
                 Book a Demo
               </button>

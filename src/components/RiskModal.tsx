@@ -48,29 +48,29 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
   const calculatedRisk = calculateScore();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl rounded-2xl bg-[#0D1220] border border-[#263044] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white transition-colors"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
-        <div className="mb-6">
+        <div className="mb-6 pr-8 sm:pr-0">
           <div className="flex items-center gap-2 mb-2">
             <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
               SECURITY ASSESSMENT HUB
             </span>
             <span className="text-xs text-[#A7B0C0] font-mono">Step {step} of 4</span>
           </div>
-          <h3 className="text-2xl font-bold text-[#F8FAFC] tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] tracking-tight">
             AI Agent Risk &amp; Posture Calculator
           </h3>
-          <p className="text-xs text-[#A7B0C0] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#A7B0C0] leading-relaxed">
             Answer 3 quick questions about your agent architecture to generate an instant threat posture assessment.
           </p>
         </div>

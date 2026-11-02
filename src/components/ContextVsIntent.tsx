@@ -111,17 +111,23 @@ export const ContextVsIntent: React.FC = () => {
 
         {/* Expandable Table */}
         {expanded && (
-          <div className="mt-8 rounded-2xl bg-[#111827] border border-[#263044] p-5 sm:p-7 lg:p-8 shadow-2xl overflow-x-auto">
-            <div className="mb-6">
-              <h4 className="text-xl sm:text-2xl font-extrabold text-[#F8FAFC] tracking-tight">
-                Detailed Technical Comparison
-              </h4>
-              <p className="text-sm sm:text-base font-semibold text-[#A7B0C0] mt-1.5">
-                Comparing traditional cybersecurity approaches against Sentraa AI's pre-execution inline architecture.
-              </p>
+          <div className="mt-8 rounded-2xl bg-[#111827] border border-[#263044] p-4 sm:p-7 lg:p-8 shadow-2xl">
+            <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h4 className="text-xl sm:text-2xl font-extrabold text-[#F8FAFC] tracking-tight">
+                  Detailed Technical Comparison
+                </h4>
+                <p className="text-sm sm:text-base font-semibold text-[#A7B0C0] mt-1.5">
+                  Comparing traditional cybersecurity approaches against Sentraa AI's pre-execution inline architecture.
+                </p>
+              </div>
+              <div className="sm:hidden inline-flex items-center gap-1.5 text-xs text-[#C4B5FD] font-mono bg-[#080B14] px-2.5 py-1 rounded-lg border border-[#263044] self-start">
+                <span>&larr; Scroll horizontally &rarr;</span>
+              </div>
             </div>
 
-            <table className="w-full text-left border-collapse min-w-[720px]">
+            <div className="overflow-x-auto -mx-1 sm:mx-0 pb-2">
+              <table className="w-full text-left border-collapse min-w-[720px]">
               <thead>
                 <tr className="border-b-2 border-[#263044]">
                   <th className="py-4 px-4 text-sm sm:text-base font-extrabold text-[#F8FAFC] uppercase tracking-wider font-mono">
@@ -222,6 +228,7 @@ export const ContextVsIntent: React.FC = () => {
                 })}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>

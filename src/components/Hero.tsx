@@ -34,7 +34,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
 
         {/* Hero Title & Short Concrete Subtitle */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.12]">
+          <h1 className="text-[clamp(2.125rem,6vw+0.25rem,3.75rem)] font-extrabold tracking-tight text-[#F8FAFC] leading-[1.14]">
             Stop risky AI agent actions{' '}
             <span className="text-[#8B5CF6] block sm:inline">
               before they happen.
@@ -50,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <button
               onClick={onOpenDemo}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-sm shadow-lg shadow-[#8B5CF6]/25 hover:shadow-xl hover:shadow-[#8B5CF6]/35 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto min-h-[48px] px-7 py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] text-white font-semibold text-sm shadow-lg shadow-[#8B5CF6]/25 hover:shadow-xl hover:shadow-[#8B5CF6]/35 transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
             >
               <span>Book a Demo</span>
               <ArrowRight className="w-4 h-4" />
@@ -58,14 +58,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
 
             <a
               href="#capabilities"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#111827] hover:bg-[#172033] text-[#F8FAFC] font-medium text-sm border border-[#263044] hover:border-[#8B5CF6]/40 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto min-h-[48px] px-6 py-3.5 rounded-xl bg-[#111827] hover:bg-[#172033] active:scale-[0.98] text-[#F8FAFC] font-medium text-sm border border-[#263044] hover:border-[#8B5CF6]/40 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
             >
               <span>Explore the Platform</span>
             </a>
           </div>
 
           {/* Simple trust markers */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-[#A7B0C0]">
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-[#A7B0C0]">
             <div className="flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5 text-[#8B5CF6]" />
               <span>Real-Time Pre-Execution Interception</span>
@@ -85,15 +85,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
         <div className="mt-14 max-w-5xl mx-auto animate-float-slow">
           {/* Main Dashboard Preview Container */}
           <div className="relative rounded-2xl border border-[#263044] bg-[#111827] p-2 sm:p-4 shadow-2xl hover:border-[#8B5CF6]/40 transition-colors duration-500">
-            {/* Top Window Bar */}
-            <div className="flex items-center justify-between px-3 py-2 border-b border-[#263044] mb-3 text-xs text-[#A7B0C0]">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#F87171]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FBBF24]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
-                <span className="ml-2 font-mono text-xs text-[#F8FAFC]">Sentraa AI &bull; Agent Decision Evaluation</span>
+            {/* Top Window Bar - Responsive wrap & truncate */}
+            <div className="flex items-center justify-between px-3 py-2 border-b border-[#263044] mb-3 text-xs text-[#A7B0C0] gap-2">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F87171] shrink-0" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FBBF24] shrink-0" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#34D399] shrink-0" />
+                <span className="ml-1 sm:ml-2 font-mono text-xs text-[#F8FAFC] truncate">
+                  Sentraa AI <span className="hidden sm:inline">&bull; Agent Decision Evaluation</span>
+                </span>
               </div>
-              <div className="flex items-center gap-2 font-mono text-[11px] text-[#34D399] bg-[#34D399]/10 px-2.5 py-1 rounded-full border border-[#34D399]/30">
+              <div className="flex items-center gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-[11px] text-[#34D399] bg-[#34D399]/10 px-2 sm:px-2.5 py-1 rounded-full border border-[#34D399]/30 shrink-0">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34D399] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#34D399]" />
@@ -107,6 +109,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
               <img 
                 src="/MNXP4JCUUPRXCO60rXS6qL9n8Gs.png" 
                 alt="Sentraa AI Product Dashboard Preview" 
+                width={1200}
+                height={675}
+                fetchPriority="high"
                 className="w-full h-auto object-cover rounded-xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080B14]/70 via-transparent to-transparent pointer-events-none" />
@@ -115,7 +120,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
             </div>
 
             {/* 3 Simple Annotations Explaining What It Does */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-4 pt-4 border-t border-[#263044]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mt-4 pt-4 border-t border-[#263044]">
               {/* Annotation 1 */}
               <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3 card-hover-lift cursor-default">
                 <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] shrink-0 border border-[#8B5CF6]/20">
@@ -123,7 +128,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-[#F8FAFC]">1. AI Activity Monitoring</div>
-                  <div className="text-[12px] text-[#A7B0C0] mt-0.5">
+                  <div className="text-[12px] text-[#A7B0C0] mt-0.5 leading-relaxed">
                     Understand what your agents are doing across every model and tool in real time.
                   </div>
                 </div>
@@ -136,20 +141,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-[#F8FAFC]">2. Policy-Based Controls</div>
-                  <div className="text-[12px] text-[#A7B0C0] mt-0.5">
+                  <div className="text-[12px] text-[#A7B0C0] mt-0.5 leading-relaxed">
                     Apply rules to potentially risky actions before execution — block, redact, or alert.
                   </div>
                 </div>
               </div>
 
               {/* Annotation 3 */}
-              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3 card-hover-lift cursor-default">
+              <div className="p-3.5 rounded-xl bg-[#0D1220] border border-[#263044] flex items-start gap-3 card-hover-lift cursor-default sm:col-span-2 lg:col-span-1">
                 <div className="p-2 rounded-lg bg-[#8B5CF6]/15 text-[#C4B5FD] shrink-0 border border-[#8B5CF6]/20">
                   <Activity className="w-4 h-4 text-[#8B5CF6]" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-[#F8FAFC]">3. Continuous Oversight</div>
-                  <div className="text-[12px] text-[#A7B0C0] mt-0.5">
+                  <div className="text-[12px] text-[#A7B0C0] mt-0.5 leading-relaxed">
                     Review activity, detect anomalies, and export audit-ready compliance evidence.
                   </div>
                 </div>

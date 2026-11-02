@@ -20,11 +20,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-6 sm:p-8 shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -32,32 +32,32 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
 
         {!submitted ? (
           <div>
-            <div className="mb-6">
+            <div className="mb-6 pr-8 sm:pr-0">
               <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
                 CONNECT WITH OUR TEAM
               </span>
-              <h3 className="text-2xl font-bold text-[#F8FAFC] mt-2">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] mt-2">
                 Get in Touch
               </h3>
-              <p className="text-xs text-[#A7B0C0] mt-1 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#A7B0C0] mt-1 leading-relaxed">
                 Have questions about autonomous agent governance or enterprise deployment? We&apos;d love to connect.
               </p>
             </div>
 
             {/* Quick Contact Info */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
               <a
                 href="mailto:support@sentraatech.com"
-                className="p-3 rounded-xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/40 transition-colors flex items-center gap-2.5 text-xs text-[#A7B0C0] hover:text-[#F8FAFC]"
+                className="p-3 min-h-[44px] rounded-xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/40 transition-colors flex items-center gap-2.5 text-xs sm:text-sm text-[#A7B0C0] hover:text-[#F8FAFC]"
               >
-                <Mail className="w-4 h-4 text-[#8B5CF6]" />
+                <Mail className="w-4 h-4 text-[#8B5CF6] shrink-0" />
                 <span className="truncate">support@sentraatech.com</span>
               </a>
               <a
                 href="tel:+916309624519"
-                className="p-3 rounded-xl bg-[#111827] border border-[#263044] hover:border-[#34D399]/40 transition-colors flex items-center gap-2.5 text-xs text-[#A7B0C0] hover:text-[#F8FAFC]"
+                className="p-3 min-h-[44px] rounded-xl bg-[#111827] border border-[#263044] hover:border-[#34D399]/40 transition-colors flex items-center gap-2.5 text-xs sm:text-sm text-[#A7B0C0] hover:text-[#F8FAFC]"
               >
-                <Phone className="w-4 h-4 text-[#34D399]" />
+                <Phone className="w-4 h-4 text-[#34D399] shrink-0" />
                 <span>+91 6309624519</span>
               </a>
             </div>
@@ -68,10 +68,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                 <input
                   type="text"
                   required
+                  autoComplete="name"
                   placeholder="e.g. Alex Mercer"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3.5 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
@@ -80,10 +81,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                 <input
                   type="email"
                   required
+                  autoComplete="email"
                   placeholder="alex@company.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3.5 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
@@ -95,13 +97,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                   placeholder="Tell us about your AI agent stack or what policies you want to enforce..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full min-h-[48px] py-3 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
               >
                 <span>Send Inquiries</span>
                 <ArrowRight className="w-3.5 h-3.5" />

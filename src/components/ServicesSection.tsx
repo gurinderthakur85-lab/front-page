@@ -91,7 +91,7 @@ export const ServicesSection: React.FC = () => {
               <button
                 key={cap.id}
                 onClick={() => setActiveTab(idx)}
-                className={`text-left p-5 rounded-2xl transition-all duration-200 border flex items-start gap-4 ${
+                className={`text-left p-5 rounded-2xl transition-all duration-200 border flex items-start gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] active:scale-[0.99] ${
                   isSelected
                     ? 'bg-[#111827] border-[#8B5CF6] shadow-lg shadow-black/40 ring-1 ring-[#8B5CF6]/50'
                     : 'bg-[#111827]/60 border-[#263044] hover:bg-[#111827] hover:border-[#8B5CF6]/40'
@@ -107,7 +107,7 @@ export const ServicesSection: React.FC = () => {
                   <div className="text-base font-bold text-[#F8FAFC]">
                     {cap.title}
                   </div>
-                  <div className="text-xs text-[#A7B0C0] mt-1 line-clamp-2">
+                  <div className="text-xs sm:text-sm text-[#A7B0C0] mt-1 line-clamp-2">
                     {cap.headline}
                   </div>
                 </div>
@@ -117,7 +117,7 @@ export const ServicesSection: React.FC = () => {
         </div>
 
         {/* Active Capability Showcase Box */}
-        <div className="rounded-2xl bg-[#111827] border border-[#263044] p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="rounded-2xl bg-[#111827] border border-[#263044] p-5 sm:p-7 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-5 space-y-5">
             <span className="text-xs font-mono uppercase tracking-widest text-[#8B5CF6] font-bold">
@@ -134,17 +134,17 @@ export const ServicesSection: React.FC = () => {
 
             <div className="space-y-3 pt-2">
               {current.points.map((pt, pIdx) => (
-                <div key={pIdx} className="flex items-start gap-2.5 text-xs text-[#F8FAFC]">
+                <div key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F8FAFC]">
                   <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
                   <span>{pt}</span>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <a
                 href="#simulator"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#C4B5FD] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 min-h-[44px] py-2 text-xs sm:text-sm font-semibold text-[#C4B5FD] hover:text-white transition-colors"
               >
                 <span>Try interactive simulator below</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -156,13 +156,16 @@ export const ServicesSection: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="rounded-2xl border border-[#263044] bg-[#0D1220] p-1.5 sm:p-2 shadow-2xl">
               <div className="flex items-center justify-between px-3.5 py-2 border-b border-[#263044] bg-[#080B14] rounded-t-xl text-xs text-[#A7B0C0] mb-1.5">
-                <span className="font-mono text-[11px] text-[#F8FAFC]">{current.imageAlt}</span>
-                <span className="text-[#34D399] text-[10px] font-mono font-semibold">LIVE TELEMETRY</span>
+                <span className="font-mono text-[11px] text-[#F8FAFC] truncate">{current.imageAlt}</span>
+                <span className="text-[#34D399] text-[10px] font-mono font-semibold shrink-0">LIVE TELEMETRY</span>
               </div>
               <div className="rounded-xl overflow-hidden border border-[#263044]/60 bg-[#080B14]">
                 <img 
                   src={current.image} 
                   alt={current.imageAlt} 
+                  width={1024}
+                  height={576}
+                  loading="lazy"
                   className="w-full h-auto block"
                   onError={(e) => {
                     e.currentTarget.src = '/MNXP4JCUUPRXCO60rXS6qL9n8Gs.png';

@@ -150,7 +150,7 @@ export const BenefitsSection: React.FC = () => {
           {BENEFICIARIES.map((item, idx) => (
             <div
               key={idx}
-              className="p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 card-hover-lift flex flex-col justify-between"
+              className="p-6 sm:p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 card-hover-lift flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -166,14 +166,14 @@ export const BenefitsSection: React.FC = () => {
                   {item.heading}
                 </h3>
 
-                <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
+                <p className="text-sm text-[#A7B0C0] leading-relaxed mb-6">
                   {item.description}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-[#263044] space-y-2">
                 {item.outcomes.map((out, oIdx) => (
-                  <div key={oIdx} className="flex items-center gap-2 text-xs text-[#F8FAFC]">
+                  <div key={oIdx} className="flex items-center gap-2 text-xs sm:text-sm text-[#F8FAFC]">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
                     <span>{out}</span>
                   </div>
@@ -184,23 +184,23 @@ export const BenefitsSection: React.FC = () => {
         </div>
 
         {/* Supported AI Ecosystem & Platforms */}
-        <div className="rounded-3xl bg-[#111827] border border-[#263044] p-8 lg:p-10 shadow-xl">
-          <div className="text-center mb-8">
+        <div className="rounded-2xl sm:rounded-3xl bg-[#111827] border border-[#263044] p-4 sm:p-6 lg:p-10 shadow-xl">
+          <div className="text-center mb-6 sm:mb-8">
             <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-[#A7B0C0]">
               Protecting and governing agents across your current technology stack
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4 lg:gap-5">
             {INTEGRATIONS.map((item, idx) => (
               <div 
                 key={idx} 
-                className="flex items-center justify-center gap-3.5 px-5 py-5 sm:py-6 rounded-2xl bg-[#080B14] border border-[#263044] hover:border-[#8B5CF6]/50 hover:bg-[#0E1528] transition-all shadow-md hover:shadow-xl hover:shadow-[#8B5CF6]/15 group cursor-default"
+                className="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left gap-2 sm:gap-3.5 p-3.5 sm:py-5 sm:px-4 rounded-xl sm:rounded-2xl bg-[#080B14] border border-[#263044] hover:border-[#8B5CF6]/50 hover:bg-[#0E1528] transition-all shadow-md hover:shadow-xl hover:shadow-[#8B5CF6]/15 group cursor-default"
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                   {item.icon}
                 </div>
-                <span className="text-sm sm:text-base font-bold text-[#F8FAFC] tracking-tight group-hover:text-white transition-colors">
+                <span className="text-xs sm:text-sm lg:text-base font-bold text-[#F8FAFC] tracking-tight group-hover:text-white transition-colors truncate max-w-full">
                   {item.name}
                 </span>
               </div>

@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
   };
 
   return (
-    <footer id="contact" className="bg-[#080B14] text-[#A7B0C0] text-xs border-t border-[#263044] relative">
+    <footer id="contact" className="bg-[#080B14] text-[#A7B0C0] text-xs border-t border-[#263044] relative pb-[env(safe-area-inset-bottom,0px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
           {/* Brand & Mission Column */}
@@ -43,11 +43,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
                 if (onNavigate) onNavigate('home');
                 else window.location.hash = '';
               }}
-              className="flex items-center gap-3.5 group cursor-pointer"
+              className="flex items-center gap-3.5 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] rounded-xl"
             >
               <img 
                 src="/sentraa-logo.png" 
                 alt="Sentraa AI Logo" 
+                width={56}
+                height={64}
                 className="w-12 h-14 sm:w-14 sm:h-16 object-contain group-hover:scale-105 transition-transform"
                 onError={(e) => {
                   e.currentTarget.src = '/sentraa-ai-logo.svg';
@@ -57,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
                 Sentraa<span className="text-[#8B5CF6]"> AI</span>
               </span>
             </a>
-            <p className="text-xs text-[#A7B0C0] leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-[#A7B0C0] leading-relaxed max-w-sm">
               Sentraa AI is the pre-execution governance and security platform that discovers AI agents, enforces real-time guardrails, and automates compliance evidence.
             </p>
 
@@ -65,16 +67,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
             <div className="space-y-1.5 pt-1">
               <a 
                 href="mailto:support@sentraatech.com" 
-                className="flex items-center gap-2 text-[#A7B0C0] hover:text-[#C4B5FD] transition-colors font-mono"
+                className="flex items-center gap-2 min-h-[44px] py-1 text-[#A7B0C0] hover:text-[#C4B5FD] transition-colors font-mono"
               >
-                <Mail className="w-3.5 h-3.5 text-[#8B5CF6]" />
-                <span>support@sentraatech.com</span>
+                <Mail className="w-4 h-4 text-[#8B5CF6] shrink-0" />
+                <span className="truncate">support@sentraatech.com</span>
               </a>
               <a 
                 href="tel:+916309624519" 
-                className="flex items-center gap-2 text-[#A7B0C0] hover:text-[#C4B5FD] transition-colors font-mono"
+                className="flex items-center gap-2 min-h-[44px] py-1 text-[#A7B0C0] hover:text-[#C4B5FD] transition-colors font-mono"
               >
-                <Phone className="w-3.5 h-3.5 text-[#34D399]" />
+                <Phone className="w-4 h-4 text-[#34D399] shrink-0" />
                 <span>+91 6309624519</span>
               </a>
             </div>
@@ -88,20 +90,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
                 <input
                   type="email"
                   required
+                  autoComplete="email"
                   placeholder="name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-3 py-2 rounded-xl bg-[#111827] border border-[#263044] text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/60 focus:outline-none focus:border-[#8B5CF6]"
+                  className="flex-1 min-h-[44px] px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/60 focus:outline-none focus:border-[#8B5CF6]"
                 />
                 <button
                   type="submit"
-                  className="px-3.5 py-2 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-semibold text-xs transition-colors shrink-0"
+                  className="min-h-[44px] min-w-[54px] px-3.5 py-2 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-95 text-white font-semibold text-xs transition-all shrink-0 flex items-center justify-center cursor-pointer"
                 >
-                  {subscribed ? <Check className="w-3.5 h-3.5 text-white" /> : 'Join'}
+                  {subscribed ? <Check className="w-4 h-4 text-white" /> : 'Join'}
                 </button>
               </form>
               {subscribed && (
-                <span className="text-[11px] text-[#34D399] mt-1 block font-mono">
+                <span className="text-[11px] text-[#34D399] mt-1.5 block font-mono">
                   ✓ Successfully subscribed
                 </span>
               )}
@@ -113,11 +116,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
             <h4 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider font-mono mb-3">
               Platform
             </h4>
-            <ul className="space-y-2">
-              <li><a href="#capabilities" className="hover:text-[#F8FAFC] transition-colors">AI Discovery &amp; Inventory</a></li>
-              <li><a href="#capabilities" className="hover:text-[#F8FAFC] transition-colors">Policy Enforcement</a></li>
-              <li><a href="#capabilities" className="hover:text-[#F8FAFC] transition-colors">Continuous Monitoring</a></li>
-              <li><a href="#simulator" className="hover:text-[#F8FAFC] transition-colors">Live Bouncer Simulator</a></li>
+            <ul className="space-y-1">
+              <li><a href="#capabilities" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">AI Discovery &amp; Inventory</a></li>
+              <li><a href="#capabilities" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Policy Enforcement</a></li>
+              <li><a href="#capabilities" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Continuous Monitoring</a></li>
+              <li><a href="#simulator" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Live Bouncer Simulator</a></li>
             </ul>
           </div>
 
@@ -126,12 +129,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
             <h4 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider font-mono mb-3">
               Solutions
             </h4>
-            <ul className="space-y-2">
-              <li><a href="#use-cases" className="hover:text-[#F8FAFC] transition-colors">Security &amp; SecOps Teams</a></li>
-              <li><a href="#use-cases" className="hover:text-[#F8FAFC] transition-colors">Compliance &amp; Risk Officers</a></li>
-              <li><a href="#use-cases" className="hover:text-[#F8FAFC] transition-colors">Business &amp; Executive Leaders</a></li>
-              <li><a href="#use-cases" className="hover:text-[#F8FAFC] transition-colors">AI Engineers &amp; Developers</a></li>
-              <li><a href="#use-cases" className="hover:text-[#F8FAFC] transition-colors">BFSI &amp; HealthTech</a></li>
+            <ul className="space-y-1">
+              <li><a href="#use-cases" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Security &amp; SecOps Teams</a></li>
+              <li><a href="#use-cases" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Compliance &amp; Risk Officers</a></li>
+              <li><a href="#use-cases" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Business &amp; Executive Leaders</a></li>
+              <li><a href="#use-cases" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">AI Engineers &amp; Developers</a></li>
+              <li><a href="#use-cases" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">BFSI &amp; HealthTech</a></li>
             </ul>
           </div>
 
@@ -140,26 +143,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
             <h4 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider font-mono mb-3">
               Resources &amp; Legal
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               <li>
                 <button 
                   onClick={() => {
                     if (onNavigate) onNavigate('about');
                     else window.location.hash = 'about';
                   }} 
-                  className="hover:text-[#F8FAFC] transition-colors text-left cursor-pointer"
+                  className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors text-left cursor-pointer"
                 >
                   About Sentraa AI
                 </button>
               </li>
-              <li><a href="#how-it-works" className="hover:text-[#F8FAFC] transition-colors">How It Works</a></li>
-              <li><a href="#comparison" className="hover:text-[#F8FAFC] transition-colors">Compare Capabilities</a></li>
-              <li><a href="#faqs" className="hover:text-[#F8FAFC] transition-colors">FAQ Knowledge Base</a></li>
-              <li><a href="#problem" className="hover:text-[#F8FAFC] transition-colors">AI Risk Threat Matrix</a></li>
+              <li><a href="#how-it-works" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">How It Works</a></li>
+              <li><a href="#comparison" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Compare Capabilities</a></li>
+              <li><a href="#faqs" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">FAQ Knowledge Base</a></li>
+              <li><a href="#problem" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">AI Risk Threat Matrix</a></li>
               <li className="pt-2 border-t border-[#263044]/60">
                 <button 
                   onClick={() => handleLegalClick('privacy')}
-                  className="hover:text-[#C4B5FD] transition-colors text-left cursor-pointer font-medium flex items-center gap-1.5"
+                  className="hover:text-[#C4B5FD] transition-colors text-left cursor-pointer font-medium flex items-center min-h-[36px] py-1 gap-1.5"
                 >
                   <span>Privacy Policy</span>
                 </button>
@@ -167,7 +170,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
               <li>
                 <button 
                   onClick={() => handleLegalClick('terms')}
-                  className="hover:text-[#C4B5FD] transition-colors text-left cursor-pointer font-medium flex items-center gap-1.5"
+                  className="hover:text-[#C4B5FD] transition-colors text-left cursor-pointer font-medium flex items-center min-h-[36px] py-1 gap-1.5"
                 >
                   <span>Terms and Conditions</span>
                 </button>
@@ -182,20 +185,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
             &copy; 2026 Sentraa AI Tech Pvt. Ltd. All rights reserved.
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <button 
               onClick={() => handleLegalClick('privacy')}
-              className="text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors cursor-pointer font-medium"
+              className="text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors cursor-pointer font-medium min-h-[44px] flex items-center"
             >
               Privacy Policy
             </button>
             <button 
               onClick={() => handleLegalClick('terms')}
-              className="text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors cursor-pointer font-medium"
+              className="text-[#A7B0C0] hover:text-[#F8FAFC] transition-colors cursor-pointer font-medium min-h-[44px] flex items-center"
             >
               Terms and Conditions
             </button>
-            <a href="mailto:support@sentraatech.com" className="hover:text-[#F8FAFC] transition-colors">
+            <a href="mailto:support@sentraatech.com" className="hover:text-[#F8FAFC] transition-colors min-h-[44px] flex items-center">
               support@sentraatech.com
             </a>
           </div>

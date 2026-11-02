@@ -19,19 +19,47 @@
     --color-success: #34D399;
     --color-warning: #FBBF24;
     --color-danger: #F87171;
+
+    /* Safe Area insets */
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
   }
   
   html {
     font-family: var(--font-sans);
     color-scheme: dark;
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   body {
     background-color: #080B14;
     color: #F8FAFC;
-    overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Accessible focus indicators for interactive controls */
+  :focus-visible {
+    outline: 2px solid #8B5CF6;
+    outline-offset: 2px;
+  }
+}
+
+/* Hide scrollbar for clean touch horizontal carousels/tablists while keeping scrolling active */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Subtle, refined background grid */
@@ -244,5 +272,28 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: shimmer 4s linear infinite;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* On touch devices, transform on hover can feel sticky; provide crisp active feedback */
+  .card-hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .card-hover-lift:active {
+    transform: scale(0.99);
+    border-color: rgba(139, 92, 246, 0.4) !important;
+  }
+}
+
+/* Respect user's motion preferences & conserve mobile battery */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 

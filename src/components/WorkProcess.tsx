@@ -54,12 +54,14 @@ export const WorkProcess: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Steps Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        {/* 3 Steps Cards - 1 col on mobile, 2 on tablet portrait, 3 on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
           {STEPS.map((step, idx) => (
             <div
               key={idx}
-              className="p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 card-hover-lift flex flex-col justify-between"
+              className={`p-6 sm:p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 card-hover-lift flex flex-col justify-between ${
+                idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''
+              }`}
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
@@ -77,7 +79,7 @@ export const WorkProcess: React.FC = () => {
                 <h3 className="text-xl font-bold text-[#F8FAFC] mb-3 leading-snug">
                   {step.plainHeading}
                 </h3>
-                <p className="text-xs text-[#A7B0C0] leading-relaxed mb-6">
+                <p className="text-sm text-[#A7B0C0] leading-relaxed mb-6">
                   {step.description}
                 </p>
               </div>
@@ -85,7 +87,7 @@ export const WorkProcess: React.FC = () => {
               {/* Bullet points */}
               <div className="pt-4 border-t border-[#263044] space-y-2">
                 {step.benefits.map((b, bIdx) => (
-                  <div key={bIdx} className="flex items-center gap-2 text-xs text-[#F8FAFC]">
+                  <div key={bIdx} className="flex items-center gap-2 text-xs sm:text-sm text-[#F8FAFC]">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
                     <span>{b}</span>
                   </div>

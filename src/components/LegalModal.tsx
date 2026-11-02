@@ -70,14 +70,14 @@ export const LegalModal: React.FC<LegalModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative w-full max-w-4xl max-h-[90vh] rounded-2xl bg-[#0D1220] border border-[#263044] shadow-2xl flex flex-col overflow-hidden text-[#F8FAFC]">
+      <div className="relative w-full max-w-4xl max-h-[min(90dvh,calc(100dvh-1.5rem))] rounded-2xl bg-[#0D1220] border border-[#263044] shadow-2xl flex flex-col overflow-hidden text-[#F8FAFC]">
         {/* Top Header Bar */}
-        <div className="p-4 sm:p-6 border-b border-[#263044] bg-[#111827] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shrink-0">
+        <div className="p-4 sm:p-6 border-b border-[#263044] bg-[#111827] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold flex items-center gap-1">
@@ -101,22 +101,22 @@ export const LegalModal: React.FC<LegalModalProps> = ({
             <button
               onClick={handleCopy}
               title="Copy Document Text"
-              className="p-2 rounded-xl bg-[#080B14] hover:bg-[#172033] border border-[#263044] text-[#A7B0C0] hover:text-[#F8FAFC] text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer"
+              className="min-h-[40px] px-3 py-1.5 rounded-xl bg-[#080B14] hover:bg-[#172033] border border-[#263044] text-[#A7B0C0] hover:text-[#F8FAFC] text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              {copied ? <Check className="w-4 h-4 text-[#34D399]" /> : <Copy className="w-4 h-4" />}
-              <span className="hidden md:inline">{copied ? 'Copied' : 'Copy'}</span>
+              {copied ? <Check className="w-4 h-4 text-[#34D399]" /> : <Copy className="w-4 h-4 text-[#A7B0C0]" />}
+              <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
             </button>
             <button
               onClick={handlePrint}
               title="Print Document"
-              className="p-2 rounded-xl bg-[#080B14] hover:bg-[#172033] border border-[#263044] text-[#A7B0C0] hover:text-[#F8FAFC] text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer"
+              className="min-h-[40px] px-3 py-1.5 rounded-xl bg-[#080B14] hover:bg-[#172033] border border-[#263044] text-[#A7B0C0] hover:text-[#F8FAFC] text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              <Printer className="w-4 h-4" />
-              <span className="hidden md:inline">Print</span>
+              <Printer className="w-4 h-4 text-[#A7B0C0]" />
+              <span className="hidden sm:inline">Print</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
+              className="min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] text-[#A7B0C0] hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -125,10 +125,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         </div>
 
         {/* Tab Switcher */}
-        <div className="px-4 sm:px-6 pt-3 pb-2 bg-[#080B14] border-b border-[#263044] flex items-center gap-2 shrink-0">
+        <div className="px-3 sm:px-6 pt-2.5 pb-2 bg-[#080B14] border-b border-[#263044] flex items-center gap-2 shrink-0 overflow-x-auto no-scrollbar">
           <button
             onClick={() => handleTabSwitch('privacy')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all flex items-center gap-2 cursor-pointer shrink-0 ${
               activeTab === 'privacy'
                 ? 'bg-[#111827] text-[#C4B5FD] border border-[#8B5CF6]/60 shadow-lg shadow-[#8B5CF6]/15'
                 : 'text-[#A7B0C0] hover:text-[#F8FAFC] hover:bg-white/[0.02]'
@@ -139,7 +139,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
           </button>
           <button
             onClick={() => handleTabSwitch('terms')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all flex items-center gap-2 cursor-pointer shrink-0 ${
               activeTab === 'terms'
                 ? 'bg-[#111827] text-[#C4B5FD] border border-[#8B5CF6]/60 shadow-lg shadow-[#8B5CF6]/15'
                 : 'text-[#A7B0C0] hover:text-[#F8FAFC] hover:bg-white/[0.02]'

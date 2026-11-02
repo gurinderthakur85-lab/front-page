@@ -318,7 +318,7 @@ export const LiveAgentBouncer: React.FC = () => {
   };
 
   return (
-    <div id="simulator" className="rounded-2xl border border-[#263044] bg-[#111827] p-5 sm:p-7 lg:p-8 shadow-2xl relative overflow-hidden">
+    <div id="simulator" className="rounded-2xl border border-[#263044] bg-[#111827] p-4 sm:p-7 lg:p-8 shadow-2xl relative overflow-hidden">
       {/* Background subtle glowing radial gradient */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B5CF6]/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -488,20 +488,20 @@ export const LiveAgentBouncer: React.FC = () => {
         {/* Custom Input Drawer (when Custom Mode is active) */}
         {isCustomMode && (
           <div className="mt-3 p-4 rounded-xl bg-[#080B14] border border-[#34D399]/40 shadow-xl">
-            <div className="flex items-center justify-between mb-2">
-              <div className="text-xs font-mono font-bold text-[#34D399] flex items-center gap-1.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
+              <div className="text-xs font-mono font-bold text-[#34D399] flex items-center gap-1.5 shrink-0">
                 <Terminal className="w-3.5 h-3.5" />
                 <span>Custom Agent Tool Call Inspector</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] text-[#A7B0C0]">Quick Presets:</span>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[11px] text-[#A7B0C0] mr-1">Quick Presets:</span>
                 <button
                   type="button"
                   onClick={() => {
                     setCustomInput('database.dropTable("customers_production")');
                     setCustomActionName('Drop Database Table');
                   }}
-                  className="px-2 py-0.5 text-[10px] rounded bg-[#111827] text-[#F87171] border border-[#F87171]/40 hover:bg-[#F87171]/20 cursor-pointer"
+                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#111827] text-[#F87171] border border-[#F87171]/40 hover:bg-[#F87171]/20 active:scale-95 transition-all cursor-pointer"
                 >
                   Drop Table (Block)
                 </button>
@@ -511,7 +511,7 @@ export const LiveAgentBouncer: React.FC = () => {
                     setCustomInput('stripe.transfers.create({ amount: 1500000, recipient: "external_vendor" })');
                     setCustomActionName('High-Value Payout');
                   }}
-                  className="px-2 py-0.5 text-[10px] rounded bg-[#111827] text-[#C4B5FD] border border-[#8B5CF6]/40 hover:bg-[#8B5CF6]/20 cursor-pointer"
+                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#111827] text-[#C4B5FD] border border-[#8B5CF6]/40 hover:bg-[#8B5CF6]/20 active:scale-95 transition-all cursor-pointer"
                 >
                   Spend $15k (Escalate)
                 </button>
@@ -521,7 +521,7 @@ export const LiveAgentBouncer: React.FC = () => {
                     setCustomInput('crm.contacts.query({ ssn: true, credit_card: true })');
                     setCustomActionName('Query Customer PII');
                   }}
-                  className="px-2 py-0.5 text-[10px] rounded bg-[#111827] text-[#FBBF24] border border-[#FBBF24]/40 hover:bg-[#FBBF24]/20 cursor-pointer"
+                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#111827] text-[#FBBF24] border border-[#FBBF24]/40 hover:bg-[#FBBF24]/20 active:scale-95 transition-all cursor-pointer"
                 >
                   Extract PII (Redact)
                 </button>
@@ -534,12 +534,12 @@ export const LiveAgentBouncer: React.FC = () => {
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
                 placeholder="e.g. aws.s3.deleteBucket({ Bucket: 'production-backups' })"
-                className="flex-grow px-3 py-2 rounded-lg bg-[#0D1220] border border-[#263044] text-[#F8FAFC] font-mono text-xs focus:outline-none focus:border-[#34D399]"
+                className="flex-grow min-h-[44px] px-3.5 py-2.5 rounded-lg bg-[#0D1220] border border-[#263044] text-[#F8FAFC] font-mono text-base sm:text-xs focus:outline-none focus:border-[#34D399]"
               />
               <button
                 type="button"
                 onClick={handleRunCustomSimulation}
-                className="px-4 py-2 rounded-lg bg-[#34D399] hover:bg-[#10B981] text-[#080B14] font-bold text-xs font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-[#34D399]/20"
+                className="min-h-[44px] px-5 py-2.5 rounded-lg bg-[#34D399] hover:bg-[#10B981] active:scale-95 text-[#080B14] font-bold text-xs font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-[#34D399]/20 shrink-0"
               >
                 <Zap className="w-3.5 h-3.5 fill-current" />
                 <span>Evaluate Now</span>
@@ -552,14 +552,14 @@ export const LiveAgentBouncer: React.FC = () => {
       {/* 4 Pipeline Stages with Real-Time Connecting Energy Beam */}
       <div className="bg-[#080B14] rounded-xl border border-[#263044] p-4 sm:p-5 mb-6 relative">
         {/* Dynamic evaluation progress line */}
-        <div className="hidden md:block absolute top-[28px] left-12 right-12 h-0.5 bg-[#263044] z-0">
+        <div className="hidden lg:block absolute top-[28px] left-12 right-12 h-0.5 bg-[#263044] z-0">
           <div 
             className="h-full bg-gradient-to-r from-[#8B5CF6] via-[#C4B5FD] to-[#34D399] transition-all duration-300"
             style={{ width: `${((currentStep + 1) / 4) * 100}%` }}
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 relative z-10">
           {/* Stage 1 */}
           <div 
             onClick={() => setCurrentStep(0)}
@@ -752,12 +752,12 @@ export const LiveAgentBouncer: React.FC = () => {
 
       {/* Details Box with Interactive Tabs (AST, Live Trace, Cryptographic Proof) */}
       <div className="bg-[#080B14] rounded-xl border border-[#263044] overflow-hidden">
-        {/* Tab Switcher Header */}
-        <div className="flex items-center justify-between border-b border-[#263044] px-4 pt-3 pb-2 bg-[#0D1220]">
-          <div className="flex items-center gap-1 sm:gap-2">
+        {/* Tab Switcher Header - Responsive horizontal scroll container */}
+        <div className="flex items-center justify-between border-b border-[#263044] px-3 sm:px-4 pt-2.5 pb-2 bg-[#0D1220] gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full">
             <button
               onClick={() => setActiveTab('toolCall')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] ${
                 activeTab === 'toolCall'
                   ? 'bg-[#111827] text-[#F8FAFC] border border-[#8B5CF6]/50 shadow-sm'
                   : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
@@ -769,7 +769,7 @@ export const LiveAgentBouncer: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('trace')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] ${
                 activeTab === 'trace'
                   ? 'bg-[#111827] text-[#F8FAFC] border border-[#8B5CF6]/50 shadow-sm'
                   : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
@@ -782,7 +782,7 @@ export const LiveAgentBouncer: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('proof')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] ${
                 activeTab === 'proof'
                   ? 'bg-[#111827] text-[#F8FAFC] border border-[#8B5CF6]/50 shadow-sm'
                   : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
@@ -793,20 +793,21 @@ export const LiveAgentBouncer: React.FC = () => {
             </button>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => handleCopyCode(selectedScenario.toolCall)}
-              className="px-2.5 py-1 rounded bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 text-xs font-mono text-[#A7B0C0] hover:text-[#F8FAFC] flex items-center gap-1 transition-all cursor-pointer"
+              title="Copy Document Text"
+              className="p-2 sm:px-2.5 sm:py-1 rounded-lg bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 text-xs font-mono text-[#A7B0C0] hover:text-[#F8FAFC] flex items-center gap-1 transition-all cursor-pointer min-h-[36px]"
             >
               {copied ? (
                 <>
                   <Check className="w-3 h-3 text-[#34D399]" />
-                  <span className="text-[#34D399]">Copied</span>
+                  <span className="text-[#34D399] hidden sm:inline">Copied</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3 h-3 text-[#A7B0C0]" />
-                  <span>Copy Code</span>
+                  <span className="hidden sm:inline">Copy Code</span>
                 </>
               )}
             </button>

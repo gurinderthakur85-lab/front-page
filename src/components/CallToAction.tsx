@@ -17,7 +17,7 @@ export const CallToAction: React.FC<CTAProps> = ({ onOpenDemo, onOpenRiskAssessm
         </div>
 
         {/* Headline */}
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-5">
+        <h2 className="text-[clamp(1.875rem,5vw+0.5rem,3rem)] font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-5">
           Stop risky AI agent actions{' '}
           <span className="text-[#8B5CF6]">before they happen.</span>
         </h2>
@@ -31,7 +31,7 @@ export const CallToAction: React.FC<CTAProps> = ({ onOpenDemo, onOpenRiskAssessm
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={onOpenDemo}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-sm shadow-xl shadow-[#8B5CF6]/30 hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto min-h-[48px] px-8 py-4 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] text-white font-bold text-sm shadow-xl shadow-[#8B5CF6]/30 hover:shadow-2xl transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
           >
             <span>Book a Demo</span>
             <ArrowRight className="w-4 h-4" />
@@ -39,7 +39,7 @@ export const CallToAction: React.FC<CTAProps> = ({ onOpenDemo, onOpenRiskAssessm
 
           <button
             onClick={onOpenRiskAssessment}
-            className="w-full sm:w-auto px-7 py-4 rounded-xl bg-[#111827] hover:bg-[#172033] text-[#F8FAFC] font-semibold text-sm border border-[#263044] hover:border-[#8B5CF6]/40 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto min-h-[48px] px-7 py-4 rounded-xl bg-[#111827] hover:bg-[#172033] active:scale-[0.98] text-[#F8FAFC] font-semibold text-sm border border-[#263044] hover:border-[#8B5CF6]/40 transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
           >
             <span>Assess Your AI Risk</span>
           </button>

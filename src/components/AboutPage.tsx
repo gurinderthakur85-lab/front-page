@@ -35,22 +35,22 @@ export const AboutPage: React.FC<AboutPageProps> = ({
       <section className="relative pt-16 pb-20 lg:pt-24 lg:pb-28 border-b border-[#263044]/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           {/* Eyebrow Navigation / Badge */}
-          <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
             <button
               onClick={onNavigateHome}
-              className="text-xs font-mono text-[#A7B0C0] hover:text-[#C4B5FD] transition-colors flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111827] border border-[#263044]"
+              className="text-xs font-mono text-[#A7B0C0] hover:text-[#C4B5FD] transition-colors flex items-center gap-1.5 px-3.5 py-2 min-h-[40px] rounded-full bg-[#111827] border border-[#263044] cursor-pointer"
             >
               <span>&larr; Back to Home</span>
             </button>
-            <span className="text-[#263044]">&bull;</span>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold">
+            <span className="text-[#263044] hidden sm:inline">&bull;</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 min-h-[40px] rounded-full bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-[#8B5CF6]" />
               <span>About Sentraa AI</span>
             </div>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[#F8FAFC] leading-[1.15] mb-6">
+          <h1 className="text-[clamp(2.25rem,6vw,3.75rem)] font-extrabold tracking-tight text-[#F8FAFC] leading-[1.15] mb-6">
             Trust Infrastructure for the{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C4B5FD] via-[#8B5CF6] to-[#60A5FA]">
               Autonomous AI Era
@@ -58,14 +58,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           </h1>
 
           {/* Vision Statement Box */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-[#0D1220]/90 border border-[#8B5CF6]/40 shadow-2xl shadow-purple-950/30 max-w-4xl mx-auto backdrop-blur-xl relative overflow-hidden animate-float-slow">
+          <div className="p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-[#0D1220]/90 border border-[#8B5CF6]/40 shadow-2xl shadow-purple-950/30 max-w-4xl mx-auto backdrop-blur-xl relative overflow-hidden animate-float-slow">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B5CF6]/10 rounded-full blur-2xl pointer-events-none" />
             <div className="flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C4B5FD] mb-3">
               <Compass className="w-4 h-4 text-[#8B5CF6]" />
               <span>Our Vision</span>
             </div>
             
-            <p className="text-xl sm:text-2xl font-bold text-white leading-relaxed tracking-tight">
+            <p className="text-lg sm:text-2xl font-bold text-white leading-relaxed tracking-tight">
               &ldquo;To build the trust infrastructure for the autonomous AI era — where every AI agent is visible, every action is governed, and every decision can be trusted.&rdquo;
             </p>
 
@@ -195,10 +195,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             </p>
           </div>
 
-          {/* 3 Principles Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {/* 3 Principles Cards - 1 col on mobile, 2 on tablet portrait, 3 on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {/* Principle 1: Visibility */}
-            <div className="p-8 rounded-3xl bg-[#111827] border border-[#263044] card-hover-lift flex flex-col justify-between group">
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#111827] border border-[#263044] card-hover-lift flex flex-col justify-between group">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#C4B5FD] mb-6 group-hover:scale-110 transition-transform">
                   <Eye className="w-6 h-6 text-[#8B5CF6]" />
@@ -206,7 +206,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 <div className="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold tracking-wider mb-1">
                   Principle 01
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Visibility</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Visibility</h3>
                 <p className="text-xs sm:text-sm text-[#A7B0C0] leading-relaxed">
                   Know every AI system, agent, identity, data flow, and action across the entire enterprise. Eliminate shadow AI and map all agent permission boundaries.
                 </p>
@@ -217,7 +217,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             </div>
 
             {/* Principle 2: Control */}
-            <div className="p-8 rounded-3xl bg-[#111827] border border-[#263044] card-hover-lift flex flex-col justify-between group">
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#111827] border border-[#263044] card-hover-lift flex flex-col justify-between group">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#C4B5FD] mb-6 group-hover:scale-110 transition-transform">
                   <Sliders className="w-6 h-6 text-[#8B5CF6]" />
@@ -225,7 +225,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 <div className="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold tracking-wider mb-1">
                   Principle 02
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Control</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Control</h3>
                 <p className="text-xs sm:text-sm text-[#A7B0C0] leading-relaxed">
                   Define and enforce policies in real time, before risky AI actions happen. Inspect parameters, redact sensitive PII, and apply deterministic spend caps in real time.
                 </p>
@@ -236,7 +236,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             </div>
 
             {/* Principle 3: Trust */}
-            <div className="p-8 rounded-3xl bg-[#111827] border border-[#263044] card-hover-lift flex flex-col justify-between group">
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#111827] border border-[#263044] card-hover-lift flex flex-col justify-between group md:col-span-2 lg:col-span-1">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#C4B5FD] mb-6 group-hover:scale-110 transition-transform">
                   <ShieldCheck className="w-6 h-6 text-[#8B5CF6]" />
@@ -244,7 +244,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
                 <div className="text-[11px] font-mono text-[#8B5CF6] uppercase font-bold tracking-wider mb-1">
                   Principle 03
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Trust</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Trust</h3>
                 <p className="text-xs sm:text-sm text-[#A7B0C0] leading-relaxed">
                   Make AI accountable, auditable, and secure enough to operate at enterprise scale. Continuously map evidence to GDPR, DPDP, HIPAA, and NIST AI RMF.
                 </p>
@@ -256,7 +256,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           </div>
 
           {/* Infrastructure Commitment Banner */}
-          <div className="p-8 rounded-3xl bg-gradient-to-r from-[#111827] via-[#0D1220] to-[#111827] border border-[#8B5CF6]/30 text-center max-w-3xl mx-auto shadow-xl">
+          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#111827] via-[#0D1220] to-[#111827] border border-[#8B5CF6]/30 text-center max-w-3xl mx-auto shadow-xl">
             <p className="text-sm sm:text-base text-[#A7B0C0] leading-relaxed mb-3">
               Sentraa AI is not built to slow AI down.
             </p>
@@ -277,17 +277,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             See how Sentraa AI sits in front of every agent to guarantee safety, privacy, and regulatory compliance.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
             <button
               onClick={onOpenDemo}
-              className="px-6 py-3 text-xs font-semibold text-white bg-[#8B5CF6] hover:bg-[#7C3AED] rounded-xl transition-all shadow-lg shadow-[#8B5CF6]/25 hover:shadow-xl hover:shadow-[#8B5CF6]/40 flex items-center gap-2"
+              className="w-full sm:w-auto min-h-[44px] px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] rounded-xl transition-all shadow-lg shadow-[#8B5CF6]/25 hover:shadow-xl hover:shadow-[#8B5CF6]/40 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Book an Enterprise Walkthrough</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={onOpenContact}
-              className="px-6 py-3 text-xs font-semibold text-[#F8FAFC] bg-[#111827] hover:bg-[#172033] border border-[#263044] rounded-xl transition-all"
+              className="w-full sm:w-auto min-h-[44px] px-6 py-3 text-xs sm:text-sm font-semibold text-[#F8FAFC] bg-[#111827] hover:bg-[#172033] active:scale-[0.98] border border-[#263044] rounded-xl transition-all cursor-pointer"
             >
               Contact Our Solutions Team
             </button>
