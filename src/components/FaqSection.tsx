@@ -36,11 +36,11 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="py-20 lg:py-28 bg-[#080B14] border-b border-[#263044]">
+    <section id="faqs" className="py-20 lg:py-28 bg-[#07080E] border-b border-[#1E2338]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6100FF]/10 border border-[#6100FF]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Frequently Asked Questions</span>
           </div>
@@ -63,8 +63,8 @@ export const FaqSection: React.FC = () => {
                 key={idx}
                 className={`rounded-xl border transition-all overflow-hidden ${
                   isOpen
-                    ? 'bg-[#111827] border-[#8B5CF6]/60 shadow-lg'
-                    : 'bg-[#111827]/60 border-[#263044] hover:border-[#8B5CF6]/40'
+                    ? 'bg-[#10121F] border-[#6100FF]/60 shadow-lg'
+                    : 'bg-[#10121F]/60 border-[#1E2338] hover:border-[#6100FF]/40'
                 }`}
               >
                 <button
@@ -76,14 +76,14 @@ export const FaqSection: React.FC = () => {
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#8B5CF6] shrink-0 transition-transform duration-200 ${
+                    className={`w-4 h-4 text-[#6100FF] shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#A7B0C0] leading-relaxed border-t border-[#263044]/60">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#A7B0C0] leading-relaxed border-t border-[#1E2338]/60">
                     {faq.a}
                   </div>
                 )}

@@ -49,11 +49,11 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl rounded-2xl bg-[#0D1220] border border-[#263044] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
+      <div className="relative w-full max-w-2xl rounded-2xl bg-[#0C0E17] border border-[#1E2338] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6100FF]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -62,7 +62,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         {/* Modal Header */}
         <div className="mb-6 pr-8 sm:pr-0">
           <div className="flex items-center gap-2 mb-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
+            <span className="px-2.5 py-0.5 rounded-full bg-[#6100FF]/15 text-[#C4B5FD] border border-[#6100FF]/30 text-[10px] font-mono uppercase font-bold">
               SECURITY ASSESSMENT HUB
             </span>
             <span className="text-xs text-[#A7B0C0] font-mono">Step {step} of 4</span>
@@ -76,9 +76,9 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full h-1 bg-[#111827] rounded-full mb-6 overflow-hidden">
+        <div className="w-full h-1 bg-[#10121F] rounded-full mb-6 overflow-hidden">
           <div 
-            className="h-full bg-[#8B5CF6] transition-all duration-300"
+            className="h-full bg-[#6100FF] transition-all duration-300"
             style={{ width: `${(step / 4) * 100}%` }}
           />
         </div>
@@ -103,13 +103,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
                     onClick={() => toggleItem('agentTypes', opt.id)}
                     className={`p-3.5 rounded-xl border text-left transition-all ${
                       selected
-                        ? 'bg-[#111827] border-[#8B5CF6] text-white ring-1 ring-[#8B5CF6]/50'
-                        : 'bg-[#111827]/60 border-[#263044] text-[#A7B0C0] hover:bg-[#111827]'
+                        ? 'bg-[#10121F] border-[#6100FF] text-white ring-1 ring-[#6100FF]/50'
+                        : 'bg-[#10121F]/60 border-[#1E2338] text-[#A7B0C0] hover:bg-[#10121F]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-bold text-[#F8FAFC]">{opt.id}</span>
-                      {selected && <Check className="w-4 h-4 text-[#8B5CF6]" />}
+                      {selected && <Check className="w-4 h-4 text-[#6100FF]" />}
                     </div>
                     <p className="text-[11px] text-[#A7B0C0] leading-tight">{opt.desc}</p>
                   </button>
@@ -119,7 +119,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex justify-end pt-4">
               <button
                 onClick={() => setStep(2)}
-                className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
+                className="px-5 py-2.5 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -148,13 +148,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
                     onClick={() => toggleItem('dataSources', opt.id)}
                     className={`p-3.5 rounded-xl border text-left transition-all ${
                       selected
-                        ? 'bg-[#111827] border-[#8B5CF6] text-white ring-1 ring-[#8B5CF6]/50'
-                        : 'bg-[#111827]/60 border-[#263044] text-[#A7B0C0] hover:bg-[#111827]'
+                        ? 'bg-[#10121F] border-[#6100FF] text-white ring-1 ring-[#6100FF]/50'
+                        : 'bg-[#10121F]/60 border-[#1E2338] text-[#A7B0C0] hover:bg-[#10121F]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-bold text-[#F8FAFC]">{opt.id}</span>
-                      {selected && <Check className="w-4 h-4 text-[#8B5CF6]" />}
+                      {selected && <Check className="w-4 h-4 text-[#6100FF]" />}
                     </div>
                     <p className="text-[11px] text-[#A7B0C0] leading-tight">{opt.desc}</p>
                   </button>
@@ -164,13 +164,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex justify-between pt-4">
               <button
                 onClick={() => setStep(1)}
-                className="px-4 py-2.5 rounded-xl bg-[#111827] text-[#A7B0C0] hover:text-white text-xs font-semibold"
+                className="px-4 py-2.5 rounded-xl bg-[#10121F] text-[#A7B0C0] hover:text-white text-xs font-semibold"
               >
                 Back
               </button>
               <button
                 onClick={() => setStep(3)}
-                className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
+                className="px-5 py-2.5 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] text-white text-xs font-bold flex items-center gap-1.5 transition-colors"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -198,13 +198,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
                     onClick={() => setSelections({ ...selections, autonomyLevel: lvl.id })}
                     className={`w-full p-3.5 rounded-xl border text-left transition-all ${
                       selected
-                        ? 'bg-[#111827] border-[#8B5CF6] text-white ring-1 ring-[#8B5CF6]/50'
-                        : 'bg-[#111827]/60 border-[#263044] text-[#A7B0C0] hover:bg-[#111827]'
+                        ? 'bg-[#10121F] border-[#6100FF] text-white ring-1 ring-[#6100FF]/50'
+                        : 'bg-[#10121F]/60 border-[#1E2338] text-[#A7B0C0] hover:bg-[#10121F]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-bold text-[#F8FAFC]">{lvl.id}</span>
-                      {selected && <Check className="w-4 h-4 text-[#8B5CF6]" />}
+                      {selected && <Check className="w-4 h-4 text-[#6100FF]" />}
                     </div>
                     <p className="text-[11px] text-[#A7B0C0] leading-tight">{lvl.desc}</p>
                   </button>
@@ -214,13 +214,13 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex justify-between pt-4">
               <button
                 onClick={() => setStep(2)}
-                className="px-4 py-2.5 rounded-xl bg-[#111827] text-[#A7B0C0] hover:text-white text-xs font-semibold"
+                className="px-4 py-2.5 rounded-xl bg-[#10121F] text-[#A7B0C0] hover:text-white text-xs font-semibold"
               >
                 Back
               </button>
               <button
                 onClick={() => setStep(4)}
-                className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-bold flex items-center gap-1.5 shadow-lg"
+                className="px-5 py-2.5 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] text-white text-xs font-bold flex items-center gap-1.5 shadow-lg"
               >
                 <span>Calculate Posture Score</span>
                 <Sparkles className="w-3.5 h-3.5" />
@@ -232,7 +232,7 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
         {/* Step 4: Results */}
         {step === 4 && (
           <div className="space-y-6 animate-in fade-in duration-200">
-            <div className="p-5 rounded-xl bg-[#111827] border border-[#263044] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-5 rounded-xl bg-[#10121F] border border-[#1E2338] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <span className="text-[11px] font-mono uppercase text-[#A7B0C0] tracking-wider">
                   Computed Enterprise Posture Score
@@ -250,17 +250,17 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
               </div>
               <div className="text-right">
                 <span className="text-xs text-[#A7B0C0] block">Recommended Action:</span>
-                <span className="text-xs font-bold text-[#34D399] font-mono">Deploy In-Line Pre-Execution Gate</span>
+                <span className="text-xs font-bold text-[#00F5A0] font-mono">Deploy In-Line Pre-Execution Gate</span>
               </div>
             </div>
 
             <div className="space-y-2 text-xs text-[#A7B0C0]">
-              <div className="p-3 rounded-lg bg-[#080B14] border border-[#263044] flex items-center gap-2">
+              <div className="p-3 rounded-lg bg-[#07080E] border border-[#1E2338] flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-[#F87171] shrink-0" />
                 <span>Detected risk of prompt injection exfiltration via connected database connectors.</span>
               </div>
-              <div className="p-3 rounded-lg bg-[#080B14] border border-[#263044] flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#34D399] shrink-0" />
+              <div className="p-3 rounded-lg bg-[#07080E] border border-[#1E2338] flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#00F5A0] shrink-0" />
                 <span>Sentraa AI can enforce dynamic PII masking and spend limits with 0ms interruption to agents.</span>
               </div>
             </div>
@@ -268,14 +268,14 @@ export const RiskModal: React.FC<RiskModalProps> = ({ isOpen, onClose, onOpenDem
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
                 onClick={onOpenDemo}
-                className="w-full py-3 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2"
               >
                 <span>Book a Demo to Remediate</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setStep(1)}
-                className="w-full sm:w-auto px-4 py-3 rounded-xl bg-[#111827] text-[#A7B0C0] hover:text-white border border-[#263044] text-xs font-semibold transition-colors"
+                className="w-full sm:w-auto px-4 py-3 rounded-xl bg-[#10121F] text-[#A7B0C0] hover:text-white border border-[#1E2338] text-xs font-semibold transition-colors"
               >
                 Recalculate
               </button>

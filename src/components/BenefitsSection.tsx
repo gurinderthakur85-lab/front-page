@@ -19,7 +19,7 @@ export const BenefitsSection: React.FC = () => {
         'Automatic PII & API key redaction',
         'Blast-radius containment for compromised agents'
       ],
-      icon: <Lock className="w-5 h-5 text-[#8B5CF6]" />
+      icon: <Lock className="w-5 h-5 text-[#6100FF]" />
     },
     {
       role: 'For Compliance & Risk Officers',
@@ -30,7 +30,7 @@ export const BenefitsSection: React.FC = () => {
         'NIST AI RMF 1.0 continuous alignment',
         'One-click verifiable compliance exports'
       ],
-      icon: <Scale className="w-5 h-5 text-[#34D399]" />
+      icon: <Scale className="w-5 h-5 text-[#00F5A0]" />
     },
     {
       role: 'For Business & Executive Leaders',
@@ -52,7 +52,7 @@ export const BenefitsSection: React.FC = () => {
         'Compatible with LangChain, Bedrock, CrewAI, and MCP',
         'Real-time fail-closed execution performance'
       ],
-      icon: <Cpu className="w-5 h-5 text-[#8B5CF6]" />
+      icon: <Cpu className="w-5 h-5 text-[#6100FF]" />
     }
   ];
 
@@ -127,11 +127,11 @@ export const BenefitsSection: React.FC = () => {
   ];
 
   return (
-    <section id="use-cases" className="py-20 lg:py-28 bg-[#0D1220] border-b border-[#263044] relative">
+    <section id="use-cases" className="py-20 lg:py-28 bg-[#0C0E17] border-b border-[#1E2338] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6100FF]/10 border border-[#6100FF]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
             <Users className="w-3.5 h-3.5" />
             <span>Who Benefits &amp; Ecosystem</span>
           </div>
@@ -150,14 +150,14 @@ export const BenefitsSection: React.FC = () => {
           {BENEFICIARIES.map((item, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-7 rounded-2xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 card-hover-lift flex flex-col justify-between"
+              className="p-6 sm:p-7 rounded-2xl bg-[#10121F] border border-[#1E2338] hover:border-[#6100FF]/50 card-hover-lift flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#8B5CF6] font-semibold">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#6100FF] font-semibold">
                     {item.role}
                   </span>
-                  <div className="p-2.5 rounded-xl bg-[#080B14] border border-[#263044]">
+                  <div className="p-2.5 rounded-xl bg-[#07080E] border border-[#1E2338]">
                     {item.icon}
                   </div>
                 </div>
@@ -171,10 +171,10 @@ export const BenefitsSection: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#263044] space-y-2">
+              <div className="pt-4 border-t border-[#1E2338] space-y-2">
                 {item.outcomes.map((out, oIdx) => (
                   <div key={oIdx} className="flex items-center gap-2 text-xs sm:text-sm text-[#F8FAFC]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00F5A0] shrink-0" />
                     <span>{out}</span>
                   </div>
                 ))}
@@ -184,7 +184,7 @@ export const BenefitsSection: React.FC = () => {
         </div>
 
         {/* Supported AI Ecosystem & Platforms */}
-        <div className="rounded-2xl sm:rounded-3xl bg-[#111827] border border-[#263044] p-4 sm:p-6 lg:p-10 shadow-xl">
+        <div className="rounded-2xl sm:rounded-3xl bg-[#10121F] border border-[#1E2338] p-4 sm:p-6 lg:p-10 shadow-xl">
           <div className="text-center mb-6 sm:mb-8">
             <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-[#A7B0C0]">
               Protecting and governing agents across your current technology stack
@@ -195,7 +195,7 @@ export const BenefitsSection: React.FC = () => {
             {INTEGRATIONS.map((item, idx) => (
               <div 
                 key={idx} 
-                className="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left gap-2 sm:gap-3.5 p-3.5 sm:py-5 sm:px-4 rounded-xl sm:rounded-2xl bg-[#080B14] border border-[#263044] hover:border-[#8B5CF6]/50 hover:bg-[#0E1528] transition-all shadow-md hover:shadow-xl hover:shadow-[#8B5CF6]/15 group cursor-default"
+                className="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left gap-2 sm:gap-3.5 p-3.5 sm:py-5 sm:px-4 rounded-xl sm:rounded-2xl bg-[#07080E] border border-[#1E2338] hover:border-[#6100FF]/50 hover:bg-[#0E1528] transition-all shadow-md hover:shadow-xl hover:shadow-[#6100FF]/15 group cursor-default"
               >
                 <div className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                   {item.icon}

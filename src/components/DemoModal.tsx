@@ -35,10 +35,10 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#0C0E17] border border-[#1E2338] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6100FF]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -47,7 +47,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
         {!submitted ? (
           <div>
             <div className="mb-6 pr-8 sm:pr-0">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#6100FF]/15 text-[#C4B5FD] border border-[#6100FF]/30 text-[10px] font-mono uppercase font-bold">
                 EXPERIENCE PRE-EXECUTION GOVERNANCE
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] mt-2">
@@ -70,7 +70,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                     placeholder="e.g. Jordan Varma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                    className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                   />
                 </div>
               </div>
@@ -86,7 +86,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                     placeholder="jordan@enterprise.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                    className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                   />
                 </div>
               </div>
@@ -103,7 +103,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                       placeholder="Acme Corp"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                      className="w-full pl-9 pr-3 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                     />
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                   <select
                     value={formData.agentCount}
                     onChange={(e) => setFormData({ ...formData, agentCount: e.target.value })}
-                    className="w-full px-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
+                    className="w-full px-3 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] focus:outline-none focus:border-[#6100FF]"
                   >
                     <option value="1-10">1 – 10 AI Agents</option>
                     <option value="10-50">10 – 50 AI Agents</option>
@@ -128,7 +128,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                 <select
                   value={formData.primaryFramework}
                   onChange={(e) => setFormData({ ...formData, primaryFramework: e.target.value })}
-                  className="w-full px-3 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] focus:outline-none focus:border-[#6100FF]"
                 >
                   <option value="LangChain / CrewAI">LangChain / CrewAI</option>
                   <option value="AWS Bedrock / Azure AI">AWS Bedrock / Azure AI</option>
@@ -144,13 +144,13 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                   placeholder="e.g. GDPR & DPDP compliance, preventing prompt injection, DLP for databases..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full min-h-[48px] py-3.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+                className="w-full min-h-[48px] py-3.5 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#6100FF]"
               >
                 <span>Confirm Demo Request</span>
                 <ArrowRight className="w-4 h-4" />
@@ -178,15 +178,15 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
           </div>
         ) : (
           <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-2xl bg-[#34D399]/20 border border-[#34D399]/30 text-[#34D399] flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-2xl bg-[#00F5A0]/20 border border-[#00F5A0]/30 text-[#00F5A0] flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h4 className="text-2xl font-bold text-[#F8FAFC]">Demo Request Received</h4>
             <p className="text-xs text-[#A7B0C0] max-w-sm mx-auto leading-relaxed">
               Thanks, <strong>{formData.name}</strong>! We&apos;ve scheduled a customized 30-minute walkthrough for <strong>{formData.company}</strong>. A calendar invite has been dispatched to <strong>{formData.email}</strong>.
             </p>
-            <div className="p-4 rounded-xl bg-[#111827] border border-[#263044] text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
-              <div className="text-[#34D399] font-bold">✓ Dedicated Solutions Engineer Assigned</div>
+            <div className="p-4 rounded-xl bg-[#10121F] border border-[#1E2338] text-xs text-left max-w-sm mx-auto space-y-1.5 font-mono">
+              <div className="text-[#00F5A0] font-bold">✓ Dedicated Solutions Engineer Assigned</div>
               <div className="text-[#A7B0C0]">✓ Stack: {formData.primaryFramework}</div>
               <div className="text-[#A7B0C0]">✓ Fleet size: {formData.agentCount}</div>
             </div>
@@ -195,7 +195,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, onOpenLeg
                 setSubmitted(false);
                 onClose();
               }}
-              className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold transition-colors cursor-pointer"
+              className="px-6 py-2.5 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] text-white text-xs font-semibold transition-colors cursor-pointer"
             >
               Done
             </button>

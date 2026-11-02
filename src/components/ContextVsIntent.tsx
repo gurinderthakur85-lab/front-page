@@ -48,11 +48,11 @@ export const ContextVsIntent: React.FC = () => {
   ];
 
   return (
-    <section id="comparison" className="py-20 lg:py-24 bg-[#080B14] border-b border-[#263044]">
+    <section id="comparison" className="py-20 lg:py-24 bg-[#07080E] border-b border-[#1E2338]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6100FF]/10 border border-[#6100FF]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
             <Layers className="w-3.5 h-3.5" />
             <span>Architecture Insight</span>
           </div>
@@ -71,7 +71,7 @@ export const ContextVsIntent: React.FC = () => {
           {COMPARISONS.map((item, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-[#111827] border border-[#263044] flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-[#10121F] border border-[#1E2338] flex flex-col justify-between"
             >
               <div>
                 <span className="text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider block mb-1">
@@ -85,8 +85,8 @@ export const ContextVsIntent: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-[#263044]">
-                <div className="text-[10px] font-mono text-[#8B5CF6] uppercase font-bold mb-1">
+              <div className="pt-3 border-t border-[#1E2338]">
+                <div className="text-[10px] font-mono text-[#6100FF] uppercase font-bold mb-1">
                   Sentraa AI Advantage:
                 </div>
                 <p className="text-xs text-[#F8FAFC] leading-relaxed font-medium">
@@ -101,17 +101,17 @@ export const ContextVsIntent: React.FC = () => {
         <div className="text-center pt-2">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#111827] hover:bg-[#141D30] border border-[#263044] hover:border-[#8B5CF6]/60 text-sm font-bold text-[#F8FAFC] transition-all cursor-pointer shadow-lg"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#10121F] hover:bg-[#141D30] border border-[#1E2338] hover:border-[#6100FF]/60 text-sm font-bold text-[#F8FAFC] transition-all cursor-pointer shadow-lg"
             aria-expanded={expanded}
           >
             <span>{expanded ? 'Hide Technical Comparison Matrix' : 'Compare platform capabilities in detail'}</span>
-            <ChevronDown className={`w-4 h-4 text-[#8B5CF6] transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-4 h-4 text-[#6100FF] transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
           </button>
         </div>
 
         {/* Expandable Table */}
         {expanded && (
-          <div className="mt-8 rounded-2xl bg-[#111827] border border-[#263044] p-4 sm:p-7 lg:p-8 shadow-2xl">
+          <div className="mt-8 rounded-2xl bg-[#10121F] border border-[#1E2338] p-4 sm:p-7 lg:p-8 shadow-2xl">
             <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
                 <h4 className="text-xl sm:text-2xl font-extrabold text-[#F8FAFC] tracking-tight">
@@ -121,7 +121,7 @@ export const ContextVsIntent: React.FC = () => {
                   Comparing traditional cybersecurity approaches against Sentraa AI's pre-execution inline architecture.
                 </p>
               </div>
-              <div className="sm:hidden inline-flex items-center gap-1.5 text-xs text-[#C4B5FD] font-mono bg-[#080B14] px-2.5 py-1 rounded-lg border border-[#263044] self-start">
+              <div className="sm:hidden inline-flex items-center gap-1.5 text-xs text-[#C4B5FD] font-mono bg-[#07080E] px-2.5 py-1 rounded-lg border border-[#1E2338] self-start">
                 <span>&larr; Scroll horizontally &rarr;</span>
               </div>
             </div>
@@ -129,7 +129,7 @@ export const ContextVsIntent: React.FC = () => {
             <div className="overflow-x-auto -mx-1 sm:mx-0 pb-2">
               <table className="w-full text-left border-collapse min-w-[720px]">
               <thead>
-                <tr className="border-b-2 border-[#263044]">
+                <tr className="border-b-2 border-[#1E2338]">
                   <th className="py-4 px-4 text-sm sm:text-base font-extrabold text-[#F8FAFC] uppercase tracking-wider font-mono">
                     Platform Capability
                   </th>
@@ -145,12 +145,12 @@ export const ContextVsIntent: React.FC = () => {
                   <th className="py-4 px-3 text-center text-sm sm:text-base font-extrabold text-[#CBD5E1] uppercase tracking-wider font-mono">
                     AI Gateway
                   </th>
-                  <th className="py-4 px-5 text-center bg-[#8B5CF6]/20 text-[#C4B5FD] text-base sm:text-lg font-extrabold uppercase tracking-wider font-mono rounded-t-xl border-t-2 border-x-2 border-[#8B5CF6]/50 shadow-inner">
+                  <th className="py-4 px-5 text-center bg-[#6100FF]/20 text-[#C4B5FD] text-base sm:text-lg font-extrabold uppercase tracking-wider font-mono rounded-t-xl border-t-2 border-x-2 border-[#6100FF]/50 shadow-inner">
                     Sentraa AI
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#263044]/80">
+              <tbody className="divide-y divide-[#1E2338]/80">
                 {MATRIX.map((row, idx) => {
                   const isLastRow = idx === MATRIX.length - 1;
                   return (
@@ -163,11 +163,11 @@ export const ContextVsIntent: React.FC = () => {
                       {/* DSPM */}
                       <td className="py-4 px-3 text-center">
                         {row.dspm === true ? (
-                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                          <Check className="w-5 h-5 text-[#00F5A0] mx-auto stroke-[3]" />
                         ) : row.dspm === false ? (
                           <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
                         ) : (
-                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                          <span className="px-2.5 py-1 rounded bg-[#07080E] border border-[#1E2338] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
                             {row.dspm}
                           </span>
                         )}
@@ -176,11 +176,11 @@ export const ContextVsIntent: React.FC = () => {
                       {/* IAM */}
                       <td className="py-4 px-3 text-center">
                         {row.iam === true ? (
-                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                          <Check className="w-5 h-5 text-[#00F5A0] mx-auto stroke-[3]" />
                         ) : row.iam === false ? (
                           <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
                         ) : (
-                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                          <span className="px-2.5 py-1 rounded bg-[#07080E] border border-[#1E2338] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
                             {row.iam}
                           </span>
                         )}
@@ -189,11 +189,11 @@ export const ContextVsIntent: React.FC = () => {
                       {/* EDR */}
                       <td className="py-4 px-3 text-center">
                         {row.edr === true ? (
-                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                          <Check className="w-5 h-5 text-[#00F5A0] mx-auto stroke-[3]" />
                         ) : row.edr === false ? (
                           <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
                         ) : (
-                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                          <span className="px-2.5 py-1 rounded bg-[#07080E] border border-[#1E2338] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
                             {row.edr}
                           </span>
                         )}
@@ -202,23 +202,23 @@ export const ContextVsIntent: React.FC = () => {
                       {/* AI Gateway */}
                       <td className="py-4 px-3 text-center">
                         {row.gateway === true ? (
-                          <Check className="w-5 h-5 text-[#34D399] mx-auto stroke-[3]" />
+                          <Check className="w-5 h-5 text-[#00F5A0] mx-auto stroke-[3]" />
                         ) : row.gateway === false ? (
                           <X className="w-5 h-5 text-[#475569] mx-auto stroke-[2.5]" />
                         ) : (
-                          <span className="px-2.5 py-1 rounded bg-[#080B14] border border-[#263044] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
+                          <span className="px-2.5 py-1 rounded bg-[#07080E] border border-[#1E2338] text-xs sm:text-sm font-bold text-[#CBD5E1] font-mono inline-block">
                             {row.gateway}
                           </span>
                         )}
                       </td>
 
                       {/* Sentraa AI Highlighted Column */}
-                      <td className={`py-4 px-5 text-center bg-[#8B5CF6]/15 border-x-2 border-[#8B5CF6]/40 ${
-                        isLastRow ? 'rounded-b-xl border-b-2 border-[#8B5CF6]/50' : ''
+                      <td className={`py-4 px-5 text-center bg-[#6100FF]/15 border-x-2 border-[#6100FF]/40 ${
+                        isLastRow ? 'rounded-b-xl border-b-2 border-[#6100FF]/50' : ''
                       }`}>
                         <div className="flex items-center justify-center gap-1.5">
-                          <Check className="w-5 h-5 text-[#34D399] stroke-[3]" />
-                          <span className="text-sm sm:text-base font-extrabold text-[#34D399] tracking-wide">
+                          <Check className="w-5 h-5 text-[#00F5A0] stroke-[3]" />
+                          <span className="text-sm sm:text-base font-extrabold text-[#00F5A0] tracking-wide">
                             Supported
                           </span>
                         </div>

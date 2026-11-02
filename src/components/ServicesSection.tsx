@@ -24,7 +24,7 @@ export const ServicesSection: React.FC = () => {
         'Detects hidden LangChain bots, Slack integrations, and MCP agents',
         'Maps agent dependencies and permission blast-radius'
       ],
-      icon: <Eye className="w-5 h-5 text-[#8B5CF6]" />,
+      icon: <Eye className="w-5 h-5 text-[#6100FF]" />,
       image: '/screenshots/dashboard/agents.png',
       imageAlt: 'AI Discovery & Agent Inventory Dashboard'
     },
@@ -40,7 +40,7 @@ export const ServicesSection: React.FC = () => {
         'Automatic PII & credential redaction before data reaches the model',
         'Custom spending limits and human-in-the-loop escalation'
       ],
-      icon: <Sliders className="w-5 h-5 text-[#8B5CF6]" />,
+      icon: <Sliders className="w-5 h-5 text-[#6100FF]" />,
       image: '/screenshots/dashboard/policies-guardrails.png',
       imageAlt: 'Policy Controls and Guardrail Configuration'
     },
@@ -56,7 +56,7 @@ export const ServicesSection: React.FC = () => {
         'Direct compliance mapping to GDPR, DPDP, HIPAA, and NIST AI RMF',
         'Cryptographically signed, tamper-proof audit trails for external reviews'
       ],
-      icon: <ShieldCheck className="w-5 h-5 text-[#8B5CF6]" />,
+      icon: <ShieldCheck className="w-5 h-5 text-[#6100FF]" />,
       image: '/screenshots/dashboard/compliance.png',
       imageAlt: 'Automated Multi-Framework Compliance Hub'
     }
@@ -65,20 +65,20 @@ export const ServicesSection: React.FC = () => {
   const current = CAPABILITIES[activeTab];
 
   return (
-    <section id="capabilities" className="py-20 lg:py-28 bg-[#0D1220] border-b border-[#263044] relative">
+    <section id="capabilities" className="py-20 lg:py-28 bg-[#07080E] border-b border-[#1E2338] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#C4B5FD] text-xs font-semibold mb-4">
-            <Layers className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6100FF]/15 border border-[#6100FF]/30 text-[#DDD6FE] text-xs font-semibold mb-4 shadow-sm shadow-[#6100FF]/15">
+            <Layers className="w-3.5 h-3.5 text-[#6100FF]" />
             <span>Core Capabilities</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#FFFFFF] tracking-tight leading-tight mb-4">
             Three core capabilities. One unified platform.
           </h2>
 
-          <p className="text-base text-[#A7B0C0] leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base text-[#94A3B8] leading-relaxed max-w-2xl mx-auto">
             Everything your security, compliance, and engineering teams need to discover, control, and monitor AI agents safely.
           </p>
         </div>
@@ -91,23 +91,23 @@ export const ServicesSection: React.FC = () => {
               <button
                 key={cap.id}
                 onClick={() => setActiveTab(idx)}
-                className={`text-left p-5 rounded-2xl transition-all duration-200 border flex items-start gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] active:scale-[0.99] ${
+                className={`text-left p-5 rounded-2xl transition-all duration-200 border flex items-start gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6100FF] active:scale-[0.99] ${
                   isSelected
-                    ? 'bg-[#111827] border-[#8B5CF6] shadow-lg shadow-black/40 ring-1 ring-[#8B5CF6]/50'
-                    : 'bg-[#111827]/60 border-[#263044] hover:bg-[#111827] hover:border-[#8B5CF6]/40'
+                    ? 'bg-[#10121F] border-[#6100FF] shadow-lg shadow-black/50 ring-1 ring-[#6100FF]/50 shadow-[0_0_25px_rgba(97,0,255,0.2)]'
+                    : 'bg-[#10121F]/60 border-[#1E2338] hover:bg-[#10121F] hover:border-[#6100FF]/40'
                 }`}
               >
-                <div className={`p-2.5 rounded-xl border shrink-0 ${isSelected ? 'bg-[#8B5CF6]/20 border-[#8B5CF6]/40 text-[#C4B5FD]' : 'bg-[#080B14] border-[#263044] text-[#A7B0C0]'}`}>
+                <div className={`p-2.5 rounded-xl border shrink-0 ${isSelected ? 'bg-[#6100FF]/20 border-[#6100FF]/40 text-[#C4B5FD]' : 'bg-[#07080E] border-[#1E2338] text-[#94A3B8]'}`}>
                   {cap.icon}
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono uppercase text-[#A7B0C0] mb-0.5">
+                  <div className="text-[11px] font-mono uppercase text-[#94A3B8] mb-0.5">
                     {cap.badge}
                   </div>
-                  <div className="text-base font-bold text-[#F8FAFC]">
+                  <div className="text-base font-bold text-[#FFFFFF]">
                     {cap.title}
                   </div>
-                  <div className="text-xs sm:text-sm text-[#A7B0C0] mt-1 line-clamp-2">
+                  <div className="text-xs sm:text-sm text-[#94A3B8] mt-1 line-clamp-2">
                     {cap.headline}
                   </div>
                 </div>
@@ -117,25 +117,25 @@ export const ServicesSection: React.FC = () => {
         </div>
 
         {/* Active Capability Showcase Box */}
-        <div className="rounded-2xl bg-[#111827] border border-[#263044] p-5 sm:p-7 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="rounded-2xl bg-[#10121F] border border-[#1E2338] p-5 sm:p-7 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-xl">
           {/* Left Text Column */}
           <div className="lg:col-span-5 space-y-5">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#8B5CF6] font-bold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#6100FF] font-bold">
               {current.badge}
             </span>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight leading-snug">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#FFFFFF] tracking-tight leading-snug">
               {current.headline}
             </h3>
 
-            <p className="text-sm text-[#A7B0C0] leading-relaxed">
+            <p className="text-sm text-[#94A3B8] leading-relaxed">
               {current.summary}
             </p>
 
             <div className="space-y-3 pt-2">
               {current.points.map((pt, pIdx) => (
-                <div key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F8FAFC]">
-                  <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
+                <div key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#FFFFFF]">
+                  <CheckCircle2 className="w-4 h-4 text-[#00F5A0] shrink-0 mt-0.5" />
                   <span>{pt}</span>
                 </div>
               ))}
@@ -144,7 +144,7 @@ export const ServicesSection: React.FC = () => {
             <div className="pt-2">
               <a
                 href="#simulator"
-                className="inline-flex items-center gap-2 min-h-[44px] py-2 text-xs sm:text-sm font-semibold text-[#C4B5FD] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 min-h-[44px] py-2 text-xs sm:text-sm font-semibold text-[#C4B5FD] hover:text-[#FFFFFF] transition-colors"
               >
                 <span>Try interactive simulator below</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -154,12 +154,12 @@ export const ServicesSection: React.FC = () => {
 
           {/* Right Preview Graphic */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl border border-[#263044] bg-[#0D1220] p-1.5 sm:p-2 shadow-2xl">
-              <div className="flex items-center justify-between px-3.5 py-2 border-b border-[#263044] bg-[#080B14] rounded-t-xl text-xs text-[#A7B0C0] mb-1.5">
-                <span className="font-mono text-[11px] text-[#F8FAFC] truncate">{current.imageAlt}</span>
-                <span className="text-[#34D399] text-[10px] font-mono font-semibold shrink-0">LIVE TELEMETRY</span>
+            <div className="rounded-2xl border border-[#1E2338] bg-[#0C0E17] p-1.5 sm:p-2 shadow-2xl">
+              <div className="flex items-center justify-between px-3.5 py-2 border-b border-[#1E2338] bg-[#07080E] rounded-t-xl text-xs text-[#94A3B8] mb-1.5">
+                <span className="font-mono text-[11px] text-[#FFFFFF] truncate">{current.imageAlt}</span>
+                <span className="text-[#00F5A0] text-[10px] font-mono font-semibold shrink-0">LIVE TELEMETRY</span>
               </div>
-              <div className="rounded-xl overflow-hidden border border-[#263044]/60 bg-[#080B14]">
+              <div className="rounded-xl overflow-hidden border border-[#1E2338]/60 bg-[#07080E]">
                 <img 
                   src={current.image} 
                   alt={current.imageAlt} 

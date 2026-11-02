@@ -21,10 +21,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-2xl bg-[#0D1220] border border-[#263044] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
+      <div className="relative w-full max-w-lg rounded-2xl bg-[#0C0E17] border border-[#1E2338] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[min(92dvh,calc(100dvh-2rem))] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#A7B0C0] hover:text-white transition-colors cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6100FF]"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -33,7 +33,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
         {!submitted ? (
           <div>
             <div className="mb-6 pr-8 sm:pr-0">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#8B5CF6]/15 text-[#C4B5FD] border border-[#8B5CF6]/30 text-[10px] font-mono uppercase font-bold">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#6100FF]/15 text-[#C4B5FD] border border-[#6100FF]/30 text-[10px] font-mono uppercase font-bold">
                 CONNECT WITH OUR TEAM
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] mt-2">
@@ -48,16 +48,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
               <a
                 href="mailto:support@sentraatech.com"
-                className="p-3 min-h-[44px] rounded-xl bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/40 transition-colors flex items-center gap-2.5 text-xs sm:text-sm text-[#A7B0C0] hover:text-[#F8FAFC]"
+                className="p-3 min-h-[44px] rounded-xl bg-[#10121F] border border-[#1E2338] hover:border-[#6100FF]/40 transition-colors flex items-center gap-2.5 text-xs sm:text-sm text-[#A7B0C0] hover:text-[#F8FAFC]"
               >
-                <Mail className="w-4 h-4 text-[#8B5CF6] shrink-0" />
+                <Mail className="w-4 h-4 text-[#6100FF] shrink-0" />
                 <span className="truncate">support@sentraatech.com</span>
               </a>
               <a
                 href="tel:+916309624519"
-                className="p-3 min-h-[44px] rounded-xl bg-[#111827] border border-[#263044] hover:border-[#34D399]/40 transition-colors flex items-center gap-2.5 text-xs sm:text-sm text-[#A7B0C0] hover:text-[#F8FAFC]"
+                className="p-3 min-h-[44px] rounded-xl bg-[#10121F] border border-[#1E2338] hover:border-[#00F5A0]/40 transition-colors flex items-center gap-2.5 text-xs sm:text-sm text-[#A7B0C0] hover:text-[#F8FAFC]"
               >
-                <Phone className="w-4 h-4 text-[#34D399] shrink-0" />
+                <Phone className="w-4 h-4 text-[#00F5A0] shrink-0" />
                 <span>+91 6309624519</span>
               </a>
             </div>
@@ -72,7 +72,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                   placeholder="e.g. Alex Mercer"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-3.5 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3.5 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                 />
               </div>
 
@@ -85,7 +85,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                   placeholder="alex@company.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-3.5 min-h-[44px] py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3.5 min-h-[44px] py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                 />
               </div>
 
@@ -97,13 +97,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                   placeholder="Tell us about your AI agent stack or what policies you want to enforce..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#111827] border border-[#263044] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#8B5CF6]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#10121F] border border-[#1E2338] text-base sm:text-xs text-[#F8FAFC] placeholder-[#A7B0C0]/50 focus:outline-none focus:border-[#6100FF]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full min-h-[48px] py-3 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+                className="w-full min-h-[48px] py-3 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#6100FF]"
               >
                 <span>Send Inquiries</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -131,7 +131,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
           </div>
         ) : (
           <div className="py-8 text-center space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#34D399]/20 border border-[#34D399]/30 text-[#34D399] flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-[#00F5A0]/20 border border-[#00F5A0]/30 text-[#00F5A0] flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-7 h-7" />
             </div>
             <h4 className="text-xl font-bold text-[#F8FAFC]">Message Sent</h4>
@@ -143,7 +143,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
                 setSubmitted(false);
                 onClose();
               }}
-              className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold transition-colors cursor-pointer"
+              className="px-6 py-2.5 rounded-xl bg-[#6100FF] hover:bg-[#5000D6] text-white text-xs font-semibold transition-colors cursor-pointer"
             >
               Close
             </button>

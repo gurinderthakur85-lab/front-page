@@ -64,7 +64,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080B14] text-[#F8FAFC] flex flex-col font-sans selection:bg-[#8B5CF6]/30 selection:text-[#C4B5FD]">
+    <div className="min-h-screen bg-[#07080E] text-[#F8FAFC] flex flex-col font-sans selection:bg-[#6100FF]/35 selection:text-[#DDD6FE]">
       {/* 0. Clean Navigation Bar */}
       <Navbar 
         onOpenDemo={() => setDemoModalOpen(true)}
@@ -102,7 +102,7 @@ export function App() {
             <BenefitsSection />
 
             {/* Interactive Live Bouncer */}
-            <section className="py-16 bg-[#080B14] border-b border-[#263044]">
+            <section className="py-16 bg-[#07080E] border-b border-[#1E2338]">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <LiveAgentBouncer />
               </div>

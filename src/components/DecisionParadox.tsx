@@ -52,33 +52,33 @@ export const DecisionParadox: React.FC = () => {
     {
       id: 'unintended',
       severity: 'Warning',
-      severityColor: 'text-[#8B5CF6] border-[#8B5CF6]/40',
-      badgeBg: 'bg-[#8B5CF6]/10 text-[#C4B5FD]',
+      severityColor: 'text-[#6100FF] border-[#6100FF]/40',
+      badgeBg: 'bg-[#6100FF]/10 text-[#C4B5FD]',
       title: 'An AI agent takes an unintended action',
       plainSummary: 'When an agent gets blocked, it can improvise tools or loop outside human intentions.',
       realWorldStory: 'An operations agent fails to process an invoice due to a permission error. It hallucinates a workaround, calls an unapproved external API, and initiates an unauthorized transfer to clear the task.',
       withoutSentraa: 'Financial transfers or destructive mutations occur silently without human approval or guardrail checks.',
       withSentraa: 'Spending limits and strict tool-call boundaries trigger an instant hold and escalate to a human reviewer.',
-      icon: <Bot className="w-5 h-5 text-[#8B5CF6]" />
+      icon: <Bot className="w-5 h-5 text-[#6100FF]" />
     }
   ];
 
   return (
-    <section id="problem" className="py-20 lg:py-28 bg-[#0D1220] border-y border-[#263044] relative">
+    <section id="problem" className="py-20 lg:py-28 bg-[#07080E] border-y border-[#1E2338] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F87171]/10 border border-[#F87171]/30 text-[#F87171] text-xs font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF4D4D]/10 border border-[#FF4D4D]/30 text-[#FF4D4D] text-xs font-semibold mb-4">
             <AlertTriangle className="w-3.5 h-3.5" />
             <span>The AI Risk Paradox</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#FFFFFF] tracking-tight leading-tight mb-4">
             By the time anyone notices, the{' '}
-            <span className="text-[#8B5CF6]">agent already decided.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A78BFA] via-[#C4B5FD] to-[#6100FF]">agent already decided.</span>
           </h2>
 
-          <p className="text-base text-[#A7B0C0] leading-relaxed">
+          <p className="text-base text-[#94A3B8] leading-relaxed">
             A prompt can look harmless. An output can look fine. The real risk is the moment an autonomous agent connects to your databases, APIs, and tools. Without pre-execution oversight, actions execute before humans can intervene.
           </p>
         </div>
@@ -101,18 +101,18 @@ export const DecisionParadox: React.FC = () => {
                     setActiveScenario(scenario.id);
                   }
                 }}
-                className={`p-6 rounded-2xl bg-[#111827] border cursor-pointer card-hover-lift flex flex-col justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] ${
+                className={`p-6 rounded-2xl bg-[#10121F] border cursor-pointer card-hover-lift flex flex-col justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6100FF] ${
                   isLastOnTablet ? 'md:col-span-2 lg:col-span-1' : ''
                 } ${
                   isSelected
-                    ? 'border-[#8B5CF6] shadow-xl shadow-black/50 ring-1 ring-[#8B5CF6]/50'
-                    : 'border-[#263044] hover:border-[#8B5CF6]/40 hover:bg-[#141D30]'
+                    ? 'border-[#6100FF] shadow-xl shadow-black/50 ring-1 ring-[#6100FF]/50 shadow-[0_0_25px_rgba(97,0,255,0.25)]'
+                    : 'border-[#1E2338] hover:border-[#6100FF]/40 hover:bg-[#141729]'
                 }`}
               >
                 <div>
                   {/* Top Row: Icon + Severity Tag */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 rounded-xl bg-[#080B14] border border-[#263044]">
+                    <div className="p-2.5 rounded-xl bg-[#07080E] border border-[#1E2338]">
                       {scenario.icon}
                     </div>
                     <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold border ${scenario.badgeBg} ${scenario.severityColor}`}>
@@ -121,18 +121,18 @@ export const DecisionParadox: React.FC = () => {
                   </div>
 
                   {/* Scenario Title */}
-                  <h3 className="text-lg font-bold text-[#F8FAFC] mb-2 leading-snug">
+                  <h3 className="text-lg font-bold text-[#FFFFFF] mb-2 leading-snug">
                     {scenario.title}
                   </h3>
 
                   {/* Plain English Summary */}
-                  <p className="text-sm text-[#A7B0C0] mb-4 leading-relaxed">
+                  <p className="text-sm text-[#94A3B8] mb-4 leading-relaxed">
                     {scenario.plainSummary}
                   </p>
 
                   {/* Real-world example box */}
-                  <div className="p-3.5 rounded-xl bg-[#080B14] border border-[#263044] mb-4 text-xs sm:text-sm text-[#F8FAFC] leading-relaxed">
-                    <span className="text-[11px] font-mono text-[#A7B0C0] uppercase tracking-wider block mb-1">
+                  <div className="p-3.5 rounded-xl bg-[#07080E] border border-[#1E2338] mb-4 text-xs sm:text-sm text-[#FFFFFF] leading-relaxed">
+                    <span className="text-[11px] font-mono text-[#94A3B8] uppercase tracking-wider block mb-1">
                       Real-world scenario:
                     </span>
                     {scenario.realWorldStory}
@@ -140,14 +140,14 @@ export const DecisionParadox: React.FC = () => {
                 </div>
 
                 {/* Outcome Comparison */}
-                <div className="pt-4 border-t border-[#263044] space-y-2 text-xs sm:text-sm">
-                  <div className="flex items-start gap-2 text-[#A7B0C0]">
-                    <XCircle className="w-4 h-4 text-[#F87171] shrink-0 mt-0.5" />
-                    <span><strong className="text-[#F87171]">Without Sentraa:</strong> {scenario.withoutSentraa}</span>
+                <div className="pt-4 border-t border-[#1E2338] space-y-2 text-xs sm:text-sm">
+                  <div className="flex items-start gap-2 text-[#94A3B8]">
+                    <XCircle className="w-4 h-4 text-[#FF4D4D] shrink-0 mt-0.5" />
+                    <span><strong className="text-[#FF4D4D]">Without Sentraa:</strong> {scenario.withoutSentraa}</span>
                   </div>
-                  <div className="flex items-start gap-2 text-[#F8FAFC]">
-                    <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
-                    <span><strong className="text-[#34D399]">With Sentraa AI:</strong> {scenario.withSentraa}</span>
+                  <div className="flex items-start gap-2 text-[#FFFFFF]">
+                    <CheckCircle2 className="w-4 h-4 text-[#00F5A0] shrink-0 mt-0.5" />
+                    <span><strong className="text-[#00F5A0]">With Sentraa AI:</strong> {scenario.withSentraa}</span>
                   </div>
                 </div>
               </div>

@@ -276,8 +276,8 @@ export const LiveAgentBouncer: React.FC = () => {
     if (selectedScenario.verdict === 'ESCALATED') {
       if (humanDecision === 'APPROVED') {
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#34D399]/20 border border-[#34D399]/60 text-[#34D399] font-mono text-xs font-bold animate-pulse">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#34D399]" /> HUMAN OVERRIDE APPROVED
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00F5A0]/20 border border-[#00F5A0]/60 text-[#00F5A0] font-mono text-xs font-bold animate-pulse">
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#00F5A0]" /> HUMAN OVERRIDE APPROVED
           </span>
         );
       }
@@ -289,8 +289,8 @@ export const LiveAgentBouncer: React.FC = () => {
         );
       }
       return (
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#8B5CF6]/20 border border-[#8B5CF6]/50 text-[#C4B5FD] font-mono text-xs font-bold">
-          <Lock className="w-3.5 h-3.5 text-[#8B5CF6]" /> HELD FOR HUMAN REVIEW
+        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#6100FF]/20 border border-[#6100FF]/50 text-[#C4B5FD] font-mono text-xs font-bold">
+          <Lock className="w-3.5 h-3.5 text-[#6100FF]" /> HELD FOR HUMAN REVIEW
         </span>
       );
     }
@@ -310,7 +310,7 @@ export const LiveAgentBouncer: React.FC = () => {
         );
       case 'PERMITTED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#34D399]/15 border border-[#34D399]/50 text-[#34D399] font-mono text-xs font-bold">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00F5A0]/15 border border-[#00F5A0]/50 text-[#00F5A0] font-mono text-xs font-bold">
             <CheckCircle2 className="w-3.5 h-3.5" /> PERMITTED TO RUN
           </span>
         );
@@ -318,22 +318,22 @@ export const LiveAgentBouncer: React.FC = () => {
   };
 
   return (
-    <div id="simulator" className="rounded-2xl border border-[#263044] bg-[#111827] p-4 sm:p-7 lg:p-8 shadow-2xl relative overflow-hidden">
+    <div id="simulator" className="rounded-2xl border border-[#1E2338] bg-[#10121F] p-4 sm:p-7 lg:p-8 shadow-2xl relative overflow-hidden">
       {/* Background subtle glowing radial gradient */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B5CF6]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#6100FF]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header Bar */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#263044] relative z-10">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#1E2338] relative z-10">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34D399] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#34D399]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F5A0] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00F5A0]"></span>
             </span>
-            <span className="text-xs font-mono uppercase tracking-wider text-[#34D399] font-bold">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#00F5A0] font-bold">
               Live Interception Simulator
             </span>
-            <span className="text-xs text-[#8B5CF6] font-mono font-semibold">• Active Pre-Execution Gate</span>
+            <span className="text-xs text-[#6100FF] font-mono font-semibold">• Active Pre-Execution Gate</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC]">
             Pre-Execution Bouncer in Action
@@ -346,17 +346,17 @@ export const LiveAgentBouncer: React.FC = () => {
         {/* Live Telemetry Badges & Control Bar */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* Live Engine Status */}
-          <div className="px-3 py-1.5 rounded-xl bg-[#080B14] border border-[#34D399]/30 flex items-center gap-2 shadow-inner">
-            <span className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse" />
+          <div className="px-3 py-1.5 rounded-xl bg-[#07080E] border border-[#00F5A0]/30 flex items-center gap-2 shadow-inner">
+            <span className="w-2 h-2 rounded-full bg-[#00F5A0] animate-pulse" />
             <div className="text-left font-mono">
               <div className="text-[9px] text-[#A7B0C0] uppercase">Engine Status</div>
-              <div className="text-xs font-bold text-[#34D399]">Active Gatekeeper</div>
+              <div className="text-xs font-bold text-[#00F5A0]">Active Gatekeeper</div>
             </div>
           </div>
 
           {/* Audit Proof Validated */}
-          <div className="px-3 py-1.5 rounded-xl bg-[#080B14] border border-[#263044] flex items-center gap-2 shadow-inner">
-            <ShieldCheck className="w-4 h-4 text-[#8B5CF6]" />
+          <div className="px-3 py-1.5 rounded-xl bg-[#07080E] border border-[#1E2338] flex items-center gap-2 shadow-inner">
+            <ShieldCheck className="w-4 h-4 text-[#6100FF]" />
             <div className="text-left font-mono">
               <div className="text-[9px] text-[#A7B0C0] uppercase">Audit Ledger</div>
               <div className="text-xs font-bold text-[#F8FAFC]">SHA-256 Valid</div>
@@ -368,9 +368,9 @@ export const LiveAgentBouncer: React.FC = () => {
             onClick={() => triggerSimulation(selectedScenario)}
             disabled={isEvaluating}
             title="Re-run interception pipeline"
-            className="px-3 py-2 rounded-xl bg-[#0D1220] border border-[#263044] hover:border-[#8B5CF6] hover:bg-[#172033] text-[#F8FAFC] text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 disabled:opacity-50"
+            className="px-3 py-2 rounded-xl bg-[#0C0E17] border border-[#1E2338] hover:border-[#6100FF] hover:bg-[#16192C] text-[#F8FAFC] text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 disabled:opacity-50"
           >
-            <RotateCcw className={`w-3.5 h-3.5 text-[#8B5CF6] ${isEvaluating ? 'animate-spin' : ''}`} />
+            <RotateCcw className={`w-3.5 h-3.5 text-[#6100FF] ${isEvaluating ? 'animate-spin' : ''}`} />
             <span className="hidden sm:inline">Re-Evaluate</span>
           </button>
 
@@ -380,18 +380,18 @@ export const LiveAgentBouncer: React.FC = () => {
             title={isAutoStream ? 'Pause automatic scenario stream' : 'Enable auto-streaming live agent traffic'}
             className={`px-3 py-2 rounded-xl border text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 ${
               isAutoStream
-                ? 'bg-[#8B5CF6]/20 border-[#8B5CF6] text-[#C4B5FD] shadow-md shadow-[#8B5CF6]/20'
-                : 'bg-[#0D1220] border-[#263044] text-[#A7B0C0] hover:text-[#F8FAFC] hover:border-[#8B5CF6]/40'
+                ? 'bg-[#6100FF]/20 border-[#6100FF] text-[#C4B5FD] shadow-md shadow-[#6100FF]/20'
+                : 'bg-[#0C0E17] border-[#1E2338] text-[#A7B0C0] hover:text-[#F8FAFC] hover:border-[#6100FF]/40'
             }`}
           >
             {isAutoStream ? (
               <>
-                <Pause className="w-3.5 h-3.5 text-[#8B5CF6]" />
+                <Pause className="w-3.5 h-3.5 text-[#6100FF]" />
                 <span>Live Feed: <strong>ON</strong></span>
               </>
             ) : (
               <>
-                <Play className="w-3.5 h-3.5 text-[#34D399]" />
+                <Play className="w-3.5 h-3.5 text-[#00F5A0]" />
                 <span>Auto-Stream</span>
               </>
             )}
@@ -403,13 +403,13 @@ export const LiveAgentBouncer: React.FC = () => {
       <div className="my-6">
         <div className="flex items-center justify-between mb-3">
           <div className="text-xs font-semibold uppercase tracking-wider text-[#A7B0C0] flex items-center gap-1.5">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#8B5CF6]" />
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#6100FF]" />
             <span>Choose a scenario or test custom agent action:</span>
           </div>
 
           {isEvaluating && (
-            <div className="flex items-center gap-1.5 text-xs font-mono text-[#8B5CF6]">
-              <span className="w-2 h-2 rounded-full bg-[#8B5CF6] animate-ping" />
+            <div className="flex items-center gap-1.5 text-xs font-mono text-[#6100FF]">
+              <span className="w-2 h-2 rounded-full bg-[#6100FF] animate-ping" />
               <span>Evaluating in real-time...</span>
             </div>
           )}
@@ -424,13 +424,13 @@ export const LiveAgentBouncer: React.FC = () => {
                 onClick={() => handleSelectScenario(scenario)}
                 className={`text-left p-3.5 rounded-xl border transition-all cursor-pointer relative group ${
                   isSelected
-                    ? 'bg-[#0D1220] border-[#8B5CF6] ring-2 ring-[#8B5CF6]/40 shadow-lg shadow-[#8B5CF6]/25 transform -translate-y-0.5'
-                    : 'bg-[#080B14] border-[#263044] hover:bg-[#141D30] hover:border-[#8B5CF6]/50'
+                    ? 'bg-[#0C0E17] border-[#6100FF] ring-2 ring-[#6100FF]/40 shadow-lg shadow-[#6100FF]/25 transform -translate-y-0.5'
+                    : 'bg-[#07080E] border-[#1E2338] hover:bg-[#141D30] hover:border-[#6100FF]/50'
                 }`}
               >
                 {/* Active indicator bar */}
                 {isSelected && (
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8B5CF6] to-[#34D399] rounded-t-xl" />
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#6100FF] to-[#00F5A0] rounded-t-xl" />
                 )}
 
                 <div className="flex items-center justify-between mb-1">
@@ -444,10 +444,10 @@ export const LiveAgentBouncer: React.FC = () => {
                     <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#FBBF24]/20 text-[#FBBF24] font-mono font-bold">REDACT</span>
                   )}
                   {scenario.verdict === 'ESCALATED' && (
-                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#8B5CF6]/20 text-[#C4B5FD] font-mono font-bold">REVIEW</span>
+                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#6100FF]/20 text-[#C4B5FD] font-mono font-bold">REVIEW</span>
                   )}
                   {scenario.verdict === 'PERMITTED' && (
-                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#34D399]/20 text-[#34D399] font-mono font-bold">PERMIT</span>
+                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#00F5A0]/20 text-[#00F5A0] font-mono font-bold">PERMIT</span>
                   )}
                 </div>
 
@@ -467,18 +467,18 @@ export const LiveAgentBouncer: React.FC = () => {
             }}
             className={`text-left p-3.5 rounded-xl border transition-all cursor-pointer relative group flex flex-col justify-between ${
               isCustomMode
-                ? 'bg-[#0D1220] border-[#34D399] ring-2 ring-[#34D399]/40 shadow-lg shadow-[#34D399]/25 transform -translate-y-0.5'
-                : 'bg-[#080B14] border-[#263044] hover:bg-[#141D30] hover:border-[#34D399]/50 border-dashed'
+                ? 'bg-[#0C0E17] border-[#00F5A0] ring-2 ring-[#00F5A0]/40 shadow-lg shadow-[#00F5A0]/25 transform -translate-y-0.5'
+                : 'bg-[#07080E] border-[#1E2338] hover:bg-[#141D30] hover:border-[#00F5A0]/50 border-dashed'
             }`}
           >
             {isCustomMode && (
-              <div className="absolute top-0 left-0 right-0 h-1 bg-[#34D399] rounded-t-xl" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-[#00F5A0] rounded-t-xl" />
             )}
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-mono uppercase text-[#34D399] tracking-wider font-bold">Interactive</span>
-              <Zap className="w-3.5 h-3.5 text-[#34D399]" />
+              <span className="text-[10px] font-mono uppercase text-[#00F5A0] tracking-wider font-bold">Interactive</span>
+              <Zap className="w-3.5 h-3.5 text-[#00F5A0]" />
             </div>
-            <div className="text-xs font-bold text-[#F8FAFC] mb-1 group-hover:text-[#34D399] transition-colors">
+            <div className="text-xs font-bold text-[#F8FAFC] mb-1 group-hover:text-[#00F5A0] transition-colors">
               + Custom Tool Call
             </div>
             <div className="text-[11px] text-[#A7B0C0]">Test your own payload</div>
@@ -487,9 +487,9 @@ export const LiveAgentBouncer: React.FC = () => {
 
         {/* Custom Input Drawer (when Custom Mode is active) */}
         {isCustomMode && (
-          <div className="mt-3 p-4 rounded-xl bg-[#080B14] border border-[#34D399]/40 shadow-xl">
+          <div className="mt-3 p-4 rounded-xl bg-[#07080E] border border-[#00F5A0]/40 shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
-              <div className="text-xs font-mono font-bold text-[#34D399] flex items-center gap-1.5 shrink-0">
+              <div className="text-xs font-mono font-bold text-[#00F5A0] flex items-center gap-1.5 shrink-0">
                 <Terminal className="w-3.5 h-3.5" />
                 <span>Custom Agent Tool Call Inspector</span>
               </div>
@@ -501,7 +501,7 @@ export const LiveAgentBouncer: React.FC = () => {
                     setCustomInput('database.dropTable("customers_production")');
                     setCustomActionName('Drop Database Table');
                   }}
-                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#111827] text-[#F87171] border border-[#F87171]/40 hover:bg-[#F87171]/20 active:scale-95 transition-all cursor-pointer"
+                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#10121F] text-[#F87171] border border-[#F87171]/40 hover:bg-[#F87171]/20 active:scale-95 transition-all cursor-pointer"
                 >
                   Drop Table (Block)
                 </button>
@@ -511,7 +511,7 @@ export const LiveAgentBouncer: React.FC = () => {
                     setCustomInput('stripe.transfers.create({ amount: 1500000, recipient: "external_vendor" })');
                     setCustomActionName('High-Value Payout');
                   }}
-                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#111827] text-[#C4B5FD] border border-[#8B5CF6]/40 hover:bg-[#8B5CF6]/20 active:scale-95 transition-all cursor-pointer"
+                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#10121F] text-[#C4B5FD] border border-[#6100FF]/40 hover:bg-[#6100FF]/20 active:scale-95 transition-all cursor-pointer"
                 >
                   Spend $15k (Escalate)
                 </button>
@@ -521,7 +521,7 @@ export const LiveAgentBouncer: React.FC = () => {
                     setCustomInput('crm.contacts.query({ ssn: true, credit_card: true })');
                     setCustomActionName('Query Customer PII');
                   }}
-                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#111827] text-[#FBBF24] border border-[#FBBF24]/40 hover:bg-[#FBBF24]/20 active:scale-95 transition-all cursor-pointer"
+                  className="px-2.5 py-1 text-[11px] min-h-[36px] flex items-center rounded-lg bg-[#10121F] text-[#FBBF24] border border-[#FBBF24]/40 hover:bg-[#FBBF24]/20 active:scale-95 transition-all cursor-pointer"
                 >
                   Extract PII (Redact)
                 </button>
@@ -534,12 +534,12 @@ export const LiveAgentBouncer: React.FC = () => {
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
                 placeholder="e.g. aws.s3.deleteBucket({ Bucket: 'production-backups' })"
-                className="flex-grow min-h-[44px] px-3.5 py-2.5 rounded-lg bg-[#0D1220] border border-[#263044] text-[#F8FAFC] font-mono text-base sm:text-xs focus:outline-none focus:border-[#34D399]"
+                className="flex-grow min-h-[44px] px-3.5 py-2.5 rounded-lg bg-[#0C0E17] border border-[#1E2338] text-[#F8FAFC] font-mono text-base sm:text-xs focus:outline-none focus:border-[#00F5A0]"
               />
               <button
                 type="button"
                 onClick={handleRunCustomSimulation}
-                className="min-h-[44px] px-5 py-2.5 rounded-lg bg-[#34D399] hover:bg-[#10B981] active:scale-95 text-[#080B14] font-bold text-xs font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-[#34D399]/20 shrink-0"
+                className="min-h-[44px] px-5 py-2.5 rounded-lg bg-[#00F5A0] hover:bg-[#10B981] active:scale-95 text-[#07080E] font-bold text-xs font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-[#00F5A0]/20 shrink-0"
               >
                 <Zap className="w-3.5 h-3.5 fill-current" />
                 <span>Evaluate Now</span>
@@ -550,11 +550,11 @@ export const LiveAgentBouncer: React.FC = () => {
       </div>
 
       {/* 4 Pipeline Stages with Real-Time Connecting Energy Beam */}
-      <div className="bg-[#080B14] rounded-xl border border-[#263044] p-4 sm:p-5 mb-6 relative">
+      <div className="bg-[#07080E] rounded-xl border border-[#1E2338] p-4 sm:p-5 mb-6 relative">
         {/* Dynamic evaluation progress line */}
-        <div className="hidden lg:block absolute top-[28px] left-12 right-12 h-0.5 bg-[#263044] z-0">
+        <div className="hidden lg:block absolute top-[28px] left-12 right-12 h-0.5 bg-[#1E2338] z-0">
           <div 
-            className="h-full bg-gradient-to-r from-[#8B5CF6] via-[#C4B5FD] to-[#34D399] transition-all duration-300"
+            className="h-full bg-gradient-to-r from-[#6100FF] via-[#C4B5FD] to-[#00F5A0] transition-all duration-300"
             style={{ width: `${((currentStep + 1) / 4) * 100}%` }}
           />
         </div>
@@ -565,22 +565,22 @@ export const LiveAgentBouncer: React.FC = () => {
             onClick={() => setCurrentStep(0)}
             className={`p-3.5 rounded-lg border transition-all cursor-pointer ${
               currentStep >= 0 
-                ? 'bg-[#111827] border-[#8B5CF6]/60 shadow-md ring-1 ring-[#8B5CF6]/30' 
-                : 'bg-[#080B14] border-[#263044]/40 opacity-50'
+                ? 'bg-[#10121F] border-[#6100FF]/60 shadow-md ring-1 ring-[#6100FF]/30' 
+                : 'bg-[#07080E] border-[#1E2338]/40 opacity-50'
             }`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-mono uppercase text-[#A7B0C0] font-semibold">
                 01 // Agent Action
               </span>
-              <div className="p-1 rounded bg-[#8B5CF6]/15">
-                <Cpu className="w-3.5 h-3.5 text-[#8B5CF6]" />
+              <div className="p-1 rounded bg-[#6100FF]/15">
+                <Cpu className="w-3.5 h-3.5 text-[#6100FF]" />
               </div>
             </div>
             <div className="text-xs font-bold text-[#F8FAFC] truncate">
               {selectedScenario.agentType}
             </div>
-            <div className="text-[11px] text-[#A7B0C0] mt-1 line-clamp-2 italic font-mono bg-[#080B14] p-1.5 rounded border border-[#263044]/60">
+            <div className="text-[11px] text-[#A7B0C0] mt-1 line-clamp-2 italic font-mono bg-[#07080E] p-1.5 rounded border border-[#1E2338]/60">
               "{selectedScenario.rawAction}"
             </div>
             <div className="mt-2 flex items-center justify-between text-[10px] font-mono">
@@ -594,27 +594,27 @@ export const LiveAgentBouncer: React.FC = () => {
             onClick={() => setCurrentStep(1)}
             className={`p-3.5 rounded-lg border transition-all cursor-pointer relative overflow-hidden ${
               currentStep >= 1 
-                ? 'bg-[#111827] border-[#8B5CF6] shadow-lg shadow-[#8B5CF6]/20 ring-1 ring-[#8B5CF6]/50' 
-                : 'bg-[#080B14] border-[#263044]/40 opacity-50'
+                ? 'bg-[#10121F] border-[#6100FF] shadow-lg shadow-[#6100FF]/20 ring-1 ring-[#6100FF]/50' 
+                : 'bg-[#07080E] border-[#1E2338]/40 opacity-50'
             }`}
           >
             {currentStep === 1 && (
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#8B5CF6] animate-pulse" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#6100FF] animate-pulse" />
             )}
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-mono uppercase text-[#C4B5FD] font-semibold">
                 02 // Sentraa Interceptor
               </span>
-              <div className="p-1 rounded bg-[#8B5CF6]/15">
-                <Sparkles className="w-3.5 h-3.5 text-[#8B5CF6]" />
+              <div className="p-1 rounded bg-[#6100FF]/15">
+                <Sparkles className="w-3.5 h-3.5 text-[#6100FF]" />
               </div>
             </div>
             <div className="text-xs font-bold text-[#F8FAFC]">Pre-Execution Gate</div>
             <div className="text-[11px] text-[#A7B0C0] mt-1 font-mono">
               {currentStep < 1 ? 'Pending hook...' : 'AST parsing & parameter scan...'}
             </div>
-            <div className="mt-2 flex items-center gap-1 text-[10px] font-mono text-[#34D399]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-ping" />
+            <div className="mt-2 flex items-center gap-1 text-[10px] font-mono text-[#00F5A0]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] animate-ping" />
               <span>Hook status: In-Line Intercepted</span>
             </div>
           </div>
@@ -624,30 +624,30 @@ export const LiveAgentBouncer: React.FC = () => {
             onClick={() => setCurrentStep(2)}
             className={`p-3.5 rounded-lg border transition-all cursor-pointer relative ${
               currentStep >= 2 
-                ? 'bg-[#111827] border-[#8B5CF6]/70 shadow-md ring-1 ring-[#8B5CF6]/30' 
-                : 'bg-[#080B14] border-[#263044]/40 opacity-50'
+                ? 'bg-[#10121F] border-[#6100FF]/70 shadow-md ring-1 ring-[#6100FF]/30' 
+                : 'bg-[#07080E] border-[#1E2338]/40 opacity-50'
             }`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-mono uppercase text-[#C4B5FD] font-semibold">
                 03 // Policy Engine
               </span>
-              <div className="p-1 rounded bg-[#8B5CF6]/15">
-                <Layers className="w-3.5 h-3.5 text-[#8B5CF6]" />
+              <div className="p-1 rounded bg-[#6100FF]/15">
+                <Layers className="w-3.5 h-3.5 text-[#6100FF]" />
               </div>
             </div>
             <div className="text-xs font-bold text-[#F8FAFC]">Guardrails Applied</div>
             <div className="text-[10px] text-[#A7B0C0] mt-1.5 space-y-1 font-mono">
-              <div className="flex items-center gap-1.5 text-[#34D399]">
-                <Check className="w-3 h-3 text-[#34D399]" />
+              <div className="flex items-center gap-1.5 text-[#00F5A0]">
+                <Check className="w-3 h-3 text-[#00F5A0]" />
                 <span>Pattern &amp; Payload Scan</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[#34D399]">
-                <Check className="w-3 h-3 text-[#34D399]" />
+              <div className="flex items-center gap-1.5 text-[#00F5A0]">
+                <Check className="w-3 h-3 text-[#00F5A0]" />
                 <span>In-Line PII Redaction</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[#34D399]">
-                <Check className="w-3 h-3 text-[#34D399]" />
+              <div className="flex items-center gap-1.5 text-[#00F5A0]">
+                <Check className="w-3 h-3 text-[#00F5A0]" />
                 <span>Deterministic Bounds</span>
               </div>
             </div>
@@ -659,24 +659,24 @@ export const LiveAgentBouncer: React.FC = () => {
             className={`p-3.5 rounded-lg border transition-all cursor-pointer ${
               currentStep >= 3 
                 ? selectedScenario.verdict === 'BLOCKED'
-                  ? 'bg-[#111827] border-[#F87171]/70 ring-1 ring-[#F87171]/30 shadow-lg shadow-[#F87171]/15'
+                  ? 'bg-[#10121F] border-[#F87171]/70 ring-1 ring-[#F87171]/30 shadow-lg shadow-[#F87171]/15'
                   : selectedScenario.verdict === 'REDACTED_PERMIT'
-                  ? 'bg-[#111827] border-[#FBBF24]/70 ring-1 ring-[#FBBF24]/30 shadow-lg shadow-[#FBBF24]/15'
+                  ? 'bg-[#10121F] border-[#FBBF24]/70 ring-1 ring-[#FBBF24]/30 shadow-lg shadow-[#FBBF24]/15'
                   : selectedScenario.verdict === 'ESCALATED'
                   ? humanDecision === 'APPROVED'
-                    ? 'bg-[#111827] border-[#34D399]/70 ring-1 ring-[#34D399]/30 shadow-lg shadow-[#34D399]/15'
+                    ? 'bg-[#10121F] border-[#00F5A0]/70 ring-1 ring-[#00F5A0]/30 shadow-lg shadow-[#00F5A0]/15'
                     : humanDecision === 'REJECTED'
-                    ? 'bg-[#111827] border-[#F87171]/70 ring-1 ring-[#F87171]/30 shadow-lg shadow-[#F87171]/15'
-                    : 'bg-[#111827] border-[#8B5CF6]/70 ring-1 ring-[#8B5CF6]/30 shadow-lg shadow-[#8B5CF6]/15'
-                  : 'bg-[#111827] border-[#34D399]/70 ring-1 ring-[#34D399]/30 shadow-lg shadow-[#34D399]/15'
-                : 'bg-[#080B14] border-[#263044]/40 opacity-50'
+                    ? 'bg-[#10121F] border-[#F87171]/70 ring-1 ring-[#F87171]/30 shadow-lg shadow-[#F87171]/15'
+                    : 'bg-[#10121F] border-[#6100FF]/70 ring-1 ring-[#6100FF]/30 shadow-lg shadow-[#6100FF]/15'
+                  : 'bg-[#10121F] border-[#00F5A0]/70 ring-1 ring-[#00F5A0]/30 shadow-lg shadow-[#00F5A0]/15'
+                : 'bg-[#07080E] border-[#1E2338]/40 opacity-50'
             }`}
           >
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-mono uppercase text-[#A7B0C0] font-semibold">
                 04 // Gate Verdict
               </span>
-              <div className="p-1 rounded bg-[#263044]/40">
+              <div className="p-1 rounded bg-[#1E2338]/40">
                 <Database className="w-3.5 h-3.5 text-[#A7B0C0]" />
               </div>
             </div>
@@ -692,16 +692,16 @@ export const LiveAgentBouncer: React.FC = () => {
 
       {/* Interactive Human-in-the-Loop Review Console (when Verdict is ESCALATED) */}
       {selectedScenario.verdict === 'ESCALATED' && (
-        <div className="mb-6 p-4 rounded-xl bg-[#0D1220] border border-[#8B5CF6]/50 shadow-xl transition-all">
+        <div className="mb-6 p-4 rounded-xl bg-[#0C0E17] border border-[#6100FF]/50 shadow-xl transition-all">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-start gap-3">
-              <div className="p-2 rounded-lg bg-[#8B5CF6]/20 border border-[#8B5CF6]/40 text-[#C4B5FD] mt-0.5">
+              <div className="p-2 rounded-lg bg-[#6100FF]/20 border border-[#6100FF]/40 text-[#C4B5FD] mt-0.5">
                 <UserCheck className="w-5 h-5" />
               </div>
               <div>
                 <div className="text-xs font-mono font-bold text-[#F8FAFC] flex items-center gap-2">
                   <span>Interactive Dual-Control Escalation Queue</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#8B5CF6]/20 text-[#C4B5FD] font-mono">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#6100FF]/20 text-[#C4B5FD] font-mono">
                     Pending Dual Signature
                   </span>
                 </div>
@@ -717,7 +717,7 @@ export const LiveAgentBouncer: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setHumanDecision('APPROVED')}
-                    className="px-3.5 py-1.5 rounded-lg bg-[#34D399]/20 hover:bg-[#34D399]/30 text-[#34D399] border border-[#34D399]/50 font-mono text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                    className="px-3.5 py-1.5 rounded-lg bg-[#00F5A0]/20 hover:bg-[#00F5A0]/30 text-[#00F5A0] border border-[#00F5A0]/50 font-mono text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
                   >
                     <Check className="w-3.5 h-3.5" />
                     <span>Approve Payout</span>
@@ -734,12 +734,12 @@ export const LiveAgentBouncer: React.FC = () => {
               ) : (
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono text-[#F8FAFC]">
-                    Decision: <strong className={humanDecision === 'APPROVED' ? 'text-[#34D399]' : 'text-[#F87171]'}>{humanDecision}</strong>
+                    Decision: <strong className={humanDecision === 'APPROVED' ? 'text-[#00F5A0]' : 'text-[#F87171]'}>{humanDecision}</strong>
                   </span>
                   <button
                     type="button"
                     onClick={() => setHumanDecision('PENDING')}
-                    className="px-2.5 py-1 rounded bg-[#111827] text-[#A7B0C0] hover:text-[#F8FAFC] border border-[#263044] text-[11px] font-mono cursor-pointer"
+                    className="px-2.5 py-1 rounded bg-[#10121F] text-[#A7B0C0] hover:text-[#F8FAFC] border border-[#1E2338] text-[11px] font-mono cursor-pointer"
                   >
                     Reset Decision
                   </button>
@@ -751,19 +751,19 @@ export const LiveAgentBouncer: React.FC = () => {
       )}
 
       {/* Details Box with Interactive Tabs (AST, Live Trace, Cryptographic Proof) */}
-      <div className="bg-[#080B14] rounded-xl border border-[#263044] overflow-hidden">
+      <div className="bg-[#07080E] rounded-xl border border-[#1E2338] overflow-hidden">
         {/* Tab Switcher Header - Responsive horizontal scroll container */}
-        <div className="flex items-center justify-between border-b border-[#263044] px-3 sm:px-4 pt-2.5 pb-2 bg-[#0D1220] gap-2">
+        <div className="flex items-center justify-between border-b border-[#1E2338] px-3 sm:px-4 pt-2.5 pb-2 bg-[#0C0E17] gap-2">
           <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full">
             <button
               onClick={() => setActiveTab('toolCall')}
               className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] ${
                 activeTab === 'toolCall'
-                  ? 'bg-[#111827] text-[#F8FAFC] border border-[#8B5CF6]/50 shadow-sm'
+                  ? 'bg-[#10121F] text-[#F8FAFC] border border-[#6100FF]/50 shadow-sm'
                   : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
               }`}
             >
-              <Terminal className="w-3.5 h-3.5 text-[#8B5CF6]" />
+              <Terminal className="w-3.5 h-3.5 text-[#6100FF]" />
               <span>Intercepted Tool Call</span>
             </button>
 
@@ -771,24 +771,24 @@ export const LiveAgentBouncer: React.FC = () => {
               onClick={() => setActiveTab('trace')}
               className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] ${
                 activeTab === 'trace'
-                  ? 'bg-[#111827] text-[#F8FAFC] border border-[#8B5CF6]/50 shadow-sm'
+                  ? 'bg-[#10121F] text-[#F8FAFC] border border-[#6100FF]/50 shadow-sm'
                   : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
               }`}
             >
-              <Activity className="w-3.5 h-3.5 text-[#34D399]" />
+              <Activity className="w-3.5 h-3.5 text-[#00F5A0]" />
               <span>Live Gateway Trace</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] animate-pulse" />
             </button>
 
             <button
               onClick={() => setActiveTab('proof')}
               className={`px-3 py-2 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] ${
                 activeTab === 'proof'
-                  ? 'bg-[#111827] text-[#F8FAFC] border border-[#8B5CF6]/50 shadow-sm'
+                  ? 'bg-[#10121F] text-[#F8FAFC] border border-[#6100FF]/50 shadow-sm'
                   : 'text-[#A7B0C0] hover:text-[#F8FAFC]'
               }`}
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#8B5CF6]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#6100FF]" />
               <span>Cryptographic Proof</span>
             </button>
           </div>
@@ -797,12 +797,12 @@ export const LiveAgentBouncer: React.FC = () => {
             <button
               onClick={() => handleCopyCode(selectedScenario.toolCall)}
               title="Copy Document Text"
-              className="p-2 sm:px-2.5 sm:py-1 rounded-lg bg-[#111827] border border-[#263044] hover:border-[#8B5CF6]/50 text-xs font-mono text-[#A7B0C0] hover:text-[#F8FAFC] flex items-center gap-1 transition-all cursor-pointer min-h-[36px]"
+              className="p-2 sm:px-2.5 sm:py-1 rounded-lg bg-[#10121F] border border-[#1E2338] hover:border-[#6100FF]/50 text-xs font-mono text-[#A7B0C0] hover:text-[#F8FAFC] flex items-center gap-1 transition-all cursor-pointer min-h-[36px]"
             >
               {copied ? (
                 <>
-                  <Check className="w-3 h-3 text-[#34D399]" />
-                  <span className="text-[#34D399] hidden sm:inline">Copied</span>
+                  <Check className="w-3 h-3 text-[#00F5A0]" />
+                  <span className="text-[#00F5A0] hidden sm:inline">Copied</span>
                 </>
               ) : (
                 <>
@@ -822,10 +822,10 @@ export const LiveAgentBouncer: React.FC = () => {
               <div className="lg:col-span-7 space-y-3">
                 <div className="flex items-center justify-between text-xs font-mono text-[#A7B0C0]">
                   <span className="uppercase tracking-wider">Payload Abstract Syntax Tree (JSON / AST)</span>
-                  <span className="text-[11px] text-[#8B5CF6]">Pre-Execution State: CAPTURED</span>
+                  <span className="text-[11px] text-[#6100FF]">Pre-Execution State: CAPTURED</span>
                 </div>
 
-                <div className="p-4 rounded-lg bg-[#0D1220] border border-[#263044] font-mono text-xs text-[#F8FAFC] break-all leading-relaxed relative group">
+                <div className="p-4 rounded-lg bg-[#0C0E17] border border-[#1E2338] font-mono text-xs text-[#F8FAFC] break-all leading-relaxed relative group">
                   <code>{selectedScenario.toolCall}</code>
                 </div>
 
@@ -837,13 +837,13 @@ export const LiveAgentBouncer: React.FC = () => {
                         <EyeOff className="w-3.5 h-3.5" />
                         <span>In-Line Memory Redaction View:</span>
                       </span>
-                      <div className="flex items-center gap-1 bg-[#0D1220] p-1 rounded-lg border border-[#263044]">
+                      <div className="flex items-center gap-1 bg-[#0C0E17] p-1 rounded-lg border border-[#1E2338]">
                         <button
                           type="button"
                           onClick={() => setPiiViewMode('redacted')}
                           className={`px-2 py-0.5 text-[10px] font-mono rounded cursor-pointer ${
                             piiViewMode === 'redacted'
-                              ? 'bg-[#34D399]/20 text-[#34D399] font-bold'
+                              ? 'bg-[#00F5A0]/20 text-[#00F5A0] font-bold'
                               : 'text-[#A7B0C0]'
                           }`}
                         >
@@ -865,8 +865,8 @@ export const LiveAgentBouncer: React.FC = () => {
 
                     <div className={`p-3 rounded-lg border font-mono text-xs break-all ${
                       piiViewMode === 'redacted'
-                        ? 'bg-[#0D1220] border-[#34D399]/40 text-[#34D399]'
-                        : 'bg-[#0D1220] border-[#F87171]/40 text-[#F87171]'
+                        ? 'bg-[#0C0E17] border-[#00F5A0]/40 text-[#00F5A0]'
+                        : 'bg-[#0C0E17] border-[#F87171]/40 text-[#F87171]'
                     }`}>
                       <code>
                         {piiViewMode === 'redacted' ? selectedScenario.redactedPayload : selectedScenario.rawPayloadSnippet}
@@ -882,7 +882,7 @@ export const LiveAgentBouncer: React.FC = () => {
                   <span className="text-[10px] font-mono uppercase text-[#A7B0C0] tracking-wider block mb-1 font-semibold">
                     Triggered Policy Rule:
                   </span>
-                  <div className="text-xs font-bold text-[#F8FAFC] font-mono bg-[#0D1220] p-3 rounded-lg border border-[#263044]">
+                  <div className="text-xs font-bold text-[#F8FAFC] font-mono bg-[#0C0E17] p-3 rounded-lg border border-[#1E2338]">
                     {selectedScenario.ruleTriggered}
                   </div>
                 </div>
@@ -891,13 +891,13 @@ export const LiveAgentBouncer: React.FC = () => {
                   <span className="text-[10px] font-mono uppercase text-[#A7B0C0] tracking-wider block mb-1 font-semibold">
                     Safety Reason:
                   </span>
-                  <p className="text-xs text-[#A7B0C0] leading-relaxed bg-[#0D1220] p-3 rounded-lg border border-[#263044]">
+                  <p className="text-xs text-[#A7B0C0] leading-relaxed bg-[#0C0E17] p-3 rounded-lg border border-[#1E2338]">
                     {selectedScenario.reason}
                   </p>
                 </div>
 
-                <div className="text-[11px] font-mono text-[#A7B0C0] flex items-center justify-between p-2.5 rounded-lg bg-[#0D1220] border border-[#263044]">
-                  <span className="text-[#8B5CF6] font-bold">Compliance Standard:</span>
+                <div className="text-[11px] font-mono text-[#A7B0C0] flex items-center justify-between p-2.5 rounded-lg bg-[#0C0E17] border border-[#1E2338]">
+                  <span className="text-[#6100FF] font-bold">Compliance Standard:</span>
                   <span className="text-[#F8FAFC]">{selectedScenario.owaspCode}</span>
                 </div>
               </div>
@@ -906,14 +906,14 @@ export const LiveAgentBouncer: React.FC = () => {
 
           {activeTab === 'trace' && (
             <div className="space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between text-[#A7B0C0] text-[11px] pb-1 border-b border-[#263044]/60">
+              <div className="flex items-center justify-between text-[#A7B0C0] text-[11px] pb-1 border-b border-[#1E2338]/60">
                 <span>GATEWAY SYSTEM TRACE STREAM • REAL-TIME EVALUATION</span>
-                <span className="text-[#34D399] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse" />
+                <span className="text-[#00F5A0] flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] animate-pulse" />
                   FAIL-CLOSED ENFORCEMENT
                 </span>
               </div>
-              <div className="bg-[#0D1220] p-4 rounded-lg border border-[#263044] space-y-2 max-h-64 overflow-y-auto">
+              <div className="bg-[#0C0E17] p-4 rounded-lg border border-[#1E2338] space-y-2 max-h-64 overflow-y-auto">
                 {selectedScenario.traceLogs.map((log, index) => (
                   <div key={index} className="flex items-start gap-2.5 leading-relaxed">
                     <span className="text-[#A7B0C0] text-[10px] shrink-0">
@@ -925,8 +925,8 @@ export const LiveAgentBouncer: React.FC = () => {
                         : log.type === 'warn'
                         ? 'bg-[#FBBF24]/20 text-[#FBBF24] border border-[#FBBF24]/40'
                         : log.type === 'success'
-                        ? 'bg-[#34D399]/20 text-[#34D399] border border-[#34D399]/40'
-                        : 'bg-[#8B5CF6]/20 text-[#C4B5FD] border border-[#8B5CF6]/40'
+                        ? 'bg-[#00F5A0]/20 text-[#00F5A0] border border-[#00F5A0]/40'
+                        : 'bg-[#6100FF]/20 text-[#C4B5FD] border border-[#6100FF]/40'
                     }`}>
                       {log.tag}
                     </span>
@@ -941,27 +941,27 @@ export const LiveAgentBouncer: React.FC = () => {
             <div className="space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between text-[#A7B0C0] text-[11px]">
                 <span>CRYPTOGRAPHIC VERIFIABLE AUDIT RECEIPT</span>
-                <span className="text-[#34D399]">STATUS: IMMUTABLE &amp; ANCHORED</span>
+                <span className="text-[#00F5A0]">STATUS: IMMUTABLE &amp; ANCHORED</span>
               </div>
 
-              <div className="bg-[#0D1220] p-4 rounded-lg border border-[#263044] space-y-3">
+              <div className="bg-[#0C0E17] p-4 rounded-lg border border-[#1E2338] space-y-3">
                 <div>
                   <div className="text-[10px] uppercase text-[#A7B0C0] mb-1">SHA-256 Checksum Signature:</div>
-                  <div className="p-2 rounded bg-[#080B14] border border-[#263044] text-[#34D399] text-[11px] break-all">
+                  <div className="p-2 rounded bg-[#07080E] border border-[#1E2338] text-[#00F5A0] text-[11px] break-all">
                     {selectedScenario.sha256Proof}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-[11px]">
-                  <div className="p-2.5 rounded bg-[#080B14] border border-[#263044]">
+                  <div className="p-2.5 rounded bg-[#07080E] border border-[#1E2338]">
                     <span className="text-[#A7B0C0] block text-[10px]">Verification Scheme</span>
                     <span className="text-[#F8FAFC] font-bold">Ed25519 Deterministic</span>
                   </div>
-                  <div className="p-2.5 rounded bg-[#080B14] border border-[#263044]">
+                  <div className="p-2.5 rounded bg-[#07080E] border border-[#1E2338]">
                     <span className="text-[#A7B0C0] block text-[10px]">Gate Execution Model</span>
-                    <span className="text-[#34D399] font-bold">Fail-Closed In-Line</span>
+                    <span className="text-[#00F5A0] font-bold">Fail-Closed In-Line</span>
                   </div>
-                  <div className="p-2.5 rounded bg-[#080B14] border border-[#263044]">
+                  <div className="p-2.5 rounded bg-[#07080E] border border-[#1E2338]">
                     <span className="text-[#A7B0C0] block text-[10px]">Tamper State</span>
                     <span className="text-[#C4B5FD] font-bold">Zero Privilege Drift</span>
                   </div>
@@ -973,13 +973,13 @@ export const LiveAgentBouncer: React.FC = () => {
       </div>
 
       {/* Live Enterprise Traffic Stream Ticker */}
-      <div className="mt-5 pt-4 border-t border-[#263044] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+      <div className="mt-5 pt-4 border-t border-[#1E2338] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
         <div className="flex items-center gap-2 text-[#A7B0C0] overflow-hidden">
           <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#34D399] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#34D399]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F5A0] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F5A0]"></span>
           </span>
-          <span className="text-[#34D399] font-bold uppercase tracking-wider text-[10px] shrink-0">
+          <span className="text-[#00F5A0] font-bold uppercase tracking-wider text-[10px] shrink-0">
             Live Stream:
           </span>
           <span className="text-[#F8FAFC] truncate transition-all duration-300">
@@ -988,9 +988,9 @@ export const LiveAgentBouncer: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-3 text-[11px] text-[#A7B0C0] self-end sm:self-auto shrink-0">
-          <span>Live Gate Actions: <strong className="text-[#34D399] font-mono font-bold">{liveCount.toLocaleString()}</strong></span>
-          <span className="text-[#263044]">|</span>
-          <span className="text-[#8B5CF6] font-semibold">100% Fail-Closed</span>
+          <span>Live Gate Actions: <strong className="text-[#00F5A0] font-mono font-bold">{liveCount.toLocaleString()}</strong></span>
+          <span className="text-[#1E2338]">|</span>
+          <span className="text-[#6100FF] font-semibold">100% Fail-Closed</span>
         </div>
       </div>
     </div>
