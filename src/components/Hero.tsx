@@ -16,7 +16,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
   return (
-    <section className="relative pt-8 pb-14 lg:pt-10 lg:pb-16 overflow-hidden bg-[#07080E]">
+    <section id="hero-definition" className="relative pt-8 pb-14 lg:pt-10 lg:pb-16 overflow-hidden bg-[#07080E]">
       {/* SentinelOne Dynamic Ambient Volumetric Lighting */}
       <div className="absolute top-4 left-1/4 w-[520px] h-[300px] bg-[#6100FF]/18 blur-[110px] pointer-events-none rounded-full animate-pulse-glow" />
       <div className="absolute top-24 right-1/4 w-[420px] h-[260px] bg-[#4500B6]/15 blur-[100px] pointer-events-none rounded-full animate-float-slow-reverse" />
@@ -40,8 +40,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
           </h1>
 
           {/* Product explained in two short concrete sentences */}
-          <p className="text-sm sm:text-base lg:text-lg text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
-            Discover AI agents, enforce security policies, and monitor risky actions from one platform. Keep your AI systems accountable as they scale.
+          <p id="aeo-summary" className="text-sm sm:text-base lg:text-lg text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
+            Sentraa AI is the inline pre-execution governance platform that discovers AI agents, intercepts risky tool calls in &lt;15ms, redacts PII in-memory, and automates compliance with NIST AI RMF, GDPR, and DPDP.
           </p>
 
           {/* Action CTAs: One primary, one secondary */}
@@ -66,15 +66,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenContact }) => {
           <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-[#94A3B8]">
             <div className="flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5 text-[#6100FF]" />
-              <span>Real-Time Pre-Execution Interception</span>
+              <span>&lt;15ms Interception Latency</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Lock className="w-3.5 h-3.5 text-[#00F5A0]" />
-              <span>Automated PII &amp; Secret Redaction</span>
+              <span>Dynamic In-Memory PII Redaction</span>
             </div>
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#6100FF]" />
-              <span>Audit-Ready Evidence Generated Automatically</span>
+              <span>SHA-256 Tamper-Proof Audit Trails</span>
             </div>
           </div>
         </div>

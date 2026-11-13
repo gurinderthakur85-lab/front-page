@@ -159,6 +159,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenLegal }) => {
               <li><a href="#comparison" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">Compare Capabilities</a></li>
               <li><a href="#faqs" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">FAQ Knowledge Base</a></li>
               <li><a href="#problem" className="flex items-center min-h-[36px] py-1 hover:text-[#F8FAFC] transition-colors">AI Risk Threat Matrix</a></li>
+              <li>
+                <a 
+                  href="/llms.txt" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center min-h-[36px] py-1 text-[#6100FF] hover:text-[#C4B5FD] transition-colors font-mono text-[11px]"
+                >
+                  <span>llms.txt (AI Discovery)</span>
+                </a>
+              </li>
               <li className="pt-2 border-t border-[#1E2338]/60">
                 <button 
                   onClick={() => handleLegalClick('privacy')}

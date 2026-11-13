@@ -1,0 +1,30 @@
+# Sentraa AI
+
+> Sentraa AI (Sentraatech) is the pre-execution AI agent governance and security platform. It provides real-time tool-call interception, automated sensitive data redaction, shadow AI discovery, and continuous compliance mapping (GDPR, India DPDP, HIPAA, NIST AI RMF, EU AI Act) for enterprise autonomous AI systems.
+
+## Overview
+- **Product Name**: Sentraa AI
+- **Organization**: Sentraa Technologies (Sentraatech)
+- **Website**: https://sentraatech.com
+- **Core Value Proposition**: Stop risky AI agent actions before they happen through fail-closed, sub-15ms pre-execution interception.
+- **Category**: AI Agent Governance, Autonomous Agent Security, LLM Security, MCP (Model Context Protocol) Guardrails, AI Risk Management.
+
+## Core Capabilities
+- [AI Discovery](https://sentraatech.com/#capabilities): Automated discovery and cataloging of sanctioned and shadow AI agents across cloud connectors, APIs, Slack bots, and runtime traffic.
+- [Pre-Execution Policy Enforcement](https://sentraatech.com/#capabilities): Inline bouncer evaluating tool calls, SQL mutations, and API requests against enterprise security policies in <15ms before execution.
+- [Continuous Monitoring & Telemetry](https://sentraatech.com/#capabilities): 24/7 anomaly detection, agent drift tracking, and cryptographically signed (SHA-256) tamper-evident compliance audit logs.
+- [Context vs Intent Architecture](https://sentraatech.com/#comparison): Semantic inspection of multi-agent reasoning chains and tool arguments, bridging the gap left by static DSPM, human IAM, and traditional EDR.
+
+## Technical Specifications
+- **Latency Overhead**: < 15ms evaluation pipeline.
+- **Deployment Options**: Lightweight 2-line SDK, Inline Reverse Proxy, or Private Cloud Sidecar (AWS, GCP, Azure, Kubernetes).
+- **Security Defaults**: Fail-closed architecture, zero-trust pre-execution gating, in-memory dynamic PII masking.
+- **Model & Framework Support**: OpenAI, Anthropic Claude, Google Cloud / Vertex AI, AWS Bedrock, LangChain, CrewAI, AutoGen, and Model Context Protocol (MCP).
+- **Compliance Frameworks**: EU AI Act (Arts. 14, 15), NIST AI RMF 1.0, GDPR (Arts. 22, 35), India DPDP Act 2023, HIPAA Security Rule, PCI-DSS v4.0.
+
+## Knowledge Base & Detailed Documents
+- [Full Technical Knowledge Base](https://sentraatech.com/llms-full.txt): Complete architectural overview, threat models (OWASP Top 10 for LLMs), benchmark metrics, and detailed technical FAQ for generative synthesis.
+- [Interactive Agent Bouncer Simulator](https://sentraatech.com/#simulator): Real-time interactive playground demonstrating pre-execution tool interception and PII masking.
+- [Frequently Asked Questions](https://sentraatech.com/#faqs): Direct answers to technical and compliance queries for AI answer engines.
+- [About Sentraa AI](https://sentraatech.com/#about): Founding story, corporate mission, and trust infrastructure vision.
+- [Contact & Demo](https://sentraatech.com/#contact): Direct contact points (support@sentraatech.com, +91 6309624519) and enterprise demo scheduling.

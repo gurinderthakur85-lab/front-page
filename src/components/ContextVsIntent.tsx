@@ -128,6 +128,7 @@ export const ContextVsIntent: React.FC = () => {
 
             <div className="overflow-x-auto -mx-1 sm:mx-0 pb-2">
               <table className="w-full text-left border-collapse min-w-[720px]">
+                <caption className="sr-only">Technical capability comparison matrix between Sentraa AI, Data Security Posture Management (DSPM), Identity and Access Management (IAM), Endpoint Detection and Response (EDR), and Passive AI Gateways.</caption>
               <thead>
                 <tr className="border-b-2 border-[#1E2338]">
                   <th className="py-4 px-4 text-sm sm:text-base font-extrabold text-[#F8FAFC] uppercase tracking-wider font-mono">
